@@ -192,3 +192,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- revision 2026-09-17: Popular tickers constant -->
 **2026-09-17 — Popular tickers constant.** Explained curated list purpose for quick symbol entry.
+
+<!-- 2024-08-30 pass 1: news integration -->
+**2024-08-30** — Captured QA checklist items for news integration. Pass 1/100 in the sandbox documentation sweep; no runtime code changed.

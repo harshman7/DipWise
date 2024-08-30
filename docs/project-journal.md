@@ -332,3 +332,11 @@ Final pass tying journal, changelog, and architecture revision footers together.
 - Updated changelog entry for 2026-10-23.
 - Added revision footer in rotating doc set (index 5).
 
+
+## 2024-08-30 — news integration (pass 1)
+
+Captured QA checklist items for news integration. Pass 1/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/api.md`.
+

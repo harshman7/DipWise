@@ -122,3 +122,6 @@
 ### 2026-10-23
 - **Release hygiene:** Final pass tying journal, changelog, and architecture revision footers together.
 - Touched journal, changelog, README log line, and `.env.example`.
+
+### 2024-08-30
+- **news integration (pass 1):** Captured QA checklist items for news integration. Pass 1/100 in the sandbox documentation sweep; no runtime code changed.
