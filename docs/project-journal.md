@@ -340,3 +340,11 @@ Captured QA checklist items for news integration. Pass 1/100 in the sandbox docu
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/api.md`.
 
+
+## 2024-09-03 — Celery workers (pass 2)
+
+Expanded sandbox notes on Celery workers. Pass 2/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/data-model.md`.
+

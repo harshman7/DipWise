@@ -161,3 +161,6 @@ erDiagram
 
 <!-- revision 2026-09-26: Error handling copy -->
 **2026-09-26 — Error handling copy.** Drafted user-facing helper text for empty states and loading.
+
+<!-- 2024-09-03 pass 2: Celery workers -->
+**2024-09-03** — Expanded sandbox notes on Celery workers. Pass 2/100 in the sandbox documentation sweep; no runtime code changed.

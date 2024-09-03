@@ -125,3 +125,6 @@
 
 ### 2024-08-30
 - **news integration (pass 1):** Captured QA checklist items for news integration. Pass 1/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-09-03
+- **Celery workers (pass 2):** Expanded sandbox notes on Celery workers. Pass 2/100 in the sandbox documentation sweep; no runtime code changed.
