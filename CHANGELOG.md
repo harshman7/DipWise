@@ -128,3 +128,6 @@
 
 ### 2024-09-03
 - **Celery workers (pass 2):** Expanded sandbox notes on Celery workers. Pass 2/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-09-04
+- **OpenAPI codegen (pass 3):** Aligned changelog entries with OpenAPI codegen. Pass 3/100 in the sandbox documentation sweep; no runtime code changed.

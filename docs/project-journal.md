@@ -348,3 +348,11 @@ Expanded sandbox notes on Celery workers. Pass 2/100 in the sandbox documentatio
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/data-model.md`.
 
+
+## 2024-09-04 — OpenAPI codegen (pass 3)
+
+Aligned changelog entries with OpenAPI codegen. Pass 3/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/testing-notes.md`.
+

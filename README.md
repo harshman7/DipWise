@@ -287,3 +287,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-10-23` — Release hygiene: Final pass tying journal, changelog, and architecture revision footers together.
 - `2024-08-30` — news integration (pass 1).
 - `2024-09-03` — Celery workers (pass 2).
+- `2024-09-04` — OpenAPI codegen (pass 3).
