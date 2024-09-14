@@ -356,3 +356,11 @@ Aligned changelog entries with OpenAPI codegen. Pass 3/100 in the sandbox docume
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2024-09-14 — compare charts (pass 4)
+
+Recorded follow-ups for compare charts. Pass 4/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+

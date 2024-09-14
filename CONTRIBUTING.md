@@ -26,3 +26,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- revision 2026-10-14: Environment templates -->
 **2026-10-14 — Environment templates.** Expanded `.env.example` commentary for local vs container hostnames.
+
+<!-- 2024-09-14 pass 4: compare charts -->
+**2024-09-14** — Recorded follow-ups for compare charts. Pass 4/100 in the sandbox documentation sweep; no runtime code changed.
