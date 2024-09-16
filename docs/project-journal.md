@@ -364,3 +364,11 @@ Recorded follow-ups for compare charts. Pass 4/100 in the sandbox documentation 
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2024-09-16 — moving averages (pass 5)
+
+Cross-linked README sections with moving averages. Pass 5/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+

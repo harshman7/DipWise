@@ -134,3 +134,6 @@
 
 ### 2024-09-14
 - **compare charts (pass 4):** Recorded follow-ups for compare charts. Pass 4/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-09-16
+- **moving averages (pass 5):** Cross-linked README sections with moving averages. Pass 5/100 in the sandbox documentation sweep; no runtime code changed.
