@@ -372,3 +372,13 @@ Cross-linked README sections with moving averages. Pass 5/100 in the sandbox doc
 - Journal, changelog, and README log updated.
 - Rotating doc: `.env.example`.
 
+
+## 2024-09-19 — dip detection (pass 6)
+
+Documented edge cases and defaults for dip detection. Pass 6/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/project-journal.md`.
+
+
+> Inline marker 2024-09-19: consolidated pointer for dip detection.

@@ -137,3 +137,6 @@
 
 ### 2024-09-16
 - **moving averages (pass 5):** Cross-linked README sections with moving averages. Pass 5/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-09-19
+- **dip detection (pass 6):** Documented edge cases and defaults for dip detection. Pass 6/100 in the sandbox documentation sweep; no runtime code changed.

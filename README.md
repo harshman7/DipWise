@@ -290,3 +290,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2024-09-04` — OpenAPI codegen (pass 3).
 - `2024-09-14` — compare charts (pass 4).
 - `2024-09-16` — moving averages (pass 5).
+- `2024-09-19` — dip detection (pass 6).
