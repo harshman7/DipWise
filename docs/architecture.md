@@ -86,3 +86,6 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- revision 2026-09-08: Recharts brush zoom -->
 **2026-09-08 — Recharts brush zoom.** Captured backtester chart brush behavior and dip marker layering.
+
+<!-- 2024-10-02 pass 7: Recharts tooling -->
+**2024-10-02** — Cross-linked README sections with Recharts tooling. Pass 7/100 in the sandbox documentation sweep; no runtime code changed.

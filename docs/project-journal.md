@@ -382,3 +382,11 @@ Documented edge cases and defaults for dip detection. Pass 6/100 in the sandbox 
 
 
 > Inline marker 2024-09-19: consolidated pointer for dip detection.
+
+## 2024-10-02 — Recharts tooling (pass 7)
+
+Cross-linked README sections with Recharts tooling. Pass 7/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/architecture.md`.
+

@@ -140,3 +140,6 @@
 
 ### 2024-09-19
 - **dip detection (pass 6):** Documented edge cases and defaults for dip detection. Pass 6/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-10-02
+- **Recharts tooling (pass 7):** Cross-linked README sections with Recharts tooling. Pass 7/100 in the sandbox documentation sweep; no runtime code changed.
