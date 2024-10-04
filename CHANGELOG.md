@@ -143,3 +143,6 @@
 
 ### 2024-10-02
 - **Recharts tooling (pass 7):** Cross-linked README sections with Recharts tooling. Pass 7/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-10-04
+- **data model (pass 8):** Recorded follow-ups for data model. Pass 8/100 in the sandbox documentation sweep; no runtime code changed.

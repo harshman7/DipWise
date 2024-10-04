@@ -195,3 +195,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2024-08-30 pass 1: news integration -->
 **2024-08-30** — Captured QA checklist items for news integration. Pass 1/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2024-10-04 pass 8: data model -->
+**2024-10-04** — Recorded follow-ups for data model. Pass 8/100 in the sandbox documentation sweep; no runtime code changed.
