@@ -146,3 +146,6 @@
 
 ### 2024-10-04
 - **data model (pass 8):** Recorded follow-ups for data model. Pass 8/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-10-11
+- **saved backtests (pass 9):** Captured QA checklist items for saved backtests. Pass 9/100 in the sandbox documentation sweep; no runtime code changed.
