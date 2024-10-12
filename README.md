@@ -294,3 +294,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2024-10-02` — Recharts tooling (pass 7).
 - `2024-10-04` — data model (pass 8).
 - `2024-10-11` — saved backtests (pass 9).
+- `2024-10-12` — dip detection (pass 10).

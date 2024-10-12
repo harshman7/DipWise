@@ -25,3 +25,6 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- 2024-09-04 pass 3: OpenAPI codegen -->
 **2024-09-04** — Aligned changelog entries with OpenAPI codegen. Pass 3/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2024-10-12 pass 10: dip detection -->
+**2024-10-12** — Expanded sandbox notes on dip detection. Pass 10/100 in the sandbox documentation sweep; no runtime code changed.

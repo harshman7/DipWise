@@ -406,3 +406,11 @@ Captured QA checklist items for saved backtests. Pass 9/100 in the sandbox docum
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/data-model.md`.
 
+
+## 2024-10-12 — dip detection (pass 10)
+
+Expanded sandbox notes on dip detection. Pass 10/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/testing-notes.md`.
+
