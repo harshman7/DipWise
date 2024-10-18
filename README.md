@@ -295,3 +295,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2024-10-04` — data model (pass 8).
 - `2024-10-11` — saved backtests (pass 9).
 - `2024-10-12` — dip detection (pass 10).
+- `2024-10-18` — SMA/EMA indicators (pass 11).

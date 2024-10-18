@@ -29,3 +29,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- 2024-09-14 pass 4: compare charts -->
 **2024-09-14** — Recorded follow-ups for compare charts. Pass 4/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2024-10-18 pass 11: SMA/EMA indicators -->
+**2024-10-18** — Captured QA checklist items for SMA/EMA indicators. Pass 11/100 in the sandbox documentation sweep; no runtime code changed.

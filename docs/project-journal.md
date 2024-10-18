@@ -414,3 +414,11 @@ Expanded sandbox notes on dip detection. Pass 10/100 in the sandbox documentatio
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2024-10-18 — SMA/EMA indicators (pass 11)
+
+Captured QA checklist items for SMA/EMA indicators. Pass 11/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+
