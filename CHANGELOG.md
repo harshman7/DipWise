@@ -155,3 +155,6 @@
 
 ### 2024-10-18
 - **SMA/EMA indicators (pass 11):** Captured QA checklist items for SMA/EMA indicators. Pass 11/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-10-26
+- **Celery workers (pass 12):** Aligned changelog entries with Celery workers. Pass 12/100 in the sandbox documentation sweep; no runtime code changed.

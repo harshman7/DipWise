@@ -422,3 +422,11 @@ Captured QA checklist items for SMA/EMA indicators. Pass 11/100 in the sandbox d
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2024-10-26 — Celery workers (pass 12)
+
+Aligned changelog entries with Celery workers. Pass 12/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+
