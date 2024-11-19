@@ -297,3 +297,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2024-10-12` — dip detection (pass 10).
 - `2024-10-18` — SMA/EMA indicators (pass 11).
 - `2024-10-26` — Celery workers (pass 12).
+- `2024-11-19` — data model (pass 13).

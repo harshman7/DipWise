@@ -430,3 +430,13 @@ Aligned changelog entries with Celery workers. Pass 12/100 in the sandbox docume
 - Journal, changelog, and README log updated.
 - Rotating doc: `.env.example`.
 
+
+## 2024-11-19 — data model (pass 13)
+
+Recorded follow-ups for data model. Pass 13/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/project-journal.md`.
+
+
+> Inline marker 2024-11-19: consolidated pointer for data model.
