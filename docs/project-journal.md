@@ -440,3 +440,11 @@ Recorded follow-ups for data model. Pass 13/100 in the sandbox documentation swe
 
 
 > Inline marker 2024-11-19: consolidated pointer for data model.
+
+## 2024-11-22 — moving averages (pass 14)
+
+Expanded sandbox notes on moving averages. Pass 14/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/architecture.md`.
+

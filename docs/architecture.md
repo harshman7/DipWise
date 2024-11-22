@@ -89,3 +89,6 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- 2024-10-02 pass 7: Recharts tooling -->
 **2024-10-02** — Cross-linked README sections with Recharts tooling. Pass 7/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2024-11-22 pass 14: moving averages -->
+**2024-11-22** — Expanded sandbox notes on moving averages. Pass 14/100 in the sandbox documentation sweep; no runtime code changed.

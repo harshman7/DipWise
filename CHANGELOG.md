@@ -161,3 +161,6 @@
 
 ### 2024-11-19
 - **data model (pass 13):** Recorded follow-ups for data model. Pass 13/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-11-22
+- **moving averages (pass 14):** Expanded sandbox notes on moving averages. Pass 14/100 in the sandbox documentation sweep; no runtime code changed.
