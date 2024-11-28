@@ -198,3 +198,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2024-10-04 pass 8: data model -->
 **2024-10-04** — Recorded follow-ups for data model. Pass 8/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2024-11-28 pass 15: alert evaluation -->
+**2024-11-28** — Documented edge cases and defaults for alert evaluation. Pass 15/100 in the sandbox documentation sweep; no runtime code changed.

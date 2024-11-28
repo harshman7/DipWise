@@ -164,3 +164,6 @@
 
 ### 2024-11-22
 - **moving averages (pass 14):** Expanded sandbox notes on moving averages. Pass 14/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-11-28
+- **alert evaluation (pass 15):** Documented edge cases and defaults for alert evaluation. Pass 15/100 in the sandbox documentation sweep; no runtime code changed.
