@@ -167,3 +167,6 @@
 
 ### 2024-11-28
 - **alert evaluation (pass 15):** Documented edge cases and defaults for alert evaluation. Pass 15/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-12-09
+- **report exports (pass 16):** Aligned changelog entries with report exports. Pass 16/100 in the sandbox documentation sweep; no runtime code changed.

@@ -167,3 +167,6 @@ erDiagram
 
 <!-- 2024-10-11 pass 9: saved backtests -->
 **2024-10-11** — Captured QA checklist items for saved backtests. Pass 9/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2024-12-09 pass 16: report exports -->
+**2024-12-09** — Aligned changelog entries with report exports. Pass 16/100 in the sandbox documentation sweep; no runtime code changed.

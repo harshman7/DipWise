@@ -456,3 +456,11 @@ Documented edge cases and defaults for alert evaluation. Pass 15/100 in the sand
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/api.md`.
 
+
+## 2024-12-09 — report exports (pass 16)
+
+Aligned changelog entries with report exports. Pass 16/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/data-model.md`.
+
