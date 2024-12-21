@@ -28,3 +28,6 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- 2024-10-12 pass 10: dip detection -->
 **2024-10-12** — Expanded sandbox notes on dip detection. Pass 10/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2024-12-20 pass 17: data model -->
+**2024-12-20** — Recorded follow-ups for data model. Pass 17/100 in the sandbox documentation sweep; no runtime code changed.

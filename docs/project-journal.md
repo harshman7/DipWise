@@ -464,3 +464,11 @@ Aligned changelog entries with report exports. Pass 16/100 in the sandbox docume
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/data-model.md`.
 
+
+## 2024-12-20 — data model (pass 17)
+
+Recorded follow-ups for data model. Pass 17/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/testing-notes.md`.
+

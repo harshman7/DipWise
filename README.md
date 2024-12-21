@@ -301,3 +301,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2024-11-22` — moving averages (pass 14).
 - `2024-11-28` — alert evaluation (pass 15).
 - `2024-12-09` — report exports (pass 16).
+- `2024-12-20` — data model (pass 17).

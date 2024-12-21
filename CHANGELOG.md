@@ -170,3 +170,6 @@
 
 ### 2024-12-09
 - **report exports (pass 16):** Aligned changelog entries with report exports. Pass 16/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-12-20
+- **data model (pass 17):** Recorded follow-ups for data model. Pass 17/100 in the sandbox documentation sweep; no runtime code changed.
