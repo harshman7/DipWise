@@ -32,3 +32,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- 2024-10-18 pass 11: SMA/EMA indicators -->
 **2024-10-18** — Captured QA checklist items for SMA/EMA indicators. Pass 11/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2024-12-25 pass 18: SMA/EMA indicators -->
+**2024-12-25** — Captured QA checklist items for SMA/EMA indicators. Pass 18/100 in the sandbox documentation sweep; no runtime code changed.

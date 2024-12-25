@@ -472,3 +472,11 @@ Recorded follow-ups for data model. Pass 17/100 in the sandbox documentation swe
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2024-12-25 — SMA/EMA indicators (pass 18)
+
+Captured QA checklist items for SMA/EMA indicators. Pass 18/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+

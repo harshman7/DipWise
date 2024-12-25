@@ -173,3 +173,6 @@
 
 ### 2024-12-20
 - **data model (pass 17):** Recorded follow-ups for data model. Pass 17/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2024-12-25
+- **SMA/EMA indicators (pass 18):** Captured QA checklist items for SMA/EMA indicators. Pass 18/100 in the sandbox documentation sweep; no runtime code changed.
