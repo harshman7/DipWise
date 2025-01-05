@@ -303,3 +303,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2024-12-09` — report exports (pass 16).
 - `2024-12-20` — data model (pass 17).
 - `2024-12-25` — SMA/EMA indicators (pass 18).
+- `2025-01-05` — dip detection (pass 19).

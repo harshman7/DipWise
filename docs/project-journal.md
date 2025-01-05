@@ -480,3 +480,11 @@ Captured QA checklist items for SMA/EMA indicators. Pass 18/100 in the sandbox d
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2025-01-05 — dip detection (pass 19)
+
+Captured QA checklist items for dip detection. Pass 19/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+
