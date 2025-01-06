@@ -488,3 +488,13 @@ Captured QA checklist items for dip detection. Pass 19/100 in the sandbox docume
 - Journal, changelog, and README log updated.
 - Rotating doc: `.env.example`.
 
+
+## 2025-01-06 — auth routing (pass 20)
+
+Annotated developer workflow around auth routing. Pass 20/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/project-journal.md`.
+
+
+> Inline marker 2025-01-06: consolidated pointer for auth routing.

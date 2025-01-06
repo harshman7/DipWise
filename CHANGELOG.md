@@ -179,3 +179,6 @@
 
 ### 2025-01-05
 - **dip detection (pass 19):** Captured QA checklist items for dip detection. Pass 19/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-01-06
+- **auth routing (pass 20):** Annotated developer workflow around auth routing. Pass 20/100 in the sandbox documentation sweep; no runtime code changed.
