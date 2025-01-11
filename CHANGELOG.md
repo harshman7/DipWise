@@ -182,3 +182,6 @@
 
 ### 2025-01-06
 - **auth routing (pass 20):** Annotated developer workflow around auth routing. Pass 20/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-01-11
+- **testing strategy (pass 21):** Captured QA checklist items for testing strategy. Pass 21/100 in the sandbox documentation sweep; no runtime code changed.

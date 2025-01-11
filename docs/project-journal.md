@@ -498,3 +498,11 @@ Annotated developer workflow around auth routing. Pass 20/100 in the sandbox doc
 
 
 > Inline marker 2025-01-06: consolidated pointer for auth routing.
+
+## 2025-01-11 — testing strategy (pass 21)
+
+Captured QA checklist items for testing strategy. Pass 21/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/architecture.md`.
+
