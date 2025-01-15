@@ -185,3 +185,6 @@
 
 ### 2025-01-11
 - **testing strategy (pass 21):** Captured QA checklist items for testing strategy. Pass 21/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-01-15
+- **TanStack Query (pass 22):** Added revision footers covering TanStack Query. Pass 22/100 in the sandbox documentation sweep; no runtime code changed.

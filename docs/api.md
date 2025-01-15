@@ -201,3 +201,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2024-11-28 pass 15: alert evaluation -->
 **2024-11-28** — Documented edge cases and defaults for alert evaluation. Pass 15/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-01-15 pass 22: TanStack Query -->
+**2025-01-15** — Added revision footers covering TanStack Query. Pass 22/100 in the sandbox documentation sweep; no runtime code changed.

@@ -506,3 +506,11 @@ Captured QA checklist items for testing strategy. Pass 21/100 in the sandbox doc
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/architecture.md`.
 
+
+## 2025-01-15 — TanStack Query (pass 22)
+
+Added revision footers covering TanStack Query. Pass 22/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/api.md`.
+

@@ -306,3 +306,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-01-05` — dip detection (pass 19).
 - `2025-01-06` — auth routing (pass 20).
 - `2025-01-11` — testing strategy (pass 21).
+- `2025-01-15` — TanStack Query (pass 22).
