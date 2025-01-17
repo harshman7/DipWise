@@ -188,3 +188,6 @@
 
 ### 2025-01-15
 - **TanStack Query (pass 22):** Added revision footers covering TanStack Query. Pass 22/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-01-17
+- **Celery workers (pass 23):** Annotated developer workflow around Celery workers. Pass 23/100 in the sandbox documentation sweep; no runtime code changed.

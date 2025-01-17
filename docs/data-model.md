@@ -170,3 +170,6 @@ erDiagram
 
 <!-- 2024-12-09 pass 16: report exports -->
 **2024-12-09** — Aligned changelog entries with report exports. Pass 16/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-01-17 pass 23: Celery workers -->
+**2025-01-17** — Annotated developer workflow around Celery workers. Pass 23/100 in the sandbox documentation sweep; no runtime code changed.
