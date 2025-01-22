@@ -308,3 +308,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-01-11` — testing strategy (pass 21).
 - `2025-01-15` — TanStack Query (pass 22).
 - `2025-01-17` — Celery workers (pass 23).
+- `2025-01-22` — price ingestion (pass 24).

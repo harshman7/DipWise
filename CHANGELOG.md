@@ -191,3 +191,6 @@
 
 ### 2025-01-17
 - **Celery workers (pass 23):** Annotated developer workflow around Celery workers. Pass 23/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-01-22
+- **price ingestion (pass 24):** Cross-linked README sections with price ingestion. Pass 24/100 in the sandbox documentation sweep; no runtime code changed.

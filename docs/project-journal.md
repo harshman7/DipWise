@@ -522,3 +522,11 @@ Annotated developer workflow around Celery workers. Pass 23/100 in the sandbox d
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/data-model.md`.
 
+
+## 2025-01-22 — price ingestion (pass 24)
+
+Cross-linked README sections with price ingestion. Pass 24/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/testing-notes.md`.
+
