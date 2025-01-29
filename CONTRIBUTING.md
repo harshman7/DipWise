@@ -35,3 +35,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- 2024-12-25 pass 18: SMA/EMA indicators -->
 **2024-12-25** — Captured QA checklist items for SMA/EMA indicators. Pass 18/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-01-29 pass 25: news integration -->
+**2025-01-29** — Aligned changelog entries with news integration. Pass 25/100 in the sandbox documentation sweep; no runtime code changed.

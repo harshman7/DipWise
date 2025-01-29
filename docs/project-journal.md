@@ -530,3 +530,11 @@ Cross-linked README sections with price ingestion. Pass 24/100 in the sandbox do
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2025-01-29 — news integration (pass 25)
+
+Aligned changelog entries with news integration. Pass 25/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+
