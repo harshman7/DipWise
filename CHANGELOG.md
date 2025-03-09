@@ -197,3 +197,6 @@
 
 ### 2025-01-29
 - **news integration (pass 25):** Aligned changelog entries with news integration. Pass 25/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-03-08
+- **TanStack Query (pass 26):** Recorded follow-ups for TanStack Query. Pass 26/100 in the sandbox documentation sweep; no runtime code changed.

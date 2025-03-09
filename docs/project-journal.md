@@ -538,3 +538,11 @@ Aligned changelog entries with news integration. Pass 25/100 in the sandbox docu
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2025-03-08 — TanStack Query (pass 26)
+
+Recorded follow-ups for TanStack Query. Pass 26/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+
