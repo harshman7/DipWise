@@ -200,3 +200,6 @@
 
 ### 2025-03-08
 - **TanStack Query (pass 26):** Recorded follow-ups for TanStack Query. Pass 26/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-03-31
+- **backtester UX (pass 27):** Expanded sandbox notes on backtester UX. Pass 27/100 in the sandbox documentation sweep; no runtime code changed.

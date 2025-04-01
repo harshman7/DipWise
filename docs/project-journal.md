@@ -546,3 +546,13 @@ Recorded follow-ups for TanStack Query. Pass 26/100 in the sandbox documentation
 - Journal, changelog, and README log updated.
 - Rotating doc: `.env.example`.
 
+
+## 2025-03-31 — backtester UX (pass 27)
+
+Expanded sandbox notes on backtester UX. Pass 27/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/project-journal.md`.
+
+
+> Inline marker 2025-03-31: consolidated pointer for backtester UX.

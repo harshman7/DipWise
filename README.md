@@ -311,3 +311,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-01-22` — price ingestion (pass 24).
 - `2025-01-29` — news integration (pass 25).
 - `2025-03-08` — TanStack Query (pass 26).
+- `2025-03-31` — backtester UX (pass 27).
