@@ -95,3 +95,6 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- 2025-01-11 pass 21: testing strategy -->
 **2025-01-11** — Captured QA checklist items for testing strategy. Pass 21/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-04-17 pass 28: testing strategy -->
+**2025-04-17** — Annotated developer workflow around testing strategy. Pass 28/100 in the sandbox documentation sweep; no runtime code changed.

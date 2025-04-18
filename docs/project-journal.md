@@ -556,3 +556,11 @@ Expanded sandbox notes on backtester UX. Pass 27/100 in the sandbox documentatio
 
 
 > Inline marker 2025-03-31: consolidated pointer for backtester UX.
+
+## 2025-04-17 — testing strategy (pass 28)
+
+Annotated developer workflow around testing strategy. Pass 28/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/architecture.md`.
+

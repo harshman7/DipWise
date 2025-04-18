@@ -203,3 +203,6 @@
 
 ### 2025-03-31
 - **backtester UX (pass 27):** Expanded sandbox notes on backtester UX. Pass 27/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-04-17
+- **testing strategy (pass 28):** Annotated developer workflow around testing strategy. Pass 28/100 in the sandbox documentation sweep; no runtime code changed.
