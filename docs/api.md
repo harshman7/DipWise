@@ -204,3 +204,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2025-01-15 pass 22: TanStack Query -->
 **2025-01-15** — Added revision footers covering TanStack Query. Pass 22/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-05-14 pass 29: watchlist flows -->
+**2025-05-14** — Documented edge cases and defaults for watchlist flows. Pass 29/100 in the sandbox documentation sweep; no runtime code changed.

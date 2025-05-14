@@ -206,3 +206,6 @@
 
 ### 2025-04-17
 - **testing strategy (pass 28):** Annotated developer workflow around testing strategy. Pass 28/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-05-14
+- **watchlist flows (pass 29):** Documented edge cases and defaults for watchlist flows. Pass 29/100 in the sandbox documentation sweep; no runtime code changed.

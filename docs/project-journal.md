@@ -564,3 +564,11 @@ Annotated developer workflow around testing strategy. Pass 28/100 in the sandbox
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/architecture.md`.
 
+
+## 2025-05-14 — watchlist flows (pass 29)
+
+Documented edge cases and defaults for watchlist flows. Pass 29/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/api.md`.
+
