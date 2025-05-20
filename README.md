@@ -314,3 +314,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-03-31` — backtester UX (pass 27).
 - `2025-04-17` — testing strategy (pass 28).
 - `2025-05-14` — watchlist flows (pass 29).
+- `2025-05-19` — TanStack Query (pass 30).

@@ -173,3 +173,6 @@ erDiagram
 
 <!-- 2025-01-17 pass 23: Celery workers -->
 **2025-01-17** — Annotated developer workflow around Celery workers. Pass 23/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-05-19 pass 30: TanStack Query -->
+**2025-05-19** — Captured QA checklist items for TanStack Query. Pass 30/100 in the sandbox documentation sweep; no runtime code changed.

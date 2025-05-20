@@ -572,3 +572,11 @@ Documented edge cases and defaults for watchlist flows. Pass 29/100 in the sandb
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/api.md`.
 
+
+## 2025-05-19 — TanStack Query (pass 30)
+
+Captured QA checklist items for TanStack Query. Pass 30/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/data-model.md`.
+

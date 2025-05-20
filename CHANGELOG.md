@@ -209,3 +209,6 @@
 
 ### 2025-05-14
 - **watchlist flows (pass 29):** Documented edge cases and defaults for watchlist flows. Pass 29/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-05-19
+- **TanStack Query (pass 30):** Captured QA checklist items for TanStack Query. Pass 30/100 in the sandbox documentation sweep; no runtime code changed.
