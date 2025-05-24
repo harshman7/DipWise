@@ -212,3 +212,6 @@
 
 ### 2025-05-19
 - **TanStack Query (pass 30):** Captured QA checklist items for TanStack Query. Pass 30/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-05-23
+- **price ingestion (pass 31):** Aligned changelog entries with price ingestion. Pass 31/100 in the sandbox documentation sweep; no runtime code changed.

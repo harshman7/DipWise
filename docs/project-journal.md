@@ -580,3 +580,11 @@ Captured QA checklist items for TanStack Query. Pass 30/100 in the sandbox docum
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/data-model.md`.
 
+
+## 2025-05-23 — price ingestion (pass 31)
+
+Aligned changelog entries with price ingestion. Pass 31/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/testing-notes.md`.
+

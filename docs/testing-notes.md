@@ -34,3 +34,6 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- 2025-01-22 pass 24: price ingestion -->
 **2025-01-22** — Cross-linked README sections with price ingestion. Pass 24/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-05-23 pass 31: price ingestion -->
+**2025-05-23** — Aligned changelog entries with price ingestion. Pass 31/100 in the sandbox documentation sweep; no runtime code changed.
