@@ -588,3 +588,11 @@ Aligned changelog entries with price ingestion. Pass 31/100 in the sandbox docum
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2025-05-31 — price ingestion (pass 32)
+
+Cross-linked README sections with price ingestion. Pass 32/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+

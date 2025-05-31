@@ -38,3 +38,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- 2025-01-29 pass 25: news integration -->
 **2025-01-29** — Aligned changelog entries with news integration. Pass 25/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-05-31 pass 32: price ingestion -->
+**2025-05-31** — Cross-linked README sections with price ingestion. Pass 32/100 in the sandbox documentation sweep; no runtime code changed.

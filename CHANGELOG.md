@@ -215,3 +215,6 @@
 
 ### 2025-05-23
 - **price ingestion (pass 31):** Aligned changelog entries with price ingestion. Pass 31/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-05-31
+- **price ingestion (pass 32):** Cross-linked README sections with price ingestion. Pass 32/100 in the sandbox documentation sweep; no runtime code changed.
