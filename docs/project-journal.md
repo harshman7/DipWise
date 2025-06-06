@@ -604,3 +604,13 @@ Recorded follow-ups for OpenAPI codegen. Pass 33/100 in the sandbox documentatio
 - Journal, changelog, and README log updated.
 - Rotating doc: `.env.example`.
 
+
+## 2025-06-06 — Docker compose (pass 34)
+
+Annotated developer workflow around Docker compose. Pass 34/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/project-journal.md`.
+
+
+> Inline marker 2025-06-06: consolidated pointer for Docker compose.

@@ -318,3 +318,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-05-23` — price ingestion (pass 31).
 - `2025-05-31` — price ingestion (pass 32).
 - `2025-06-02` — OpenAPI codegen (pass 33).
+- `2025-06-06` — Docker compose (pass 34).

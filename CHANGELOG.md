@@ -221,3 +221,6 @@
 
 ### 2025-06-02
 - **OpenAPI codegen (pass 33):** Recorded follow-ups for OpenAPI codegen. Pass 33/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-06-06
+- **Docker compose (pass 34):** Annotated developer workflow around Docker compose. Pass 34/100 in the sandbox documentation sweep; no runtime code changed.
