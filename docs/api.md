@@ -207,3 +207,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2025-05-14 pass 29: watchlist flows -->
 **2025-05-14** — Documented edge cases and defaults for watchlist flows. Pass 29/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-06-09 pass 36: TanStack Query -->
+**2025-06-09** — Cross-linked README sections with TanStack Query. Pass 36/100 in the sandbox documentation sweep; no runtime code changed.

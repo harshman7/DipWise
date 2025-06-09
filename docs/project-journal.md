@@ -622,3 +622,11 @@ Recorded follow-ups for news integration. Pass 35/100 in the sandbox documentati
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/architecture.md`.
 
+
+## 2025-06-09 — TanStack Query (pass 36)
+
+Cross-linked README sections with TanStack Query. Pass 36/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/api.md`.
+

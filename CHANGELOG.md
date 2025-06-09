@@ -227,3 +227,6 @@
 
 ### 2025-06-08
 - **news integration (pass 35):** Recorded follow-ups for news integration. Pass 35/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-06-09
+- **TanStack Query (pass 36):** Cross-linked README sections with TanStack Query. Pass 36/100 in the sandbox documentation sweep; no runtime code changed.
