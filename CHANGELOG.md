@@ -224,3 +224,6 @@
 
 ### 2025-06-06
 - **Docker compose (pass 34):** Annotated developer workflow around Docker compose. Pass 34/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-06-08
+- **news integration (pass 35):** Recorded follow-ups for news integration. Pass 35/100 in the sandbox documentation sweep; no runtime code changed.
