@@ -630,3 +630,11 @@ Cross-linked README sections with TanStack Query. Pass 36/100 in the sandbox doc
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/api.md`.
 
+
+## 2025-06-13 — testing strategy (pass 37)
+
+Documented edge cases and defaults for testing strategy. Pass 37/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/data-model.md`.
+

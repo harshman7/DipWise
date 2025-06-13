@@ -176,3 +176,6 @@ erDiagram
 
 <!-- 2025-05-19 pass 30: TanStack Query -->
 **2025-05-19** — Captured QA checklist items for TanStack Query. Pass 30/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-06-13 pass 37: testing strategy -->
+**2025-06-13** — Documented edge cases and defaults for testing strategy. Pass 37/100 in the sandbox documentation sweep; no runtime code changed.
