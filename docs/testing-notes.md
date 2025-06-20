@@ -37,3 +37,6 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- 2025-05-23 pass 31: price ingestion -->
 **2025-05-23** — Aligned changelog entries with price ingestion. Pass 31/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-06-20 pass 38: Docker compose -->
+**2025-06-20** — Cross-linked README sections with Docker compose. Pass 38/100 in the sandbox documentation sweep; no runtime code changed.

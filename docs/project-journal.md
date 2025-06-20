@@ -638,3 +638,11 @@ Documented edge cases and defaults for testing strategy. Pass 37/100 in the sand
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/data-model.md`.
 
+
+## 2025-06-20 — Docker compose (pass 38)
+
+Cross-linked README sections with Docker compose. Pass 38/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/testing-notes.md`.
+

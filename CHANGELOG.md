@@ -233,3 +233,6 @@
 
 ### 2025-06-13
 - **testing strategy (pass 37):** Documented edge cases and defaults for testing strategy. Pass 37/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-06-20
+- **Docker compose (pass 38):** Cross-linked README sections with Docker compose. Pass 38/100 in the sandbox documentation sweep; no runtime code changed.
