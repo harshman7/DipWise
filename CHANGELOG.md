@@ -236,3 +236,6 @@
 
 ### 2025-06-20
 - **Docker compose (pass 38):** Cross-linked README sections with Docker compose. Pass 38/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-06-22
+- **Recharts tooling (pass 39):** Captured QA checklist items for Recharts tooling. Pass 39/100 in the sandbox documentation sweep; no runtime code changed.

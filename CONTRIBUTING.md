@@ -41,3 +41,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- 2025-05-31 pass 32: price ingestion -->
 **2025-05-31** — Cross-linked README sections with price ingestion. Pass 32/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-06-22 pass 39: Recharts tooling -->
+**2025-06-22** — Captured QA checklist items for Recharts tooling. Pass 39/100 in the sandbox documentation sweep; no runtime code changed.

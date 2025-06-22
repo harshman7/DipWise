@@ -323,3 +323,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-06-09` — TanStack Query (pass 36).
 - `2025-06-13` — testing strategy (pass 37).
 - `2025-06-20` — Docker compose (pass 38).
+- `2025-06-22` — Recharts tooling (pass 39).
