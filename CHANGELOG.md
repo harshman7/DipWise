@@ -239,3 +239,6 @@
 
 ### 2025-06-22
 - **Recharts tooling (pass 39):** Captured QA checklist items for Recharts tooling. Pass 39/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-06-25
+- **Celery workers (pass 40):** Aligned changelog entries with Celery workers. Pass 40/100 in the sandbox documentation sweep; no runtime code changed.

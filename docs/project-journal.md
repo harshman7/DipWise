@@ -654,3 +654,11 @@ Captured QA checklist items for Recharts tooling. Pass 39/100 in the sandbox doc
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2025-06-25 — Celery workers (pass 40)
+
+Aligned changelog entries with Celery workers. Pass 40/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+
