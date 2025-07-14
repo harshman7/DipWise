@@ -662,3 +662,13 @@ Aligned changelog entries with Celery workers. Pass 40/100 in the sandbox docume
 - Journal, changelog, and README log updated.
 - Rotating doc: `.env.example`.
 
+
+## 2025-07-13 — dip detection (pass 41)
+
+Recorded follow-ups for dip detection. Pass 41/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/project-journal.md`.
+
+
+> Inline marker 2025-07-13: consolidated pointer for dip detection.

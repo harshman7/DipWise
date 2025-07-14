@@ -325,3 +325,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-06-20` — Docker compose (pass 38).
 - `2025-06-22` — Recharts tooling (pass 39).
 - `2025-06-25` — Celery workers (pass 40).
+- `2025-07-13` — dip detection (pass 41).

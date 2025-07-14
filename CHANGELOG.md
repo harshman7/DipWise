@@ -242,3 +242,6 @@
 
 ### 2025-06-25
 - **Celery workers (pass 40):** Aligned changelog entries with Celery workers. Pass 40/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-07-13
+- **dip detection (pass 41):** Recorded follow-ups for dip detection. Pass 41/100 in the sandbox documentation sweep; no runtime code changed.
