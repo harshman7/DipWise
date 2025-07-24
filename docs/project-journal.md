@@ -672,3 +672,11 @@ Recorded follow-ups for dip detection. Pass 41/100 in the sandbox documentation 
 
 
 > Inline marker 2025-07-13: consolidated pointer for dip detection.
+
+## 2025-07-23 — OpenAPI codegen (pass 42)
+
+Annotated developer workflow around OpenAPI codegen. Pass 42/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/architecture.md`.
+

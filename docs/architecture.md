@@ -101,3 +101,6 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- 2025-06-08 pass 35: news integration -->
 **2025-06-08** — Recorded follow-ups for news integration. Pass 35/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-07-23 pass 42: OpenAPI codegen -->
+**2025-07-23** — Annotated developer workflow around OpenAPI codegen. Pass 42/100 in the sandbox documentation sweep; no runtime code changed.
