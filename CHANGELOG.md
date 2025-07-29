@@ -248,3 +248,6 @@
 
 ### 2025-07-23
 - **OpenAPI codegen (pass 42):** Annotated developer workflow around OpenAPI codegen. Pass 42/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-07-29
+- **Docker compose (pass 43):** Annotated developer workflow around Docker compose. Pass 43/100 in the sandbox documentation sweep; no runtime code changed.

@@ -680,3 +680,11 @@ Annotated developer workflow around OpenAPI codegen. Pass 42/100 in the sandbox 
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/architecture.md`.
 
+
+## 2025-07-29 — Docker compose (pass 43)
+
+Annotated developer workflow around Docker compose. Pass 43/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/api.md`.
+

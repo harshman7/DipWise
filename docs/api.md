@@ -210,3 +210,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2025-06-09 pass 36: TanStack Query -->
 **2025-06-09** — Cross-linked README sections with TanStack Query. Pass 36/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-07-29 pass 43: Docker compose -->
+**2025-07-29** — Annotated developer workflow around Docker compose. Pass 43/100 in the sandbox documentation sweep; no runtime code changed.
