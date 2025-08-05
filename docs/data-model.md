@@ -179,3 +179,6 @@ erDiagram
 
 <!-- 2025-06-13 pass 37: testing strategy -->
 **2025-06-13** — Documented edge cases and defaults for testing strategy. Pass 37/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-08-05 pass 44: news integration -->
+**2025-08-05** — Documented edge cases and defaults for news integration. Pass 44/100 in the sandbox documentation sweep; no runtime code changed.

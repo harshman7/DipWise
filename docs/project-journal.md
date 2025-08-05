@@ -688,3 +688,11 @@ Annotated developer workflow around Docker compose. Pass 43/100 in the sandbox d
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/api.md`.
 
+
+## 2025-08-05 — news integration (pass 44)
+
+Documented edge cases and defaults for news integration. Pass 44/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/data-model.md`.
+

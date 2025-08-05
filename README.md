@@ -328,3 +328,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-07-13` — dip detection (pass 41).
 - `2025-07-23` — OpenAPI codegen (pass 42).
 - `2025-07-29` — Docker compose (pass 43).
+- `2025-08-05` — news integration (pass 44).
