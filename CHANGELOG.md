@@ -254,3 +254,6 @@
 
 ### 2025-08-05
 - **news integration (pass 44):** Documented edge cases and defaults for news integration. Pass 44/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-09-12
+- **portfolio flows (pass 45):** Aligned changelog entries with portfolio flows. Pass 45/100 in the sandbox documentation sweep; no runtime code changed.

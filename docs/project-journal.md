@@ -696,3 +696,11 @@ Documented edge cases and defaults for news integration. Pass 44/100 in the sand
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/data-model.md`.
 
+
+## 2025-09-12 — portfolio flows (pass 45)
+
+Aligned changelog entries with portfolio flows. Pass 45/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/testing-notes.md`.
+

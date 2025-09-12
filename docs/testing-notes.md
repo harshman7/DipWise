@@ -40,3 +40,6 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- 2025-06-20 pass 38: Docker compose -->
 **2025-06-20** — Cross-linked README sections with Docker compose. Pass 38/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-09-12 pass 45: portfolio flows -->
+**2025-09-12** — Aligned changelog entries with portfolio flows. Pass 45/100 in the sandbox documentation sweep; no runtime code changed.
