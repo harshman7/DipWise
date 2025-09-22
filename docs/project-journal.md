@@ -704,3 +704,11 @@ Aligned changelog entries with portfolio flows. Pass 45/100 in the sandbox docum
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2025-09-22 — environment setup (pass 46)
+
+Recorded follow-ups for environment setup. Pass 46/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+

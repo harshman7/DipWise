@@ -44,3 +44,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- 2025-06-22 pass 39: Recharts tooling -->
 **2025-06-22** — Captured QA checklist items for Recharts tooling. Pass 39/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-09-22 pass 46: environment setup -->
+**2025-09-22** — Recorded follow-ups for environment setup. Pass 46/100 in the sandbox documentation sweep; no runtime code changed.

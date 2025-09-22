@@ -257,3 +257,6 @@
 
 ### 2025-09-12
 - **portfolio flows (pass 45):** Aligned changelog entries with portfolio flows. Pass 45/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-09-22
+- **environment setup (pass 46):** Recorded follow-ups for environment setup. Pass 46/100 in the sandbox documentation sweep; no runtime code changed.
