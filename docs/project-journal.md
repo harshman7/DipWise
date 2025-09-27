@@ -712,3 +712,11 @@ Recorded follow-ups for environment setup. Pass 46/100 in the sandbox documentat
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2025-09-27 — saved backtests (pass 47)
+
+Added revision footers covering saved backtests. Pass 47/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+

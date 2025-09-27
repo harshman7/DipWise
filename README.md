@@ -331,3 +331,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-08-05` — news integration (pass 44).
 - `2025-09-12` — portfolio flows (pass 45).
 - `2025-09-22` — environment setup (pass 46).
+- `2025-09-27` — saved backtests (pass 47).

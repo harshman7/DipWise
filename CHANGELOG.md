@@ -260,3 +260,6 @@
 
 ### 2025-09-22
 - **environment setup (pass 46):** Recorded follow-ups for environment setup. Pass 46/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-09-27
+- **saved backtests (pass 47):** Added revision footers covering saved backtests. Pass 47/100 in the sandbox documentation sweep; no runtime code changed.
