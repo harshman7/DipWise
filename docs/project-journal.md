@@ -720,3 +720,13 @@ Added revision footers covering saved backtests. Pass 47/100 in the sandbox docu
 - Journal, changelog, and README log updated.
 - Rotating doc: `.env.example`.
 
+
+## 2025-09-29 — news integration (pass 48)
+
+Documented edge cases and defaults for news integration. Pass 48/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/project-journal.md`.
+
+
+> Inline marker 2025-09-29: consolidated pointer for news integration.
