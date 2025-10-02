@@ -266,3 +266,6 @@
 
 ### 2025-09-29
 - **news integration (pass 48):** Documented edge cases and defaults for news integration. Pass 48/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-10-02
+- **alert evaluation (pass 49):** Aligned changelog entries with alert evaluation. Pass 49/100 in the sandbox documentation sweep; no runtime code changed.
