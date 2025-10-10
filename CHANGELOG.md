@@ -269,3 +269,6 @@
 
 ### 2025-10-02
 - **alert evaluation (pass 49):** Aligned changelog entries with alert evaluation. Pass 49/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-10-09
+- **backtester UX (pass 50):** Aligned changelog entries with backtester UX. Pass 50/100 in the sandbox documentation sweep; no runtime code changed.

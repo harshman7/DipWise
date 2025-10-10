@@ -334,3 +334,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-09-27` — saved backtests (pass 47).
 - `2025-09-29` — news integration (pass 48).
 - `2025-10-02` — alert evaluation (pass 49).
+- `2025-10-09` — backtester UX (pass 50).
