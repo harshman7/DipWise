@@ -746,3 +746,11 @@ Aligned changelog entries with backtester UX. Pass 50/100 in the sandbox documen
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/api.md`.
 
+
+## 2025-10-15 — saved backtests (pass 51)
+
+Cross-linked README sections with saved backtests. Pass 51/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/data-model.md`.
+

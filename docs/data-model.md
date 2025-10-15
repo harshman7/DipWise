@@ -182,3 +182,6 @@ erDiagram
 
 <!-- 2025-08-05 pass 44: news integration -->
 **2025-08-05** — Documented edge cases and defaults for news integration. Pass 44/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-10-15 pass 51: saved backtests -->
+**2025-10-15** — Cross-linked README sections with saved backtests. Pass 51/100 in the sandbox documentation sweep; no runtime code changed.
