@@ -275,3 +275,6 @@
 
 ### 2025-10-15
 - **saved backtests (pass 51):** Cross-linked README sections with saved backtests. Pass 51/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-11-01
+- **data model (pass 52):** Captured QA checklist items for data model. Pass 52/100 in the sandbox documentation sweep; no runtime code changed.

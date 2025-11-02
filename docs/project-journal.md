@@ -754,3 +754,11 @@ Cross-linked README sections with saved backtests. Pass 51/100 in the sandbox do
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/data-model.md`.
 
+
+## 2025-11-01 — data model (pass 52)
+
+Captured QA checklist items for data model. Pass 52/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/testing-notes.md`.
+

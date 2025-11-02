@@ -43,3 +43,6 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- 2025-09-12 pass 45: portfolio flows -->
 **2025-09-12** — Aligned changelog entries with portfolio flows. Pass 45/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-11-01 pass 52: data model -->
+**2025-11-01** — Captured QA checklist items for data model. Pass 52/100 in the sandbox documentation sweep; no runtime code changed.
