@@ -762,3 +762,11 @@ Captured QA checklist items for data model. Pass 52/100 in the sandbox documenta
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2025-11-05 — Recharts tooling (pass 53)
+
+Added revision footers covering Recharts tooling. Pass 53/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+

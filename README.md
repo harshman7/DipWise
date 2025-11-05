@@ -337,3 +337,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-10-09` — backtester UX (pass 50).
 - `2025-10-15` — saved backtests (pass 51).
 - `2025-11-01` — data model (pass 52).
+- `2025-11-05` — Recharts tooling (pass 53).
