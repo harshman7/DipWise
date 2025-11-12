@@ -770,3 +770,11 @@ Added revision footers covering Recharts tooling. Pass 53/100 in the sandbox doc
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2025-11-12 — Docker compose (pass 54)
+
+Captured QA checklist items for Docker compose. Pass 54/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+

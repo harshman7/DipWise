@@ -281,3 +281,6 @@
 
 ### 2025-11-05
 - **Recharts tooling (pass 53):** Added revision footers covering Recharts tooling. Pass 53/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-11-12
+- **Docker compose (pass 54):** Captured QA checklist items for Docker compose. Pass 54/100 in the sandbox documentation sweep; no runtime code changed.
