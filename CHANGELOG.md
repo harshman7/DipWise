@@ -284,3 +284,6 @@
 
 ### 2025-11-12
 - **Docker compose (pass 54):** Captured QA checklist items for Docker compose. Pass 54/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-11-18
+- **API reference (pass 55):** Expanded sandbox notes on API reference. Pass 55/100 in the sandbox documentation sweep; no runtime code changed.
