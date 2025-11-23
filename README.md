@@ -340,3 +340,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-11-05` — Recharts tooling (pass 53).
 - `2025-11-12` — Docker compose (pass 54).
 - `2025-11-18` — API reference (pass 55).
+- `2025-11-23` — alert evaluation (pass 56).

@@ -107,3 +107,6 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- 2025-10-02 pass 49: alert evaluation -->
 **2025-10-02** — Aligned changelog entries with alert evaluation. Pass 49/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-11-23 pass 56: alert evaluation -->
+**2025-11-23** — Aligned changelog entries with alert evaluation. Pass 56/100 in the sandbox documentation sweep; no runtime code changed.

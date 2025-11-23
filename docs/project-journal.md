@@ -788,3 +788,11 @@ Expanded sandbox notes on API reference. Pass 55/100 in the sandbox documentatio
 
 
 > Inline marker 2025-11-18: consolidated pointer for API reference.
+
+## 2025-11-23 — alert evaluation (pass 56)
+
+Aligned changelog entries with alert evaluation. Pass 56/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/architecture.md`.
+
