@@ -216,3 +216,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2025-10-09 pass 50: backtester UX -->
 **2025-10-09** — Aligned changelog entries with backtester UX. Pass 50/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-11-25 pass 57: moving averages -->
+**2025-11-25** — Aligned changelog entries with moving averages. Pass 57/100 in the sandbox documentation sweep; no runtime code changed.

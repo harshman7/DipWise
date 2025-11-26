@@ -796,3 +796,11 @@ Aligned changelog entries with alert evaluation. Pass 56/100 in the sandbox docu
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/architecture.md`.
 
+
+## 2025-11-25 — moving averages (pass 57)
+
+Aligned changelog entries with moving averages. Pass 57/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/api.md`.
+
