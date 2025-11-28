@@ -804,3 +804,11 @@ Aligned changelog entries with moving averages. Pass 57/100 in the sandbox docum
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/api.md`.
 
+
+## 2025-11-28 — dip detection (pass 58)
+
+Recorded follow-ups for dip detection. Pass 58/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/data-model.md`.
+

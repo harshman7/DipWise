@@ -293,3 +293,6 @@
 
 ### 2025-11-25
 - **moving averages (pass 57):** Aligned changelog entries with moving averages. Pass 57/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-11-28
+- **dip detection (pass 58):** Recorded follow-ups for dip detection. Pass 58/100 in the sandbox documentation sweep; no runtime code changed.

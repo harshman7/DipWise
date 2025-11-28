@@ -185,3 +185,6 @@ erDiagram
 
 <!-- 2025-10-15 pass 51: saved backtests -->
 **2025-10-15** — Cross-linked README sections with saved backtests. Pass 51/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-11-28 pass 58: dip detection -->
+**2025-11-28** — Recorded follow-ups for dip detection. Pass 58/100 in the sandbox documentation sweep; no runtime code changed.
