@@ -296,3 +296,6 @@
 
 ### 2025-11-28
 - **dip detection (pass 58):** Recorded follow-ups for dip detection. Pass 58/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-12-03
+- **OpenAPI codegen (pass 59):** Aligned changelog entries with OpenAPI codegen. Pass 59/100 in the sandbox documentation sweep; no runtime code changed.

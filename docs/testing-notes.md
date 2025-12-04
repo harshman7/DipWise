@@ -46,3 +46,6 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- 2025-11-01 pass 52: data model -->
 **2025-11-01** — Captured QA checklist items for data model. Pass 52/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-12-03 pass 59: OpenAPI codegen -->
+**2025-12-03** — Aligned changelog entries with OpenAPI codegen. Pass 59/100 in the sandbox documentation sweep; no runtime code changed.
