@@ -299,3 +299,6 @@
 
 ### 2025-12-03
 - **OpenAPI codegen (pass 59):** Aligned changelog entries with OpenAPI codegen. Pass 59/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-12-10
+- **data model (pass 60):** Added revision footers covering data model. Pass 60/100 in the sandbox documentation sweep; no runtime code changed.

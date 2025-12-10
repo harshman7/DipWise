@@ -344,3 +344,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-11-25` — moving averages (pass 57).
 - `2025-11-28` — dip detection (pass 58).
 - `2025-12-03` — OpenAPI codegen (pass 59).
+- `2025-12-10` — data model (pass 60).

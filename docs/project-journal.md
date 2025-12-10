@@ -820,3 +820,11 @@ Aligned changelog entries with OpenAPI codegen. Pass 59/100 in the sandbox docum
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2025-12-10 — data model (pass 60)
+
+Added revision footers covering data model. Pass 60/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+

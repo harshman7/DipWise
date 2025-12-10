@@ -50,3 +50,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- 2025-11-05 pass 53: Recharts tooling -->
 **2025-11-05** — Added revision footers covering Recharts tooling. Pass 53/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-12-10 pass 60: data model -->
+**2025-12-10** — Added revision footers covering data model. Pass 60/100 in the sandbox documentation sweep; no runtime code changed.
