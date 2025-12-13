@@ -828,3 +828,11 @@ Added revision footers covering data model. Pass 60/100 in the sandbox documenta
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2025-12-13 — news integration (pass 61)
+
+Cross-linked README sections with news integration. Pass 61/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+
