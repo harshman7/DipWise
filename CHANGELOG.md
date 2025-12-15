@@ -305,3 +305,6 @@
 
 ### 2025-12-13
 - **news integration (pass 61):** Cross-linked README sections with news integration. Pass 61/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-12-15
+- **moving averages (pass 62):** Aligned changelog entries with moving averages. Pass 62/100 in the sandbox documentation sweep; no runtime code changed.

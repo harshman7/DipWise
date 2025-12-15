@@ -346,3 +346,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-12-03` — OpenAPI codegen (pass 59).
 - `2025-12-10` — data model (pass 60).
 - `2025-12-13` — news integration (pass 61).
+- `2025-12-15` — moving averages (pass 62).
