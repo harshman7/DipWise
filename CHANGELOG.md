@@ -308,3 +308,6 @@
 
 ### 2025-12-15
 - **moving averages (pass 62):** Aligned changelog entries with moving averages. Pass 62/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-12-21
+- **saved backtests (pass 63):** Cross-linked README sections with saved backtests. Pass 63/100 in the sandbox documentation sweep; no runtime code changed.
