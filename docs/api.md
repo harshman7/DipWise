@@ -219,3 +219,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2025-11-25 pass 57: moving averages -->
 **2025-11-25** — Aligned changelog entries with moving averages. Pass 57/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-12-22 pass 64: API reference -->
+**2025-12-22** — Aligned changelog entries with API reference. Pass 64/100 in the sandbox documentation sweep; no runtime code changed.

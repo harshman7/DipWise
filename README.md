@@ -348,3 +348,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-12-13` — news integration (pass 61).
 - `2025-12-15` — moving averages (pass 62).
 - `2025-12-21` — saved backtests (pass 63).
+- `2025-12-22` — API reference (pass 64).

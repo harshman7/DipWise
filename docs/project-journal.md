@@ -854,3 +854,11 @@ Cross-linked README sections with saved backtests. Pass 63/100 in the sandbox do
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/architecture.md`.
 
+
+## 2025-12-22 — API reference (pass 64)
+
+Aligned changelog entries with API reference. Pass 64/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/api.md`.
+
