@@ -314,3 +314,6 @@
 
 ### 2025-12-22
 - **API reference (pass 64):** Aligned changelog entries with API reference. Pass 64/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-12-28
+- **market data providers (pass 65):** Recorded follow-ups for market data providers. Pass 65/100 in the sandbox documentation sweep; no runtime code changed.

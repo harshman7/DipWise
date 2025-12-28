@@ -188,3 +188,6 @@ erDiagram
 
 <!-- 2025-11-28 pass 58: dip detection -->
 **2025-11-28** — Recorded follow-ups for dip detection. Pass 58/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-12-28 pass 65: market data providers -->
+**2025-12-28** — Recorded follow-ups for market data providers. Pass 65/100 in the sandbox documentation sweep; no runtime code changed.

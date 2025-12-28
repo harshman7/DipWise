@@ -862,3 +862,11 @@ Aligned changelog entries with API reference. Pass 64/100 in the sandbox documen
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/api.md`.
 
+
+## 2025-12-28 — market data providers (pass 65)
+
+Recorded follow-ups for market data providers. Pass 65/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/data-model.md`.
+
