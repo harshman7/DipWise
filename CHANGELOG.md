@@ -317,3 +317,6 @@
 
 ### 2025-12-28
 - **market data providers (pass 65):** Recorded follow-ups for market data providers. Pass 65/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2025-12-31
+- **market data providers (pass 66):** Added revision footers covering market data providers. Pass 66/100 in the sandbox documentation sweep; no runtime code changed.

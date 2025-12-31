@@ -350,3 +350,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2025-12-21` — saved backtests (pass 63).
 - `2025-12-22` — API reference (pass 64).
 - `2025-12-28` — market data providers (pass 65).
+- `2025-12-31` — market data providers (pass 66).

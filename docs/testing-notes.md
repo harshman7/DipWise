@@ -49,3 +49,6 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- 2025-12-03 pass 59: OpenAPI codegen -->
 **2025-12-03** — Aligned changelog entries with OpenAPI codegen. Pass 59/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2025-12-31 pass 66: market data providers -->
+**2025-12-31** — Added revision footers covering market data providers. Pass 66/100 in the sandbox documentation sweep; no runtime code changed.

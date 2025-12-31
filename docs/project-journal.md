@@ -870,3 +870,11 @@ Recorded follow-ups for market data providers. Pass 65/100 in the sandbox docume
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/data-model.md`.
 
+
+## 2025-12-31 — market data providers (pass 66)
+
+Added revision footers covering market data providers. Pass 66/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/testing-notes.md`.
+
