@@ -878,3 +878,11 @@ Added revision footers covering market data providers. Pass 66/100 in the sandbo
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2026-01-08 — OpenAPI codegen (pass 67)
+
+Expanded sandbox notes on OpenAPI codegen. Pass 67/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+

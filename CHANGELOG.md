@@ -320,3 +320,6 @@
 
 ### 2025-12-31
 - **market data providers (pass 66):** Added revision footers covering market data providers. Pass 66/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-01-08
+- **OpenAPI codegen (pass 67):** Expanded sandbox notes on OpenAPI codegen. Pass 67/100 in the sandbox documentation sweep; no runtime code changed.
