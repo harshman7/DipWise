@@ -323,3 +323,6 @@
 
 ### 2026-01-08
 - **OpenAPI codegen (pass 67):** Expanded sandbox notes on OpenAPI codegen. Pass 67/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-01-13
+- **price ingestion (pass 68):** Captured QA checklist items for price ingestion. Pass 68/100 in the sandbox documentation sweep; no runtime code changed.

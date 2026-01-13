@@ -886,3 +886,11 @@ Expanded sandbox notes on OpenAPI codegen. Pass 67/100 in the sandbox documentat
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2026-01-13 — price ingestion (pass 68)
+
+Captured QA checklist items for price ingestion. Pass 68/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+
