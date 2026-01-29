@@ -326,3 +326,6 @@
 
 ### 2026-01-13
 - **price ingestion (pass 68):** Captured QA checklist items for price ingestion. Pass 68/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-01-29
+- **portfolio flows (pass 69):** Aligned changelog entries with portfolio flows. Pass 69/100 in the sandbox documentation sweep; no runtime code changed.

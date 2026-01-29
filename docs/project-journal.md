@@ -894,3 +894,13 @@ Captured QA checklist items for price ingestion. Pass 68/100 in the sandbox docu
 - Journal, changelog, and README log updated.
 - Rotating doc: `.env.example`.
 
+
+## 2026-01-29 — portfolio flows (pass 69)
+
+Aligned changelog entries with portfolio flows. Pass 69/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/project-journal.md`.
+
+
+> Inline marker 2026-01-29: consolidated pointer for portfolio flows.
