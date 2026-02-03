@@ -904,3 +904,11 @@ Aligned changelog entries with portfolio flows. Pass 69/100 in the sandbox docum
 
 
 > Inline marker 2026-01-29: consolidated pointer for portfolio flows.
+
+## 2026-02-03 — portfolio flows (pass 70)
+
+Aligned changelog entries with portfolio flows. Pass 70/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/architecture.md`.
+

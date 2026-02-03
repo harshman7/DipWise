@@ -329,3 +329,6 @@
 
 ### 2026-01-29
 - **portfolio flows (pass 69):** Aligned changelog entries with portfolio flows. Pass 69/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-02-03
+- **portfolio flows (pass 70):** Aligned changelog entries with portfolio flows. Pass 70/100 in the sandbox documentation sweep; no runtime code changed.

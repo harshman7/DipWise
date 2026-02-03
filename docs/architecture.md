@@ -113,3 +113,6 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- 2025-12-21 pass 63: saved backtests -->
 **2025-12-21** — Cross-linked README sections with saved backtests. Pass 63/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-02-03 pass 70: portfolio flows -->
+**2026-02-03** — Aligned changelog entries with portfolio flows. Pass 70/100 in the sandbox documentation sweep; no runtime code changed.
