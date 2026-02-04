@@ -66,3 +66,7 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 - Containerized via Docker Compose for development.
 - Production: managed PostgreSQL (e.g. AWS RDS, Supabase), managed Redis (ElastiCache), container orchestration (ECS/Fly.io/Railway), TLS termination, environment-based secrets.
+
+
+<!-- revision 2026-02-04: Dip detection baselines -->
+**2026-02-04 — Dip detection baselines.** Documented rolling-high lookback defaults and how threshold fractions map to UI percent inputs.

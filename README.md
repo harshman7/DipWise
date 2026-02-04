@@ -248,3 +248,11 @@ For watch mode during frontend work: `cd apps/web && npm run test:watch`.
 - [docs/api.md](docs/api.md) — Endpoint reference (keep in sync with OpenAPI).
 
 **Prior roadmap ideas (still valid):** outbound alert channels (email/webhook); deeper news/NLP; E2E tests (e.g. Playwright).
+
+---
+
+## Development log
+
+Incremental documentation passes (sandbox); see `docs/project-journal.md`.
+
+- `2026-02-04` — Dip detection baselines: Documented rolling-high lookback defaults and how threshold fractions map to UI percent inputs.
