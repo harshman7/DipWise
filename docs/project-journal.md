@@ -912,3 +912,11 @@ Aligned changelog entries with portfolio flows. Pass 70/100 in the sandbox docum
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/architecture.md`.
 
+
+## 2026-02-06 — TanStack Query (pass 71)
+
+Expanded sandbox notes on TanStack Query. Pass 71/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/api.md`.
+

@@ -222,3 +222,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2025-12-22 pass 64: API reference -->
 **2025-12-22** — Aligned changelog entries with API reference. Pass 64/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-02-06 pass 71: TanStack Query -->
+**2026-02-06** — Expanded sandbox notes on TanStack Query. Pass 71/100 in the sandbox documentation sweep; no runtime code changed.
