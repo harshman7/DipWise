@@ -335,3 +335,6 @@
 
 ### 2026-02-06
 - **TanStack Query (pass 71):** Expanded sandbox notes on TanStack Query. Pass 71/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-02-07
+- **environment setup (pass 72):** Cross-linked README sections with environment setup. Pass 72/100 in the sandbox documentation sweep; no runtime code changed.

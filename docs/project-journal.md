@@ -920,3 +920,11 @@ Expanded sandbox notes on TanStack Query. Pass 71/100 in the sandbox documentati
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/api.md`.
 
+
+## 2026-02-07 — environment setup (pass 72)
+
+Cross-linked README sections with environment setup. Pass 72/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/data-model.md`.
+

@@ -356,3 +356,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-01-29` — portfolio flows (pass 69).
 - `2026-02-03` — portfolio flows (pass 70).
 - `2026-02-06` — TanStack Query (pass 71).
+- `2026-02-07` — environment setup (pass 72).

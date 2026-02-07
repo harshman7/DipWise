@@ -191,3 +191,6 @@ erDiagram
 
 <!-- 2025-12-28 pass 65: market data providers -->
 **2025-12-28** — Recorded follow-ups for market data providers. Pass 65/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-02-07 pass 72: environment setup -->
+**2026-02-07** — Cross-linked README sections with environment setup. Pass 72/100 in the sandbox documentation sweep; no runtime code changed.
