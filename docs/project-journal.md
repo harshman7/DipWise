@@ -13,3 +13,14 @@ Documented rolling-high lookback defaults and how threshold fractions map to UI 
 - Updated changelog entry for 2026-02-04.
 - Added revision footer in rotating doc set (index 0).
 
+
+## 2026-02-13 — Backtester holding periods
+
+Aligned preset chips (30/90/180/365/730) with API `holding_period_days` validation notes.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-02-13.
+- Added revision footer in rotating doc set (index 1).
+

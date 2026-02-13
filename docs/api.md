@@ -172,3 +172,7 @@ Run dip analysis and download CSV (metadata comment lines + event rows). Public.
 Run dip analysis and download a PDF report. Public.
 
 **Body:** Same as `POST /analysis/dips`.
+
+
+<!-- revision 2026-02-13: Backtester holding periods -->
+**2026-02-13 — Backtester holding periods.** Aligned preset chips (30/90/180/365/730) with API `holding_period_days` validation notes.
