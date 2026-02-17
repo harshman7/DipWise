@@ -338,3 +338,6 @@
 
 ### 2026-02-07
 - **environment setup (pass 72):** Cross-linked README sections with environment setup. Pass 72/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-02-17
+- **testing strategy (pass 73):** Annotated developer workflow around testing strategy. Pass 73/100 in the sandbox documentation sweep; no runtime code changed.

@@ -52,3 +52,6 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- 2025-12-31 pass 66: market data providers -->
 **2025-12-31** — Added revision footers covering market data providers. Pass 66/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-02-17 pass 73: testing strategy -->
+**2026-02-17** — Annotated developer workflow around testing strategy. Pass 73/100 in the sandbox documentation sweep; no runtime code changed.
