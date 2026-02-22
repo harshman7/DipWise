@@ -141,3 +141,7 @@ erDiagram
 | sentiment_score | numeric(5,4)   | Nullable, -1.0 to 1.0       |
 | published_at    | timestamptz    |                              |
 | fetched_at      | timestamptz    |                              |
+
+
+<!-- revision 2026-02-22: Compare chart overlays -->
+**2026-02-22 — Compare chart overlays.** Captured rebasing rules for normalized performance and optional SMA/EMA overlays.

@@ -24,3 +24,14 @@ Aligned preset chips (30/90/180/365/730) with API `holding_period_days` validati
 - Updated changelog entry for 2026-02-13.
 - Added revision footer in rotating doc set (index 1).
 
+
+## 2026-02-22 — Compare chart overlays
+
+Captured rebasing rules for normalized performance and optional SMA/EMA overlays.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-02-22.
+- Added revision footer in rotating doc set (index 2).
+
