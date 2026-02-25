@@ -341,3 +341,6 @@
 
 ### 2026-02-17
 - **testing strategy (pass 73):** Annotated developer workflow around testing strategy. Pass 73/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-02-25
+- **watchlist flows (pass 74):** Added revision footers covering watchlist flows. Pass 74/100 in the sandbox documentation sweep; no runtime code changed.

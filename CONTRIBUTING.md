@@ -56,3 +56,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- 2026-01-08 pass 67: OpenAPI codegen -->
 **2026-01-08** — Expanded sandbox notes on OpenAPI codegen. Pass 67/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-02-25 pass 74: watchlist flows -->
+**2026-02-25** — Added revision footers covering watchlist flows. Pass 74/100 in the sandbox documentation sweep; no runtime code changed.

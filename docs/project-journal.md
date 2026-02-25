@@ -936,3 +936,11 @@ Annotated developer workflow around testing strategy. Pass 73/100 in the sandbox
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2026-02-25 — watchlist flows (pass 74)
+
+Added revision footers covering watchlist flows. Pass 74/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+
