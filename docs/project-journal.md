@@ -944,3 +944,11 @@ Added revision footers covering watchlist flows. Pass 74/100 in the sandbox docu
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2026-03-01 — portfolio flows (pass 75)
+
+Aligned changelog entries with portfolio flows. Pass 75/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+
