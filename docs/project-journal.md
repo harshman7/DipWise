@@ -35,3 +35,14 @@ Captured rebasing rules for normalized performance and optional SMA/EMA overlays
 - Updated changelog entry for 2026-02-22.
 - Added revision footer in rotating doc set (index 2).
 
+
+## 2026-03-03 — Moving averages table
+
+Specified column semantics for last bar, configurable periods, and % distance vs SMA.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-03-03.
+- Added revision footer in rotating doc set (index 3).
+

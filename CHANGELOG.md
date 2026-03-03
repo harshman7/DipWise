@@ -14,3 +14,7 @@
 ### 2026-02-22
 - **Compare chart overlays:** Captured rebasing rules for normalized performance and optional SMA/EMA overlays.
 - Touched journal, changelog, README log line, and `docs/data-model.md`.
+
+### 2026-03-03
+- **Moving averages table:** Specified column semantics for last bar, configurable periods, and % distance vs SMA.
+- Touched journal, changelog, README log line, and `docs/testing-notes.md`.
