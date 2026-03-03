@@ -952,3 +952,13 @@ Aligned changelog entries with portfolio flows. Pass 75/100 in the sandbox docum
 - Journal, changelog, and README log updated.
 - Rotating doc: `.env.example`.
 
+
+## 2026-03-02 — portfolio flows (pass 76)
+
+Cross-linked README sections with portfolio flows. Pass 76/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/project-journal.md`.
+
+
+> Inline marker 2026-03-02: consolidated pointer for portfolio flows.

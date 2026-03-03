@@ -360,3 +360,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-02-17` — testing strategy (pass 73).
 - `2026-02-25` — watchlist flows (pass 74).
 - `2026-03-01` — portfolio flows (pass 75).
+- `2026-03-02` — portfolio flows (pass 76).
