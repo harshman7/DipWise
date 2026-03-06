@@ -116,3 +116,6 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- 2026-02-03 pass 70: portfolio flows -->
 **2026-02-03** — Aligned changelog entries with portfolio flows. Pass 70/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-03-06 pass 77: testing strategy -->
+**2026-03-06** — Recorded follow-ups for testing strategy. Pass 77/100 in the sandbox documentation sweep; no runtime code changed.

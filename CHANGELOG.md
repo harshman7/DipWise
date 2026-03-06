@@ -350,3 +350,6 @@
 
 ### 2026-03-02
 - **portfolio flows (pass 76):** Cross-linked README sections with portfolio flows. Pass 76/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-03-06
+- **testing strategy (pass 77):** Recorded follow-ups for testing strategy. Pass 77/100 in the sandbox documentation sweep; no runtime code changed.

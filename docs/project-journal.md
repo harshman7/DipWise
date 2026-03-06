@@ -962,3 +962,11 @@ Cross-linked README sections with portfolio flows. Pass 76/100 in the sandbox do
 
 
 > Inline marker 2026-03-02: consolidated pointer for portfolio flows.
+
+## 2026-03-06 — testing strategy (pass 77)
+
+Recorded follow-ups for testing strategy. Pass 77/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/architecture.md`.
+
