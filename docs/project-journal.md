@@ -46,3 +46,14 @@ Specified column semantics for last bar, configurable periods, and % distance vs
 - Updated changelog entry for 2026-03-03.
 - Added revision footer in rotating doc set (index 3).
 
+
+## 2026-03-12 — Price ingestion staleness
+
+Described `PRICE_STALE_DAYS` refresh behavior and provider fallback order.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-03-12.
+- Added revision footer in rotating doc set (index 4).
+

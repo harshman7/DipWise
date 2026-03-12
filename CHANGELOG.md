@@ -18,3 +18,7 @@
 ### 2026-03-03
 - **Moving averages table:** Specified column semantics for last bar, configurable periods, and % distance vs SMA.
 - Touched journal, changelog, README log line, and `docs/testing-notes.md`.
+
+### 2026-03-12
+- **Price ingestion staleness:** Described `PRICE_STALE_DAYS` refresh behavior and provider fallback order.
+- Touched journal, changelog, README log line, and `CONTRIBUTING.md`.
