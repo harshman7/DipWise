@@ -57,3 +57,14 @@ Described `PRICE_STALE_DAYS` refresh behavior and provider fallback order.
 - Updated changelog entry for 2026-03-12.
 - Added revision footer in rotating doc set (index 4).
 
+
+## 2026-03-21 — Indicator warmup windows
+
+Explained warmup history loaded before `start` for valid SMA/EMA on first in-range bar.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-03-21.
+- Added revision footer in rotating doc set (index 5).
+

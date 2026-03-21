@@ -260,3 +260,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-02-22` — Compare chart overlays: Captured rebasing rules for normalized performance and optional SMA/EMA overlays.
 - `2026-03-03` — Moving averages table: Specified column semantics for last bar, configurable periods, and % distance vs SMA.
 - `2026-03-12` — Price ingestion staleness: Described `PRICE_STALE_DAYS` refresh behavior and provider fallback order.
+- `2026-03-21` — Indicator warmup windows: Explained warmup history loaded before `start` for valid SMA/EMA on first in-range bar.

@@ -22,3 +22,7 @@
 ### 2026-03-12
 - **Price ingestion staleness:** Described `PRICE_STALE_DAYS` refresh behavior and provider fallback order.
 - Touched journal, changelog, README log line, and `CONTRIBUTING.md`.
+
+### 2026-03-21
+- **Indicator warmup windows:** Explained warmup history loaded before `start` for valid SMA/EMA on first in-range bar.
+- Touched journal, changelog, README log line, and `.env.example`.
