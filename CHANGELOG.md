@@ -26,3 +26,7 @@
 ### 2026-03-21
 - **Indicator warmup windows:** Explained warmup history loaded before `start` for valid SMA/EMA on first in-range bar.
 - Touched journal, changelog, README log line, and `.env.example`.
+
+### 2026-03-30
+- **Alert types matrix:** Tabulated dip_threshold vs price_below vs sma_cross evaluation cadence.
+- Touched journal, changelog, README log line, and `docs/architecture.md`.

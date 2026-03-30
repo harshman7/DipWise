@@ -70,3 +70,7 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- revision 2026-02-04: Dip detection baselines -->
 **2026-02-04 — Dip detection baselines.** Documented rolling-high lookback defaults and how threshold fractions map to UI percent inputs.
+
+
+<!-- revision 2026-03-30: Alert types matrix -->
+**2026-03-30 — Alert types matrix.** Tabulated dip_threshold vs price_below vs sma_cross evaluation cadence.

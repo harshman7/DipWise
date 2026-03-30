@@ -68,3 +68,14 @@ Explained warmup history loaded before `start` for valid SMA/EMA on first in-ran
 - Updated changelog entry for 2026-03-21.
 - Added revision footer in rotating doc set (index 5).
 
+
+## 2026-03-30 — Alert types matrix
+
+Tabulated dip_threshold vs price_below vs sma_cross evaluation cadence.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-03-30.
+- Added revision footer in rotating doc set (index 0).
+
