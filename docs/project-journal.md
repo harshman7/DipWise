@@ -970,3 +970,11 @@ Recorded follow-ups for testing strategy. Pass 77/100 in the sandbox documentati
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/architecture.md`.
 
+
+## 2026-03-31 — TanStack Query (pass 78)
+
+Captured QA checklist items for TanStack Query. Pass 78/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/api.md`.
+

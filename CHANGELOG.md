@@ -353,3 +353,6 @@
 
 ### 2026-03-06
 - **testing strategy (pass 77):** Recorded follow-ups for testing strategy. Pass 77/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-03-31
+- **TanStack Query (pass 78):** Captured QA checklist items for TanStack Query. Pass 78/100 in the sandbox documentation sweep; no runtime code changed.

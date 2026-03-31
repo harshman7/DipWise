@@ -225,3 +225,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2026-02-06 pass 71: TanStack Query -->
 **2026-02-06** — Expanded sandbox notes on TanStack Query. Pass 71/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-03-31 pass 78: TanStack Query -->
+**2026-03-31** — Captured QA checklist items for TanStack Query. Pass 78/100 in the sandbox documentation sweep; no runtime code changed.
