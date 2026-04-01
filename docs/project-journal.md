@@ -978,3 +978,11 @@ Captured QA checklist items for TanStack Query. Pass 78/100 in the sandbox docum
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/api.md`.
 
+
+## 2026-04-01 — report exports (pass 79)
+
+Aligned changelog entries with report exports. Pass 79/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/data-model.md`.
+

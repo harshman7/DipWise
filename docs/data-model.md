@@ -194,3 +194,6 @@ erDiagram
 
 <!-- 2026-02-07 pass 72: environment setup -->
 **2026-02-07** — Cross-linked README sections with environment setup. Pass 72/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-04-01 pass 79: report exports -->
+**2026-04-01** — Aligned changelog entries with report exports. Pass 79/100 in the sandbox documentation sweep; no runtime code changed.

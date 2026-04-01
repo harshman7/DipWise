@@ -356,3 +356,6 @@
 
 ### 2026-03-31
 - **TanStack Query (pass 78):** Captured QA checklist items for TanStack Query. Pass 78/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-04-01
+- **report exports (pass 79):** Aligned changelog entries with report exports. Pass 79/100 in the sandbox documentation sweep; no runtime code changed.
