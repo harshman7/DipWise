@@ -79,3 +79,14 @@ Tabulated dip_threshold vs price_below vs sma_cross evaluation cadence.
 - Updated changelog entry for 2026-03-30.
 - Added revision footer in rotating doc set (index 0).
 
+
+## 2026-04-08 — SMA cross params JSON
+
+Documented Alembic `002` `params_json` shape for cross direction and period.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-04-08.
+- Added revision footer in rotating doc set (index 1).
+

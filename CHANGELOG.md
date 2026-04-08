@@ -30,3 +30,7 @@
 ### 2026-03-30
 - **Alert types matrix:** Tabulated dip_threshold vs price_below vs sma_cross evaluation cadence.
 - Touched journal, changelog, README log line, and `docs/architecture.md`.
+
+### 2026-04-08
+- **SMA cross params JSON:** Documented Alembic `002` `params_json` shape for cross direction and period.
+- Touched journal, changelog, README log line, and `docs/api.md`.

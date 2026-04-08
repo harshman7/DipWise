@@ -176,3 +176,7 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- revision 2026-02-13: Backtester holding periods -->
 **2026-02-13 — Backtester holding periods.** Aligned preset chips (30/90/180/365/730) with API `holding_period_days` validation notes.
+
+
+<!-- revision 2026-04-08: SMA cross params JSON -->
+**2026-04-08 — SMA cross params JSON.** Documented Alembic `002` `params_json` shape for cross direction and period.
