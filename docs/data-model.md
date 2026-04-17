@@ -145,3 +145,7 @@ erDiagram
 
 <!-- revision 2026-02-22: Compare chart overlays -->
 **2026-02-22 — Compare chart overlays.** Captured rebasing rules for normalized performance and optional SMA/EMA overlays.
+
+
+<!-- revision 2026-04-17: Celery beat schedules -->
+**2026-04-17 — Celery beat schedules.** Recorded ingest (30m) and alert check (10m) intervals for local Docker stacks.

@@ -90,3 +90,14 @@ Documented Alembic `002` `params_json` shape for cross direction and period.
 - Updated changelog entry for 2026-04-08.
 - Added revision footer in rotating doc set (index 1).
 
+
+## 2026-04-17 — Celery beat schedules
+
+Recorded ingest (30m) and alert check (10m) intervals for local Docker stacks.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-04-17.
+- Added revision footer in rotating doc set (index 2).
+
