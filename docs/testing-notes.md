@@ -55,3 +55,6 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- 2026-02-17 pass 73: testing strategy -->
 **2026-02-17** — Annotated developer workflow around testing strategy. Pass 73/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-04-19 pass 80: data model -->
+**2026-04-19** — Recorded follow-ups for data model. Pass 80/100 in the sandbox documentation sweep; no runtime code changed.

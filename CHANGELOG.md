@@ -359,3 +359,6 @@
 
 ### 2026-04-01
 - **report exports (pass 79):** Aligned changelog entries with report exports. Pass 79/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-04-19
+- **data model (pass 80):** Recorded follow-ups for data model. Pass 80/100 in the sandbox documentation sweep; no runtime code changed.
