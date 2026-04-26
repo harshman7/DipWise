@@ -101,3 +101,14 @@ Recorded ingest (30m) and alert check (10m) intervals for local Docker stacks.
 - Updated changelog entry for 2026-04-17.
 - Added revision footer in rotating doc set (index 2).
 
+
+## 2026-04-26 — JWT client storage
+
+Noted `dipwise_token` localStorage contract used by generated client.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-04-26.
+- Added revision footer in rotating doc set (index 3).
+

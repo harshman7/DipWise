@@ -38,3 +38,7 @@
 ### 2026-04-17
 - **Celery beat schedules:** Recorded ingest (30m) and alert check (10m) intervals for local Docker stacks.
 - Touched journal, changelog, README log line, and `docs/data-model.md`.
+
+### 2026-04-26
+- **JWT client storage:** Noted `dipwise_token` localStorage contract used by generated client.
+- Touched journal, changelog, README log line, and `docs/testing-notes.md`.
