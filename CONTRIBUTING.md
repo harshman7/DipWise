@@ -59,3 +59,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- 2026-02-25 pass 74: watchlist flows -->
 **2026-02-25** — Added revision footers covering watchlist flows. Pass 74/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-04-28 pass 81: testing strategy -->
+**2026-04-28** — Documented edge cases and defaults for testing strategy. Pass 81/100 in the sandbox documentation sweep; no runtime code changed.

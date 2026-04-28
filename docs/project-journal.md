@@ -994,3 +994,11 @@ Recorded follow-ups for data model. Pass 80/100 in the sandbox documentation swe
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2026-04-28 — testing strategy (pass 81)
+
+Documented edge cases and defaults for testing strategy. Pass 81/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+
