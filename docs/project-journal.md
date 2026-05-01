@@ -1002,3 +1002,11 @@ Documented edge cases and defaults for testing strategy. Pass 81/100 in the sand
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2026-04-30 — backtester UX (pass 82)
+
+Aligned changelog entries with backtester UX. Pass 82/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+

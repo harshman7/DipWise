@@ -366,3 +366,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-04-01` — report exports (pass 79).
 - `2026-04-19` — data model (pass 80).
 - `2026-04-28` — testing strategy (pass 81).
+- `2026-04-30` — backtester UX (pass 82).
