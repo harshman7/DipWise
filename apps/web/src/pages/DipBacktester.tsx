@@ -15,6 +15,7 @@ import LoadingState from "@/components/LoadingState";
 import BacktestSummary from "@/components/BacktestSummary";
 import DipEventsTable from "@/components/DipEventsTable";
 import PriceChart from "@/components/PriceChart";
+import { POPULAR_TICKERS } from "@/constants/popularTickers";
 
 const schema = z.object({
   symbol: z.string().min(1, "Required").toUpperCase(),
@@ -37,38 +38,6 @@ const DEFAULT_VALUES: FormValues = {
   lookback_days: 90,
   holding_period_days: "30,90,365,730",
 };
-
-/** Curated liquid ETFs and widely held stocks for quick selection. */
-const POPULAR_TICKERS: { symbol: string; name: string }[] = [
-  { symbol: "VOO", name: "Vanguard S&P 500 ETF" },
-  { symbol: "SPY", name: "SPDR S&P 500 ETF" },
-  { symbol: "QQQ", name: "Invesco Nasdaq-100 ETF" },
-  { symbol: "IWM", name: "iShares Russell 2000 ETF" },
-  { symbol: "DIA", name: "SPDR Dow Jones ETF" },
-  { symbol: "VTI", name: "Vanguard Total Stock Market ETF" },
-  { symbol: "VXUS", name: "Vanguard Total International Stock ETF" },
-  { symbol: "BND", name: "Vanguard Total Bond Market ETF" },
-  { symbol: "SCHD", name: "Schwab US Dividend Equity ETF" },
-  { symbol: "VUG", name: "Vanguard Growth ETF" },
-  { symbol: "VTV", name: "Vanguard Value ETF" },
-  { symbol: "XLK", name: "Technology Select Sector SPDR" },
-  { symbol: "XLE", name: "Energy Select Sector SPDR" },
-  { symbol: "XLF", name: "Financial Select Sector SPDR" },
-  { symbol: "GLD", name: "SPDR Gold Shares" },
-  { symbol: "TLT", name: "iShares 20+ Year Treasury Bond ETF" },
-  { symbol: "AAPL", name: "Apple Inc." },
-  { symbol: "MSFT", name: "Microsoft Corp." },
-  { symbol: "GOOGL", name: "Alphabet Inc. (Class A)" },
-  { symbol: "AMZN", name: "Amazon.com Inc." },
-  { symbol: "META", name: "Meta Platforms Inc." },
-  { symbol: "NVDA", name: "NVIDIA Corp." },
-  { symbol: "BRK.B", name: "Berkshire Hathaway (Class B)" },
-  { symbol: "JPM", name: "JPMorgan Chase & Co." },
-  { symbol: "JNJ", name: "Johnson & Johnson" },
-  { symbol: "V", name: "Visa Inc." },
-  { symbol: "MA", name: "Mastercard Inc." },
-  { symbol: "UNH", name: "UnitedHealth Group Inc." },
-];
 
 export default function DipBacktester() {
   const { token } = useAuth();
