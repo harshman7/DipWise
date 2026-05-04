@@ -234,10 +234,31 @@
                   "type": "null"
                 }
               ],
-              "description": "SMA lookbacks to include (e.g. repeat query param or use 100). Only sma_100 is returned for period 100.",
+              "description": "SMA lookbacks (e.g. 100). Only sma_100 is returned for period 100.",
               "title": "Sma Periods"
             },
-            "description": "SMA lookbacks to include (e.g. repeat query param or use 100). Only sma_100 is returned for period 100."
+            "description": "SMA lookbacks (e.g. 100). Only sma_100 is returned for period 100."
+          },
+          {
+            "name": "ema_periods",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "EMA spans (e.g. 100). Only ema_100 is returned for period 100.",
+              "title": "Ema Periods"
+            },
+            "description": "EMA spans (e.g. 100). Only ema_100 is returned for period 100."
           }
         ],
         "responses": {
@@ -322,6 +343,27 @@
               "title": "Sma Periods"
             },
             "description": "SMA lookbacks; warms up history before start when set."
+          },
+          {
+            "name": "ema_periods",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "EMA spans; combined with sma_periods for warmup window.",
+              "title": "Ema Periods"
+            },
+            "description": "EMA spans; combined with sma_periods for warmup window."
           }
         ],
         "responses": {
@@ -1049,6 +1091,18 @@
               }
             ],
             "title": "Message"
+          },
+          "params_json": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Params Json"
           }
         },
         "type": "object",
@@ -1083,6 +1137,18 @@
             "type": "string",
             "format": "date-time",
             "title": "Created At"
+          },
+          "params_json": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Params Json"
           }
         },
         "type": "object",
@@ -1617,6 +1683,18 @@
             ],
             "title": "Sma 100",
             "description": "100-day simple moving average of adj_close when requested via sma_periods."
+          },
+          "ema_100": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ema 100",
+            "description": "100-day exponential moving average (EWMA span) when requested via ema_periods."
           }
         },
         "type": "object",

@@ -11,13 +11,22 @@ export type AlertCreateSymbol = string | null;
 
 export type AlertCreateMessage = string | null;
 
+export type AlertCreateParamsJsonAnyOf = { [key: string]: unknown };
+
+export type AlertCreateParamsJson = AlertCreateParamsJsonAnyOf | null;
+
 export interface AlertCreate {
   asset_id?: AlertCreateAssetId;
   symbol?: AlertCreateSymbol;
   alert_type?: string;
   threshold: number;
   message?: AlertCreateMessage;
+  params_json?: AlertCreateParamsJson;
 }
+
+export type AlertResponseParamsJsonAnyOf = { [key: string]: unknown };
+
+export type AlertResponseParamsJson = AlertResponseParamsJsonAnyOf | null;
 
 export interface AlertResponse {
   id: number;
@@ -26,6 +35,7 @@ export interface AlertResponse {
   threshold: number;
   is_active: boolean;
   created_at: string;
+  params_json?: AlertResponseParamsJson;
 }
 
 export type AssetResponseExchange = string | null;
@@ -155,6 +165,11 @@ export interface PositionResponse {
  */
 export type PriceBarSma100 = number | null;
 
+/**
+ * 100-day exponential moving average (EWMA span) when requested via ema_periods.
+ */
+export type PriceBarEma100 = number | null;
+
 export interface PriceBar {
   date: string;
   open: number;
@@ -165,6 +180,8 @@ export interface PriceBar {
   volume: number;
   /** 100-day simple moving average of adj_close when requested via sma_periods. */
   sma_100?: PriceBarSma100;
+  /** 100-day exponential moving average (EWMA span) when requested via ema_periods. */
+  ema_100?: PriceBarEma100;
 }
 
 export interface PriceListResponse {
@@ -236,9 +253,13 @@ export type GetPricesPricesSymbolGetParams = {
 start: string;
 end: string;
 /**
- * SMA lookbacks to include (e.g. repeat query param or use 100). Only sma_100 is returned for period 100.
+ * SMA lookbacks (e.g. 100). Only sma_100 is returned for period 100.
  */
 sma_periods?: number[] | null;
+/**
+ * EMA spans (e.g. 100). Only ema_100 is returned for period 100.
+ */
+ema_periods?: number[] | null;
 };
 
 export type RefreshPricesPricesSymbolRefreshPostParams = {
@@ -248,6 +269,10 @@ end: string;
  * SMA lookbacks; warms up history before start when set.
  */
 sma_periods?: number[] | null;
+/**
+ * EMA spans; combined with sma_periods for warmup window.
+ */
+ema_periods?: number[] | null;
 };
 
 export type HealthHealthGet200 = {[key: string]: string};

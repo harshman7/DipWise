@@ -16,10 +16,12 @@ import LoadingState from "@/components/LoadingState";
 export default function Alerts() {
   const queryClient = useQueryClient();
   const [symbol, setSymbol] = useState("VOO");
-  const [alertType, setAlertType] = useState<"dip_threshold" | "price_below">(
-    "dip_threshold",
-  );
+  const [alertType, setAlertType] = useState<
+    "dip_threshold" | "price_below" | "sma_cross"
+  >("dip_threshold");
   const [threshold, setThreshold] = useState("0.05");
+  const [crossPeriod, setCrossPeriod] = useState("100");
+  const [crossDirection, setCrossDirection] = useState<"below" | "above">("below");
 
   const { data: assetsRes } = useQuery({
     queryKey: ["assets"],
@@ -63,22 +65,41 @@ export default function Alerts() {
     <div>
       <PageHeader
         title="Alerts"
-        description="Configure dip threshold or price-below alerts."
+        description="Dip threshold, price floor, or SMA cross (daily check via scheduled worker)."
       />
 
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
-          <h2 className="mb-3 text-sm font-semibold text-gray-700">
-            New alert
-          </h2>
+          <h2 className="mb-3 text-sm font-semibold text-gray-700">New alert</h2>
           <form
             className="space-y-3"
             onSubmit={(e) => {
               e.preventDefault();
+              const sym = symbol.trim().toUpperCase();
+
+              if (alertType === "sma_cross") {
+                const period = parseInt(crossPeriod, 10);
+                if (Number.isNaN(period) || period < 2) return;
+                const body: AlertCreate = {
+                  symbol: sym,
+                  asset_id: null,
+                  alert_type: "sma_cross",
+                  threshold: 0,
+                  message: null,
+                  params_json: {
+                    kind: "sma_cross",
+                    period,
+                    direction: crossDirection,
+                  },
+                };
+                createMut.mutate(body);
+                return;
+              }
+
               const thr = parseFloat(threshold);
               if (Number.isNaN(thr)) return;
               const body: AlertCreate = {
-                symbol: symbol.trim().toUpperCase(),
+                symbol: sym,
                 asset_id: null,
                 alert_type: alertType,
                 threshold: thr,
@@ -128,13 +149,41 @@ export default function Alerts() {
                   Dip threshold (drawdown vs rolling high, 0–1)
                 </option>
                 <option value="price_below">Price below (absolute $)</option>
+                <option value="sma_cross">SMA cross (daily vs simple moving average)</option>
               </select>
             </label>
-            <Input
-              label={alertType === "dip_threshold" ? "Threshold (e.g. 0.05)" : "Max price ($)"}
-              value={threshold}
-              onChange={(e) => setThreshold(e.target.value)}
-            />
+            {alertType === "sma_cross" ? (
+              <>
+                <Input
+                  label="SMA period (days)"
+                  value={crossPeriod}
+                  onChange={(e) => setCrossPeriod(e.target.value)}
+                />
+                <label className="block text-sm">
+                  <span className="text-gray-600">Direction</span>
+                  <select
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+                    value={crossDirection}
+                    onChange={(e) =>
+                      setCrossDirection(e.target.value as "below" | "above")
+                    }
+                  >
+                    <option value="below">Close crosses below SMA</option>
+                    <option value="above">Close crosses above SMA</option>
+                  </select>
+                </label>
+              </>
+            ) : (
+              <Input
+                label={
+                  alertType === "dip_threshold"
+                    ? "Threshold (e.g. 0.05)"
+                    : "Max price ($)"
+                }
+                value={threshold}
+                onChange={(e) => setThreshold(e.target.value)}
+              />
+            )}
             {createMut.isError && (
               <p className="text-sm text-red-600">
                 {(createMut.error as Error).message}
@@ -147,13 +196,11 @@ export default function Alerts() {
         </Card>
 
         <Card>
-          <h2 className="mb-3 text-sm font-semibold text-gray-700">
-            Active alerts
-          </h2>
+          <h2 className="mb-3 text-sm font-semibold text-gray-700">Active alerts</h2>
           {alerts.length === 0 ? (
             <EmptyState
               title="No alerts yet"
-              description="Create an alert to monitor dips for a symbol."
+              description="Create an alert to monitor dips or technical levels."
             />
           ) : (
             <ul className="space-y-2 text-sm">
@@ -166,7 +213,15 @@ export default function Alerts() {
                     {symMap.get(a.asset_id) ?? `asset #${a.asset_id}`}
                   </span>
                   <span className="ml-2 text-gray-500">{a.alert_type}</span>
-                  <span className="ml-2 text-gray-700">@ {a.threshold}</span>
+                  {a.alert_type !== "sma_cross" && (
+                    <span className="ml-2 text-gray-700">@ {a.threshold}</span>
+                  )}
+                  {a.alert_type === "sma_cross" && a.params_json && (
+                    <span className="ml-2 text-xs text-gray-600">
+                      period {(a.params_json as { period?: number }).period ?? "—"} ·{" "}
+                      {(a.params_json as { direction?: string }).direction ?? "—"}
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>

@@ -23,3 +23,24 @@ def add_simple_moving_averages(
         col = f"sma_{n}"
         df[col] = close.rolling(window=n, min_periods=n).mean()
     return df
+
+
+def add_exponential_moving_averages(
+    prices: pd.DataFrame,
+    periods: list[int],
+) -> pd.DataFrame:
+    """
+    Same input expectations as SMA helper. Adds `ema_N` columns using
+    ``ewm(span=period, adjust=False).mean()`` (common trading "EMA N" convention).
+    """
+    if not periods or prices.empty:
+        return prices.copy()
+
+    df = prices.copy()
+    df["date"] = pd.to_datetime(df["date"]).dt.date
+    df = df.sort_values("date").reset_index(drop=True)
+    close = df["adj_close"].astype(float)
+    for n in sorted(set(p for p in periods if p > 0)):
+        col = f"ema_{n}"
+        df[col] = close.ewm(span=n, adjust=False).mean()
+    return df

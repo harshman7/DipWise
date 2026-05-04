@@ -2,6 +2,7 @@
 
 from datetime import date
 
+import pandas as pd
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
@@ -13,6 +14,22 @@ from app.services.price_ingestion_service import upsert_asset
 
 
 DEFAULT_LOOKBACK = 90
+
+
+def _sma_cross_triggered(
+    closes: list[float], period: int, direction: str
+) -> bool:
+    if len(closes) < period + 1:
+        return False
+    s = pd.Series(closes, dtype=float)
+    sma = s.rolling(window=period, min_periods=period).mean()
+    prev_close, curr_close = closes[-2], closes[-1]
+    prev_sma, curr_sma = float(sma.iloc[-2]), float(sma.iloc[-1])
+    if pd.isna(prev_sma) or pd.isna(curr_sma):
+        return False
+    if direction == "below":
+        return prev_close >= prev_sma and curr_close < curr_sma
+    return prev_close <= prev_sma and curr_close > curr_sma
 
 
 def list_alerts(db: Session, user_id: int) -> list[AlertResponse]:
@@ -43,6 +60,7 @@ def create_alert(db: Session, user_id: int, body: AlertCreate) -> AlertResponse:
         alert_type=body.alert_type,
         threshold=body.threshold,
         message=body.message,
+        params_json=body.params_json,
         is_active=True,
     )
     db.add(alert)
@@ -76,7 +94,14 @@ def check_alerts(db: Session) -> int:
         should_fire = False
         thr = float(alert.threshold)
 
-        if alert.alert_type == "price_below":
+        if alert.alert_type == "sma_cross":
+            params = alert.params_json or {}
+            if params.get("kind") != "sma_cross":
+                continue
+            period = int(params.get("period", 100))
+            direction = str(params.get("direction", "below"))
+            should_fire = _sma_cross_triggered(closes, period, direction)
+        elif alert.alert_type == "price_below":
             should_fire = latest_close <= thr
         else:
             window = min(DEFAULT_LOOKBACK, len(closes))

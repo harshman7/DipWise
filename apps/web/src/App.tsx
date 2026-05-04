@@ -4,6 +4,7 @@ import RequireAuth from "./components/RequireAuth";
 import Dashboard from "./pages/Dashboard";
 import Compare from "./pages/Compare";
 import DipBacktester from "./pages/DipBacktester";
+import MovingAverages from "./pages/MovingAverages";
 import Portfolio from "./pages/Portfolio";
 import Watchlist from "./pages/Watchlist";
 import Alerts from "./pages/Alerts";
@@ -17,6 +18,7 @@ export default function App() {
       <Route element={<AppLayout />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="/compare" element={<Compare />} />
+        <Route path="/moving-averages" element={<MovingAverages />} />
         <Route path="/backtester" element={<DipBacktester />} />
         <Route path="/reports" element={<Reports />} />
         <Route element={<RequireAuth />}>

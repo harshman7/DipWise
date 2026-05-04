@@ -4,6 +4,7 @@ import clsx from "clsx";
 const links = [
   { to: "/", label: "Dashboard" },
   { to: "/compare", label: "Compare" },
+  { to: "/moving-averages", label: "Moving averages" },
   { to: "/backtester", label: "Dip Backtester" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/watchlist", label: "Watchlist" },

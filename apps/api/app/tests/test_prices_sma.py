@@ -69,6 +69,40 @@ def test_get_prices_includes_sma_100_with_warmup(client, db_session, no_provider
     assert abs(first["adj_close"] - first["sma_100"]) < 50
 
 
+def test_get_prices_includes_ema_100_with_warmup(client, db_session, no_provider):
+    _seed_daily_prices(db_session, "EMX", d0=date(2023, 1, 1), n_days=800)
+    response = client.get(
+        "/prices/EMX",
+        params=[
+            ("start", "2024-06-01"),
+            ("end", "2024-08-01"),
+            ("ema_periods", "100"),
+        ],
+    )
+    assert response.status_code == 200
+    data = response.json()
+    first = data["prices"][0]
+    assert first["ema_100"] is not None
+    assert first.get("sma_100") is None
+
+
+def test_get_prices_sma_and_ema_combined(client, db_session, no_provider):
+    _seed_daily_prices(db_session, "BOTH", d0=date(2023, 1, 1), n_days=800)
+    response = client.get(
+        "/prices/BOTH",
+        params=[
+            ("start", "2024-07-01"),
+            ("end", "2024-07-15"),
+            ("sma_periods", "100"),
+            ("ema_periods", "100"),
+        ],
+    )
+    assert response.status_code == 200
+    row = response.json()["prices"][0]
+    assert row["sma_100"] is not None
+    assert row["ema_100"] is not None
+
+
 def test_get_prices_without_sma_periods_omits_series(client, db_session, no_provider):
     _seed_daily_prices(db_session, "ABC")
     response = client.get(

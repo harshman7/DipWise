@@ -6,6 +6,7 @@ import MetricCard from "@/components/MetricCard";
 const quickLinks = [
   { to: "/backtester", label: "Dip Backtester", desc: "Backtest buy-the-dip strategies" },
   { to: "/compare", label: "Compare Assets", desc: "Side-by-side stock / ETF analysis" },
+  { to: "/moving-averages", label: "Moving Averages", desc: "SMA / EMA snapshot table" },
   { to: "/portfolio", label: "Portfolio", desc: "Track your holdings" },
   { to: "/alerts", label: "Alerts", desc: "Get notified on dips" },
 ];

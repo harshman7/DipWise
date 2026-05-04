@@ -37,6 +37,7 @@ type FetchSpec = {
   symbols: string[];
   start: string;
   end: string;
+  showSma100: boolean;
 };
 
 function normalizeSeries(prices: PriceListResponse["prices"]) {
@@ -47,6 +48,22 @@ function normalizeSeries(prices: PriceListResponse["prices"]) {
     date: p.date,
     n: (p.adj_close / first) * 100,
   }));
+}
+
+function normalizedSma100Series(prices: PriceListResponse["prices"]) {
+  if (!prices.length) return [];
+  const first = prices[0].adj_close;
+  if (!first) return [];
+  return prices
+    .filter((p) => p.sma_100 != null && p.sma_100 > 0)
+    .map((p) => ({
+      date: p.date,
+      n: ((p.sma_100 as number) / first) * 100,
+    }));
+}
+
+function smaLineKey(sym: string) {
+  return `${sym}__sma100`;
 }
 
 /** Outer join on union of dates; missing series keys omitted for that row. */
@@ -89,6 +106,7 @@ export default function Compare() {
   const [end, setEnd] = useState("2025-01-01");
   const [fetchSpec, setFetchSpec] = useState<FetchSpec | null>(null);
   const [popularQuick, setPopularQuick] = useState("");
+  const [smaOverlayPending, setSmaOverlayPending] = useState(false);
 
   const activeSymbols = useMemo(
     () => dedupeSymbolsForFetch(symbolRows),
@@ -104,12 +122,14 @@ export default function Compare() {
           sym,
           fetchSpec.start,
           fetchSpec.end,
+          fetchSpec.showSma100,
         ] as const,
         enabled: !!fetchSpec && fetchSpec.symbols.length >= 1,
         queryFn: async () => {
           const r = await getPricesPricesSymbolGet(sym, {
             start: fetchSpec.start,
             end: fetchSpec.end,
+            ...(fetchSpec.showSma100 ? { sma_periods: [100] } : {}),
           });
           if (r.status !== 200) {
             throw new Error(`${sym}: could not load prices`);
@@ -142,7 +162,18 @@ export default function Compare() {
       points: normalizeSeries(q.data!.prices),
     }));
     if (seriesList.some((s) => !s.points.length)) return [];
-    return mergeManyNormalized(seriesList);
+    const merged = mergeManyNormalized(seriesList);
+    if (!fetchSpec.showSma100) return merged;
+
+    const smaSeries = priceQueries.map((q) => ({
+      label: smaLineKey(q.data!.symbol),
+      points: normalizedSma100Series(q.data!.prices),
+    }));
+    if (smaSeries.some((s) => !s.points.length)) return merged;
+    return mergeManyNormalized([
+      ...seriesList.map((s) => ({ label: s.label, points: s.points })),
+      ...smaSeries,
+    ]);
   }, [fetchSpec, loadedSymbols.length, priceQueries]);
 
   const allFetchedOk =
@@ -201,6 +232,7 @@ export default function Compare() {
       symbols: syms,
       start,
       end,
+      showSma100: smaOverlayPending,
     }));
   };
 
@@ -289,6 +321,15 @@ export default function Compare() {
             value={end}
             onChange={(e) => setEnd(e.target.value)}
           />
+          <label className="flex cursor-pointer items-center gap-2 pt-6 text-sm text-gray-700">
+            <input
+              type="checkbox"
+              checked={smaOverlayPending}
+              onChange={(e) => setSmaOverlayPending(e.target.checked)}
+              className="h-4 w-4 rounded border-gray-300"
+            />
+            Show 100-day SMA (rebased)
+          </label>
           <Button
             type="button"
             onClick={handleLoad}
@@ -354,6 +395,21 @@ export default function Compare() {
                       connectNulls={false}
                     />
                   ))}
+                  {fetchSpec.showSma100 &&
+                    loadedSymbols.map((sym, i) => (
+                      <Line
+                        key={`${sym}-sma`}
+                        type="monotone"
+                        dataKey={smaLineKey(sym)}
+                        name={`${sym} 100d SMA`}
+                        stroke={LINE_COLORS[i % LINE_COLORS.length]}
+                        dot={false}
+                        strokeWidth={1.5}
+                        strokeDasharray="6 3"
+                        strokeOpacity={0.85}
+                        connectNulls
+                      />
+                    ))}
                 </LineChart>
               </ResponsiveContainer>
             </div>
