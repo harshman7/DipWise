@@ -5,6 +5,7 @@ interface MetricCardProps {
   value: string | number;
   sub?: string;
   positive?: boolean;
+  interactive?: boolean;
 }
 
 export default function MetricCard({
@@ -12,9 +13,10 @@ export default function MetricCard({
   value,
   sub,
   positive,
+  interactive = true,
 }: MetricCardProps) {
   return (
-    <Card className="flex flex-col gap-1">
+    <Card interactive={interactive} className="flex flex-col gap-1">
       <span className="text-xs font-medium uppercase tracking-wide text-gray-500">
         {label}
       </span>
