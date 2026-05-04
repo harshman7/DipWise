@@ -33,21 +33,6 @@ export interface AssetResponse {
   exchange: AssetResponseExchange;
 }
 
-export type BodyLoginTokenAuthTokenPostGrantType = string | null;
-
-export type BodyLoginTokenAuthTokenPostClientId = string | null;
-
-export type BodyLoginTokenAuthTokenPostClientSecret = string | null;
-
-export interface BodyLoginTokenAuthTokenPost {
-  grant_type?: BodyLoginTokenAuthTokenPostGrantType;
-  username: string;
-  password: string;
-  scope?: string;
-  client_id?: BodyLoginTokenAuthTokenPostClientId;
-  client_secret?: BodyLoginTokenAuthTokenPostClientSecret;
-}
-
 export interface DipAnalysisRequest {
   symbol: string;
   start_date: string;
@@ -104,11 +89,6 @@ export interface HoldingPeriodSummary {
   worst_return_pct: number;
 }
 
-export interface LoginRequest {
-  email: string;
-  password: string;
-}
-
 export type PortfolioResponseDescription = string | null;
 
 export interface PortfolioResponse {
@@ -133,28 +113,6 @@ export interface PriceListResponse {
   start: string;
   end: string;
   prices: PriceBar[];
-}
-
-export type RegisterRequestFullName = string | null;
-
-export interface RegisterRequest {
-  email: string;
-  password: string;
-  full_name?: RegisterRequestFullName;
-}
-
-export interface TokenResponse {
-  access_token: string;
-  token_type?: string;
-}
-
-export type UserResponseFullName = string | null;
-
-export interface UserResponse {
-  id: number;
-  email: string;
-  full_name: UserResponseFullName;
-  is_active: boolean;
 }
 
 export type ValidationErrorLocItem = string | number;
@@ -182,192 +140,6 @@ end: string;
 export type ExportDipsPdfReportsDipsPdfPost200 = { [key: string]: unknown };
 
 export type HealthHealthGet200 = {[key: string]: string};
-
-/**
- * Register a new user account.
- * @summary Register
- */
-export type registerAuthRegisterPostResponse201 = {
-  data: TokenResponse
-  status: 201
-}
-
-export type registerAuthRegisterPostResponse422 = {
-  data: HTTPValidationError
-  status: 422
-}
-    
-export type registerAuthRegisterPostResponseSuccess = (registerAuthRegisterPostResponse201) & {
-  headers: Headers;
-};
-export type registerAuthRegisterPostResponseError = (registerAuthRegisterPostResponse422) & {
-  headers: Headers;
-};
-
-export type registerAuthRegisterPostResponse = (registerAuthRegisterPostResponseSuccess | registerAuthRegisterPostResponseError)
-
-export const getRegisterAuthRegisterPostUrl = () => {
-
-
-  
-
-  return `/auth/register`
-}
-
-export const registerAuthRegisterPost = async (registerRequest: RegisterRequest, options?: RequestInit): Promise<registerAuthRegisterPostResponse> => {
-  
-  return dipwiseFetch<registerAuthRegisterPostResponse>(getRegisterAuthRegisterPostUrl(),
-  {      
-    ...options,
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(
-      registerRequest,)
-  }
-);}
-
-
-
-/**
- * Authenticate with JSON body and return a JWT.
- * @summary Login
- */
-export type loginAuthLoginPostResponse200 = {
-  data: TokenResponse
-  status: 200
-}
-
-export type loginAuthLoginPostResponse422 = {
-  data: HTTPValidationError
-  status: 422
-}
-    
-export type loginAuthLoginPostResponseSuccess = (loginAuthLoginPostResponse200) & {
-  headers: Headers;
-};
-export type loginAuthLoginPostResponseError = (loginAuthLoginPostResponse422) & {
-  headers: Headers;
-};
-
-export type loginAuthLoginPostResponse = (loginAuthLoginPostResponseSuccess | loginAuthLoginPostResponseError)
-
-export const getLoginAuthLoginPostUrl = () => {
-
-
-  
-
-  return `/auth/login`
-}
-
-export const loginAuthLoginPost = async (loginRequest: LoginRequest, options?: RequestInit): Promise<loginAuthLoginPostResponse> => {
-  
-  return dipwiseFetch<loginAuthLoginPostResponse>(getLoginAuthLoginPostUrl(),
-  {      
-    ...options,
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(
-      loginRequest,)
-  }
-);}
-
-
-
-/**
- * OAuth2-compatible token endpoint (username = email). For Swagger Authorize.
- * @summary Login Token
- */
-export type loginTokenAuthTokenPostResponse200 = {
-  data: TokenResponse
-  status: 200
-}
-
-export type loginTokenAuthTokenPostResponse422 = {
-  data: HTTPValidationError
-  status: 422
-}
-    
-export type loginTokenAuthTokenPostResponseSuccess = (loginTokenAuthTokenPostResponse200) & {
-  headers: Headers;
-};
-export type loginTokenAuthTokenPostResponseError = (loginTokenAuthTokenPostResponse422) & {
-  headers: Headers;
-};
-
-export type loginTokenAuthTokenPostResponse = (loginTokenAuthTokenPostResponseSuccess | loginTokenAuthTokenPostResponseError)
-
-export const getLoginTokenAuthTokenPostUrl = () => {
-
-
-  
-
-  return `/auth/token`
-}
-
-export const loginTokenAuthTokenPost = async (bodyLoginTokenAuthTokenPost: BodyLoginTokenAuthTokenPost, options?: RequestInit): Promise<loginTokenAuthTokenPostResponse> => {
-    const formUrlEncoded = new URLSearchParams();
-if(bodyLoginTokenAuthTokenPost.grant_type !== undefined && bodyLoginTokenAuthTokenPost.grant_type !== null) {
- formUrlEncoded.append(`grant_type`, bodyLoginTokenAuthTokenPost.grant_type)
- }
-formUrlEncoded.append(`username`, bodyLoginTokenAuthTokenPost.username)
-formUrlEncoded.append(`password`, bodyLoginTokenAuthTokenPost.password)
-if(bodyLoginTokenAuthTokenPost.scope !== undefined) {
- formUrlEncoded.append(`scope`, bodyLoginTokenAuthTokenPost.scope)
- }
-if(bodyLoginTokenAuthTokenPost.client_id !== undefined && bodyLoginTokenAuthTokenPost.client_id !== null) {
- formUrlEncoded.append(`client_id`, bodyLoginTokenAuthTokenPost.client_id)
- }
-if(bodyLoginTokenAuthTokenPost.client_secret !== undefined && bodyLoginTokenAuthTokenPost.client_secret !== null) {
- formUrlEncoded.append(`client_secret`, bodyLoginTokenAuthTokenPost.client_secret)
- }
-
-  return dipwiseFetch<loginTokenAuthTokenPostResponse>(getLoginTokenAuthTokenPostUrl(),
-  {      
-    ...options,
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded', ...options?.headers },
-    body: 
-      formUrlEncoded,
-  }
-);}
-
-
-
-/**
- * @summary Me
- */
-export type meAuthMeGetResponse200 = {
-  data: UserResponse
-  status: 200
-}
-    
-export type meAuthMeGetResponseSuccess = (meAuthMeGetResponse200) & {
-  headers: Headers;
-};
-;
-
-export type meAuthMeGetResponse = (meAuthMeGetResponseSuccess)
-
-export const getMeAuthMeGetUrl = () => {
-
-
-  
-
-  return `/auth/me`
-}
-
-export const meAuthMeGet = async ( options?: RequestInit): Promise<meAuthMeGetResponse> => {
-  
-  return dipwiseFetch<meAuthMeGetResponse>(getMeAuthMeGetUrl(),
-  {      
-    ...options,
-    method: 'GET'
-    
-    
-  }
-);}
-
-
 
 /**
  * List all tracked assets.

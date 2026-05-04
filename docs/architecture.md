@@ -15,9 +15,8 @@ infra/       — Docker configuration for local and production deployments
 
 - **Framework:** React 18 with TypeScript, bundled by Vite.
 - **Styling:** TailwindCSS with a custom `brand` color scale.
-- **Routing:** React Router v6 with a sidebar-based `AppLayout`; main routes are behind `ProtectedRoute` (JWT in `localStorage`).
-- **Auth:** `AuthContext` stores token + user; `POST /auth/login` and `/auth/register` set the session; `GET /auth/me` refreshes the profile.
-- **Data Fetching:** TanStack Query; `lib/api.ts` uses the Orval-generated client from `@dipwise/shared` for dip analysis and auth; raw `fetch` remains for simple helpers.
+- **Routing:** React Router v6 with a sidebar-based `AppLayout`; all main routes are **public** (JWT/login temporarily removed).
+- **Data Fetching:** TanStack Query; `lib/api.ts` uses the Orval-generated client from `@dipwise/shared` for dip analysis; raw `fetch` remains for simple helpers.
 - **Forms:** React Hook Form with Zod schema validation.
 - **Charts:** Recharts (LineChart for dip visualization; more chart types planned).
 
@@ -28,7 +27,7 @@ infra/       — Docker configuration for local and production deployments
 - **Validation:** Pydantic v2 models for all request/response schemas.
 - **Database:** PostgreSQL via SQLAlchemy 2.0 (synchronous engine with `psycopg2`).
 - **Migrations:** Alembic with a hand-written initial migration covering all 12 tables.
-- **Auth:** JWT (jose + passlib/bcrypt). `get_current_user` dependency (Bearer token) protects `/portfolios/*` and `/alerts/*`. `POST /auth/token` accepts OAuth2 password form for Swagger "Authorize".
+- **Auth:** Temporarily **off** — no `/auth` router. [`apps/api/app/core/security.py`](apps/api/app/core/security.py) (bcrypt/JWT helpers) remains for a future restore. `/portfolios` and `/alerts` are stubs without Bearer tokens.
 
 ## Database
 
@@ -61,7 +60,7 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 - Export: `apps/api/scripts/export_openapi.py` writes `packages/shared/openapi.json`.
 - Generate: `npm run codegen:api` (repo root) runs export + Orval (`packages/shared/orval.config.cjs`) into `packages/shared/src/generated/api.ts`.
-- Frontend imports `@dipwise/shared` (and `dipwiseFetch` mutator for Bearer + `VITE_API_BASE_URL`).
+- Frontend imports `@dipwise/shared` (`dipwiseFetch` mutator sets base URL; optional Bearer when auth returns).
 
 ## Deployment (Future)
 

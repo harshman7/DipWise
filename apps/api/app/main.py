@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
-from app.routers import alerts, analysis, assets, auth, portfolios, prices, reports
+from app.routers import alerts, analysis, assets, portfolios, prices, reports
 
 
 def create_app() -> FastAPI:
@@ -20,7 +20,6 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
-    application.include_router(auth.router)
     application.include_router(assets.router)
     application.include_router(prices.router)
     application.include_router(analysis.router)

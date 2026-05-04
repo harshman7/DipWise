@@ -4,7 +4,7 @@ Base URL: `http://localhost:8000`
 
 Interactive docs available at `/docs` (Swagger UI) and `/redoc` (ReDoc).
 
-Use `Authorization: Bearer <access_token>` for protected routes. In Swagger, use **Authorize** with the token from `POST /auth/token` (form: username = email, password).
+**Authentication:** Disabled in this revision. There are no `/auth/*` routes; portfolio and alert endpoints are unauthenticated stubs (see below).
 
 ## Health
 
@@ -17,36 +17,6 @@ Returns service status.
 ```json
 { "status": "ok", "service": "dipwise-api" }
 ```
-
-## Auth
-
-### POST /auth/register
-
-Register and receive a JWT.
-
-**Body:**
-
-```json
-{ "email": "user@example.com", "password": "secret", "full_name": "Jane Doe" }
-```
-
-### POST /auth/login
-
-JSON login.
-
-**Body:**
-
-```json
-{ "email": "user@example.com", "password": "secret" }
-```
-
-### POST /auth/token
-
-OAuth2 password flow (`username` = email). Used by Swagger Authorize.
-
-### GET /auth/me
-
-Current user (requires Bearer).
 
 ## Assets
 
@@ -94,21 +64,21 @@ Detect dips (rolling high vs adjusted close) and backtest buy-the-dip vs equal d
 
 ### GET /portfolios/
 
-List portfolios for the authenticated user.
+Returns an empty list (stub until auth returns).
 
 ### GET /portfolios/{portfolio_id}
 
-Get one portfolio (404 if not owned).
+Returns **501 Not Implemented**.
 
 ## Alerts
 
 ### GET /alerts/
 
-List alerts for the authenticated user.
+Returns an empty list (stub until auth returns).
 
 ### POST /alerts/
 
-Create alert (`dip_threshold`: threshold = drawdown vs rolling high, e.g. `0.05`; `price_below`: threshold = max price).
+Returns **501 Not Implemented** (stub).
 
 ## Reports
 

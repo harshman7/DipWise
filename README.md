@@ -41,6 +41,8 @@ docker compose up --build
 - Frontend: http://localhost:5173
 - API: http://localhost:8000
 - API docs: http://localhost:8000/docs
+- PostgreSQL from your host (psql, GUI): **localhost:5433** by default — avoids clashing with a local Postgres on 5432. Override with `POSTGRES_PUBLISH_PORT` in `.env`.
+- **Auth:** Login and registration are **disabled** for now; all app routes are open. JWT routes may return in a future release.
 
 ### Local development (without Docker)
 
@@ -70,9 +72,10 @@ Requires PostgreSQL and Redis running locally (update `.env` with local URLs).
 | `POSTGRES_USER`       | PostgreSQL username                          | `dipwise`                  |
 | `POSTGRES_PASSWORD`   | PostgreSQL password                          | `dipwise_secret`           |
 | `POSTGRES_DB`         | PostgreSQL database name                     | `dipwise`                  |
+| `POSTGRES_PUBLISH_PORT` | Host port mapped to Postgres (container still listens on 5432) | `5433` |
 | `DATABASE_URL`        | Full database connection string              | (compose default)          |
 | `REDIS_URL`           | Redis connection string                      | `redis://redis:6379/0`     |
-| `JWT_SECRET_KEY`      | Secret key for JWT token signing             | (change in production)     |
+| `JWT_SECRET_KEY`      | Reserved for future JWT auth                 | (unused while auth is off) |
 | `MARKET_DATA_PROVIDER`| `yahoo` \| `polygon` \| `alphavantage`      | `yahoo`                    |
 | `MARKET_DATA_API_KEY` | Polygon or Alpha Vantage API key              | (empty for Yahoo)          |
 | `NEWS_API_KEY`        | News provider API key                        | (empty)                    |
@@ -96,23 +99,20 @@ This runs `apps/api/scripts/export_openapi.py` and Orval in `packages/shared`.
 | GET    | `/health`         | Implemented  | Service health check            |
 | POST   | `/analysis/dips`  | Implemented  | Dip detection + backtest (real provider data) |
 | POST   | `/reports/dips/csv` | Implemented | CSV export of dip analysis      |
-| POST   | `/auth/register`  | Implemented  | User registration + JWT         |
-| POST   | `/auth/login`     | Implemented  | JSON login + JWT                |
-| POST   | `/auth/token`     | Implemented  | OAuth2 form login (Swagger)     |
-| GET    | `/auth/me`        | Implemented  | Current user (Bearer)           |
 | GET    | `/assets/`        | Stub         | List tracked assets             |
 | GET    | `/prices/{symbol}`| Implemented  | DB + provider backfill          |
 | POST   | `/prices/{symbol}/refresh` | Implemented | Force provider refresh   |
-| GET    | `/portfolios/`    | Implemented  | List portfolios (auth)          |
-| GET    | `/alerts/`        | Implemented  | List alerts (auth)            |
-| POST   | `/alerts/`        | Implemented  | Create alert (auth)             |
+| GET    | `/portfolios/`    | Stub         | Returns empty list (no auth)   |
+| GET    | `/portfolios/{id}` | Stub       | 501 Not Implemented            |
+| GET    | `/alerts/`        | Stub         | Returns empty list             |
+| POST   | `/alerts/`        | Stub         | 501 Not Implemented            |
 
 Full endpoint reference: [docs/api.md](docs/api.md)
 
 ## Roadmap
 
-1. Add Recharts visualizations with full loaded price series from `/prices`.
-2. Implement CSV/PDF report generation with richer templates.
-3. Add news sentiment integration and UI overlays.
-4. Production deployment configuration (TLS, managed DB, secrets management).
-5. Refresh-token or session rotation for long-lived clients.
+1. Re-enable JWT authentication (register, login, protected portfolios/alerts).
+2. Add Recharts visualizations with full loaded price series from `/prices`.
+3. Implement CSV/PDF report generation with richer templates.
+4. Add news sentiment integration and UI overlays.
+5. Production deployment configuration (TLS, managed DB, secrets management).
