@@ -12,7 +12,11 @@ import type { DipEvent } from "@/types/analysis";
 interface PriceChartProps {
   events: DipEvent[];
   /** Full-series adjusted close from `/prices` for the same window. */
-  fullPrices?: { date: string; adj_close: number }[];
+  fullPrices?: {
+    date: string;
+    adj_close: number;
+    sma_100?: number | null;
+  }[];
 }
 
 export default function PriceChart({ events, fullPrices }: PriceChartProps) {
@@ -32,6 +36,7 @@ export default function PriceChart({ events, fullPrices }: PriceChartProps) {
     return {
       date,
       adjClose: fp?.adj_close,
+      sma100: fp?.sma_100 ?? undefined,
       rollingHigh: ev?.rolling_high,
       dipPrice: ev?.price,
     };
@@ -53,6 +58,18 @@ export default function PriceChart({ events, fullPrices }: PriceChartProps) {
               dot={false}
               strokeWidth={1.5}
               name="Adj. close"
+              connectNulls
+            />
+          )}
+          {fullPrices?.some((p) => p.sma_100 != null) && (
+            <Line
+              type="monotone"
+              dataKey="sma100"
+              stroke="#a855f7"
+              dot={false}
+              strokeWidth={1.5}
+              strokeDasharray="6 3"
+              name="100-day SMA"
               connectNulls
             />
           )}

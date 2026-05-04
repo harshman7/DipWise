@@ -150,6 +150,11 @@ export interface PositionResponse {
   avg_cost_basis: number;
 }
 
+/**
+ * 100-day simple moving average of adj_close when requested via sma_periods.
+ */
+export type PriceBarSma100 = number | null;
+
 export interface PriceBar {
   date: string;
   open: number;
@@ -158,6 +163,8 @@ export interface PriceBar {
   close: number;
   adj_close: number;
   volume: number;
+  /** 100-day simple moving average of adj_close when requested via sma_periods. */
+  sma_100?: PriceBarSma100;
 }
 
 export interface PriceListResponse {
@@ -228,11 +235,19 @@ export interface WatchlistResponse {
 export type GetPricesPricesSymbolGetParams = {
 start: string;
 end: string;
+/**
+ * SMA lookbacks to include (e.g. repeat query param or use 100). Only sma_100 is returned for period 100.
+ */
+sma_periods?: number[] | null;
 };
 
 export type RefreshPricesPricesSymbolRefreshPostParams = {
 start: string;
 end: string;
+/**
+ * SMA lookbacks; warms up history before start when set.
+ */
+sma_periods?: number[] | null;
 };
 
 export type HealthHealthGet200 = {[key: string]: string};

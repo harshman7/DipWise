@@ -106,17 +106,38 @@ export default function DipBacktester() {
       result?.symbol,
       result?.start_date,
       result?.end_date,
+      "sma100",
     ],
     enabled: !!result,
     queryFn: async () => {
       const r = await getPricesPricesSymbolGet(result!.symbol, {
         start: String(result!.start_date),
         end: String(result!.end_date),
+        sma_periods: [100],
       });
       if (r.status !== 200) throw new Error("Could not load prices");
       return r.data;
     },
   });
+
+  const latestSmaInsight = useMemo(() => {
+    const prices = priceQuery.data?.prices;
+    if (!prices?.length) return null;
+    for (let i = prices.length - 1; i >= 0; i--) {
+      const p = prices[i];
+      const sma = p.sma_100;
+      if (sma != null && sma > 0) {
+        const vs = ((p.adj_close / sma) - 1) * 100;
+        return {
+          date: p.date,
+          adjClose: p.adj_close,
+          sma,
+          vsSmaPct: vs,
+        };
+      }
+    }
+    return null;
+  }, [priceQuery.data?.prices]);
 
   const newsQuery = useQuery({
     queryKey: ["backtester-news", result?.symbol, token],
@@ -132,6 +153,7 @@ export default function DipBacktester() {
     priceQuery.data?.prices.map((p) => ({
       date: p.date,
       adj_close: p.adj_close,
+      sma_100: p.sma_100,
     })) ?? undefined;
 
   return (
@@ -269,9 +291,21 @@ export default function DipBacktester() {
           )}
           <Card>
             <h2 className="mb-3 text-sm font-semibold text-gray-700">
-              Prices, dips, and rolling high
+              Prices, dips, rolling high, and 100-day SMA
             </h2>
             <PriceChart events={result.dip_events} fullPrices={fullPrices} />
+            {latestSmaInsight && (
+              <p className="mt-3 text-sm text-gray-600">
+                <span className="font-medium text-gray-800">Latest in range</span>
+                {" · "}
+                Adj. close {latestSmaInsight.adjClose.toFixed(2)} vs 100-day SMA{" "}
+                {latestSmaInsight.sma.toFixed(2)}
+                {" · "}
+                {latestSmaInsight.vsSmaPct >= 0 ? "+" : ""}
+                {latestSmaInsight.vsSmaPct.toFixed(2)}% vs SMA
+                <span className="text-gray-400"> ({latestSmaInsight.date})</span>
+              </p>
+            )}
           </Card>
           {token && newsQuery.data && (
             <Card>
