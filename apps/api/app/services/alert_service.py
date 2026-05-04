@@ -5,9 +5,11 @@ from datetime import date
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
+from app.models.asset import Asset
 from app.models.alert import Alert, AlertEvent
 from app.models.price import DailyPrice
 from app.schemas.alert import AlertCreate, AlertResponse
+from app.services.price_ingestion_service import upsert_asset
 
 
 DEFAULT_LOOKBACK = 90
@@ -24,9 +26,20 @@ def list_alerts(db: Session, user_id: int) -> list[AlertResponse]:
 
 
 def create_alert(db: Session, user_id: int, body: AlertCreate) -> AlertResponse:
+    if body.symbol and str(body.symbol).strip():
+        a = upsert_asset(db, body.symbol)
+        db.flush()
+        asset_id = a.id
+    elif body.asset_id is not None:
+        exists = db.query(Asset).filter(Asset.id == body.asset_id).first()
+        if not exists:
+            raise ValueError("Unknown asset_id")
+        asset_id = body.asset_id
+    else:
+        raise ValueError("Provide asset_id or symbol")
     alert = Alert(
         user_id=user_id,
-        asset_id=body.asset_id,
+        asset_id=asset_id,
         alert_type=body.alert_type,
         threshold=body.threshold,
         message=body.message,

@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { getPricesPricesSymbolGet, newsForSymbolNewsSymbolGet } from "@dipwise/shared";
 import { postAnalysisDips } from "@/lib/api";
+import { useAuth } from "@/context/AuthContext";
 import type { DipAnalysisRequest, DipAnalysisResponse } from "@/types/analysis";
 import PageHeader from "@/components/PageHeader";
 import Card from "@/components/ui/Card";
@@ -36,21 +38,86 @@ const DEFAULT_VALUES: FormValues = {
   holding_period_days: "30,90,365,730",
 };
 
+/** Curated liquid ETFs and widely held stocks for quick selection. */
+const POPULAR_TICKERS: { symbol: string; name: string }[] = [
+  { symbol: "VOO", name: "Vanguard S&P 500 ETF" },
+  { symbol: "SPY", name: "SPDR S&P 500 ETF" },
+  { symbol: "QQQ", name: "Invesco Nasdaq-100 ETF" },
+  { symbol: "IWM", name: "iShares Russell 2000 ETF" },
+  { symbol: "DIA", name: "SPDR Dow Jones ETF" },
+  { symbol: "VTI", name: "Vanguard Total Stock Market ETF" },
+  { symbol: "VXUS", name: "Vanguard Total International Stock ETF" },
+  { symbol: "BND", name: "Vanguard Total Bond Market ETF" },
+  { symbol: "SCHD", name: "Schwab US Dividend Equity ETF" },
+  { symbol: "VUG", name: "Vanguard Growth ETF" },
+  { symbol: "VTV", name: "Vanguard Value ETF" },
+  { symbol: "XLK", name: "Technology Select Sector SPDR" },
+  { symbol: "XLE", name: "Energy Select Sector SPDR" },
+  { symbol: "XLF", name: "Financial Select Sector SPDR" },
+  { symbol: "GLD", name: "SPDR Gold Shares" },
+  { symbol: "TLT", name: "iShares 20+ Year Treasury Bond ETF" },
+  { symbol: "AAPL", name: "Apple Inc." },
+  { symbol: "MSFT", name: "Microsoft Corp." },
+  { symbol: "GOOGL", name: "Alphabet Inc. (Class A)" },
+  { symbol: "AMZN", name: "Amazon.com Inc." },
+  { symbol: "META", name: "Meta Platforms Inc." },
+  { symbol: "NVDA", name: "NVIDIA Corp." },
+  { symbol: "BRK.B", name: "Berkshire Hathaway (Class B)" },
+  { symbol: "JPM", name: "JPMorgan Chase & Co." },
+  { symbol: "JNJ", name: "Johnson & Johnson" },
+  { symbol: "V", name: "Visa Inc." },
+  { symbol: "MA", name: "Mastercard Inc." },
+  { symbol: "UNH", name: "UnitedHealth Group Inc." },
+];
+
 export default function DipBacktester() {
+  const { token } = useAuth();
   const [result, setResult] = useState<DipAnalysisResponse | null>(null);
+  const [holdingPeriods, setHoldingPeriods] = useState<number[]>([
+    30, 90, 365, 730,
+  ]);
+
+  const [popularSearch, setPopularSearch] = useState("");
 
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: DEFAULT_VALUES,
   });
 
+  const symbolValue = watch("symbol");
+
+  const filteredPopular = useMemo(() => {
+    const q = popularSearch.trim().toLowerCase();
+    if (!q) return POPULAR_TICKERS;
+    return POPULAR_TICKERS.filter(
+      (t) =>
+        t.symbol.toLowerCase().includes(q) ||
+        t.name.toLowerCase().includes(q),
+    );
+  }, [popularSearch]);
+
+  const popularSelectValue = POPULAR_TICKERS.some(
+    (t) => t.symbol === symbolValue?.toUpperCase(),
+  )
+    ? symbolValue.toUpperCase()
+    : "";
+
   const mutation = useMutation({
     mutationFn: (req: DipAnalysisRequest) => postAnalysisDips(req),
-    onSuccess: setResult,
+    onSuccess: (data, variables) => {
+      setResult(data);
+      setHoldingPeriods(
+        variables.holding_period_days?.length
+          ? variables.holding_period_days
+          : [30, 90, 365, 730],
+      );
+    },
   });
 
   const onSubmit = (values: FormValues) => {
@@ -64,6 +131,40 @@ export default function DipBacktester() {
     mutation.mutate(req);
   };
 
+  const priceQuery = useQuery({
+    queryKey: [
+      "backtester-prices",
+      result?.symbol,
+      result?.start_date,
+      result?.end_date,
+    ],
+    enabled: !!result,
+    queryFn: async () => {
+      const r = await getPricesPricesSymbolGet(result!.symbol, {
+        start: String(result!.start_date),
+        end: String(result!.end_date),
+      });
+      if (r.status !== 200) throw new Error("Could not load prices");
+      return r.data;
+    },
+  });
+
+  const newsQuery = useQuery({
+    queryKey: ["backtester-news", result?.symbol, token],
+    enabled: !!result && !!token,
+    queryFn: async () => {
+      const r = await newsForSymbolNewsSymbolGet(result!.symbol);
+      if (r.status !== 200) throw new Error("News failed");
+      return r.data;
+    },
+  });
+
+  const fullPrices =
+    priceQuery.data?.prices.map((p) => ({
+      date: p.date,
+      adj_close: p.adj_close,
+    })) ?? undefined;
+
   return (
     <div>
       <PageHeader
@@ -76,12 +177,68 @@ export default function DipBacktester() {
           onSubmit={handleSubmit(onSubmit)}
           className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
         >
-          <Input
-            label="Symbol"
-            placeholder="VOO"
-            {...register("symbol")}
-            error={errors.symbol?.message}
-          />
+          <div className="sm:col-span-2 lg:col-span-4 rounded-lg border border-gray-100 bg-slate-50/80 p-4">
+            <p className="mb-3 text-xs font-medium uppercase tracking-wide text-gray-500">
+              Ticker
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="popular-search"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Search popular
+                </label>
+                <input
+                  id="popular-search"
+                  type="search"
+                  autoComplete="off"
+                  placeholder="Type symbol or company…"
+                  value={popularSearch}
+                  onChange={(e) => setPopularSearch(e.target.value)}
+                  className="h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm shadow-sm placeholder:text-gray-400 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+                />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="popular-select"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Popular tickers
+                </label>
+                <select
+                  id="popular-select"
+                  value={popularSelectValue}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    if (v) {
+                      setValue("symbol", v, { shouldValidate: true });
+                    }
+                  }}
+                  className="h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm shadow-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+                >
+                  <option value="">Choose a ticker…</option>
+                  {filteredPopular.map((t) => (
+                    <option key={t.symbol} value={t.symbol}>
+                      {t.symbol} — {t.name}
+                    </option>
+                  ))}
+                </select>
+                {filteredPopular.length === 0 && (
+                  <p className="text-xs text-gray-500">No matches — type a symbol below.</p>
+                )}
+              </div>
+              <Input
+                label="Symbol (any ticker)"
+                placeholder="e.g. VOO"
+                {...register("symbol", {
+                  setValueAs: (v) =>
+                    typeof v === "string" ? v.trim().toUpperCase() : v,
+                })}
+                error={errors.symbol?.message}
+              />
+            </div>
+          </div>
           <Input
             label="Start Date"
             type="date"
@@ -138,23 +295,61 @@ export default function DipBacktester() {
       {result && (
         <div className="space-y-6">
           <BacktestSummary data={result} />
+          {priceQuery.isLoading && (
+            <LoadingState message="Loading price history for chart…" />
+          )}
           <Card>
             <h2 className="mb-3 text-sm font-semibold text-gray-700">
-              Dip Prices vs Rolling High
+              Prices, dips, and rolling high
             </h2>
-            <PriceChart events={result.dip_events} />
+            <PriceChart events={result.dip_events} fullPrices={fullPrices} />
           </Card>
+          {token && newsQuery.data && (
+            <Card>
+              <h2 className="mb-3 text-sm font-semibold text-gray-700">
+                Headlines ({result.symbol})
+              </h2>
+              {newsQuery.data.provider_note && (
+                <p className="mb-2 text-xs text-amber-700">
+                  {newsQuery.data.provider_note}
+                </p>
+              )}
+              <ul className="space-y-2 text-sm">
+                {newsQuery.data.articles.length === 0 ? (
+                  <li className="text-gray-500">No articles returned.</li>
+                ) : (
+                  newsQuery.data.articles.map((a) => (
+                    <li key={a.url} className="border-b border-gray-100 pb-2">
+                      <a
+                        href={a.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-medium text-brand-700 hover:underline"
+                      >
+                        {a.headline}
+                      </a>
+                      <div className="mt-0.5 text-xs text-gray-500">
+                        {a.source ?? "News"}{" "}
+                        · {new Date(a.published_at).toLocaleString()}
+                      </div>
+                    </li>
+                  ))
+                )}
+              </ul>
+            </Card>
+          )}
+          {!token && (
+            <Card className="border-dashed border-gray-200 bg-slate-50 text-sm text-gray-600">
+              Sign in to see news headlines for this symbol on this page.
+            </Card>
+          )}
           <Card>
             <h2 className="mb-3 text-sm font-semibold text-gray-700">
               Dip Events
             </h2>
             <DipEventsTable
               events={result.dip_events}
-              holdingPeriods={
-                DEFAULT_VALUES.holding_period_days
-                  .split(",")
-                  .map((s) => parseInt(s.trim(), 10))
-              }
+              holdingPeriods={holdingPeriods}
             />
           </Card>
         </div>

@@ -24,3 +24,13 @@ class PositionResponse(BaseModel):
     avg_cost_basis: float
 
     model_config = {"from_attributes": True}
+
+
+class PortfolioDetailResponse(BaseModel):
+    id: int
+    name: str
+    description: str | None
+    created_at: datetime
+    positions: list[PositionResponse]
+
+    model_config = {"from_attributes": True}

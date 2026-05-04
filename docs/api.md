@@ -4,29 +4,37 @@ Base URL: `http://localhost:8000`
 
 Interactive docs available at `/docs` (Swagger UI) and `/redoc` (ReDoc).
 
-**Authentication:** Disabled in this revision. There are no `/auth/*` routes; portfolio and alert endpoints are unauthenticated stubs (see below).
+**Authentication:** JWT bearer. Call `POST /auth/login` with email and password; send the returned `access_token` as `Authorization: Bearer <token>` on protected routes. The generated TypeScript client (`@dipwise/shared`) reads the token from `localStorage` key `dipwise_token`.
 
 ## Health
 
 ### GET /health
 
-Returns service status.
+Returns service status (public).
 
-**Response:**
+## Auth
 
-```json
-{ "status": "ok", "service": "dipwise-api" }
-```
+### POST /auth/register
+
+Create an account. Body: `email`, `password` (min 8 chars), optional `full_name`. **409** if email exists.
+
+### POST /auth/login
+
+Body: `email`, `password`. Returns `{ "access_token": "...", "token_type": "bearer" }`.
+
+### GET /auth/me
+
+Current user profile (requires bearer).
 
 ## Assets
 
 ### GET /assets/
 
-List all tracked assets. *(Returns empty list until data is seeded)*
+List tracked assets from the database (public).
 
 ### GET /assets/{symbol}
 
-Get a single asset by ticker symbol.
+Get one asset by ticker (public). **404** if not in DB (primed via `/prices/...` or watchlist/alert flows).
 
 ## Prices
 
@@ -42,7 +50,7 @@ Force provider fetch for the range and upsert DB.
 
 ### POST /analysis/dips
 
-Detect dips (rolling high vs adjusted close) and backtest buy-the-dip vs equal daily DCA over the same calendar window (same total capital as dip purchases).
+Detect dips and backtest buy-the-dip vs DCA (public).
 
 **Body:**
 
@@ -58,36 +66,62 @@ Detect dips (rolling high vs adjusted close) and backtest buy-the-dip vs equal d
 }
 ```
 
-**Response:** `DipAnalysisResponse` with metrics, per-holding-period summaries, and `dip_events` (forward returns use **trading** rows ahead, not calendar days).
-
-## Portfolios
+## Portfolios (authenticated)
 
 ### GET /portfolios/
 
-Returns an empty list (stub until auth returns).
+List portfolios for the current user.
+
+### POST /portfolios/
+
+Create a portfolio. Body: `name`, optional `description`.
 
 ### GET /portfolios/{portfolio_id}
 
-Returns **501 Not Implemented**.
+Portfolio detail including `positions` (symbol, shares, avg cost). **404** if not owned.
 
-## Alerts
+## Alerts (authenticated)
 
 ### GET /alerts/
 
-Returns an empty list (stub until auth returns).
+List alerts for the current user.
 
 ### POST /alerts/
 
-Returns **501 Not Implemented** (stub).
+Create an alert. Body: `threshold`, `alert_type` (`dip_threshold` | `price_below`), optional `message`, and either **`symbol`** or **`asset_id`**.
+
+## Watchlists (authenticated)
+
+### GET /watchlists/
+
+### POST /watchlists/
+
+Body: `{ "name": "..." }`
+
+### DELETE /watchlists/{watchlist_id}
+
+### GET /watchlists/{watchlist_id}/items
+
+### POST /watchlists/{watchlist_id}/items
+
+Body: `{ "symbol": "VOO" }`
+
+### DELETE /watchlists/{watchlist_id}/items/{item_id}
+
+## News (authenticated)
+
+### GET /news/{symbol}
+
+Headlines from NewsAPI.org when `NEWS_API_KEY` is set; otherwise `articles` may be empty and `provider_note` explains why.
 
 ## Reports
 
 ### POST /reports/dips/csv
 
-Run dip analysis and download results as CSV.
-
-**Body:** Same as `POST /analysis/dips`.
+Run dip analysis and download CSV (metadata comment lines + event rows). Public.
 
 ### POST /reports/dips/pdf
 
-PDF export. *(Not yet implemented — returns 501)*
+Run dip analysis and download a PDF report. Public.
+
+**Body:** Same as `POST /analysis/dips`.

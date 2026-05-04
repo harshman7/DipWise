@@ -8,12 +8,12 @@ Investment analytics platform for comparing stocks/ETFs, detecting historical pr
 
 - **Dip Detection** — Identify price dips relative to rolling highs with configurable thresholds.
 - **Backtest Engine** — Simulate buy-the-dip strategies and compare against dollar-cost averaging.
-- **Asset Comparison** — Side-by-side analysis of stocks and ETFs.
-- **Portfolio Tracking** — Track positions, transactions, and performance.
-- **Watchlists** — Monitor assets of interest.
-- **Alerts** — Configure dip threshold notifications.
-- **Reports** — Export analysis results to CSV/PDF.
-- **News Sentiment** — Overlay market news with sentiment scores (planned).
+- **Asset Comparison** — Normalized performance chart for two symbols over a date range.
+- **Portfolio Tracking** — Create portfolios and view positions (protected).
+- **Watchlists** — Create lists and symbols for Celery price ingestion (protected).
+- **Alerts** — Dip-threshold and price-below alerts (protected).
+- **Reports** — Export dip analysis to CSV (with summary header) or PDF.
+- **News** — Optional headlines via NewsAPI.org when `NEWS_API_KEY` is set (protected API + UI when signed in).
 
 ## Architecture
 
@@ -42,7 +42,8 @@ docker compose up --build
 - API: http://localhost:8000
 - API docs: http://localhost:8000/docs
 - PostgreSQL from your host (psql, GUI): **localhost:5433** by default — avoids clashing with a local Postgres on 5432. Override with `POSTGRES_PUBLISH_PORT` in `.env`.
-- **Auth:** Login and registration are **disabled** for now; all app routes are open. JWT routes may return in a future release.
+- **Migrations:** A one-off `migrate` service runs `alembic upgrade head` before `api`, `celery_worker`, and `celery_beat` start.
+- **Auth:** Register and sign in at **/login**. JWT is stored in `localStorage` as `dipwise_token` for API calls. Portfolio, watchlist, and alerts routes require authentication.
 
 ### Local development (without Docker)
 
@@ -50,8 +51,9 @@ docker compose up --build
 
 ```bash
 cd apps/api
-python -m venv .venv && source .venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+alembic upgrade head
 uvicorn app.main:app --reload --port 8000
 ```
 
@@ -75,44 +77,63 @@ Requires PostgreSQL and Redis running locally (update `.env` with local URLs).
 | `POSTGRES_PUBLISH_PORT` | Host port mapped to Postgres (container still listens on 5432) | `5433` |
 | `DATABASE_URL`        | Full database connection string              | (compose default)          |
 | `REDIS_URL`           | Redis connection string                      | `redis://redis:6379/0`     |
-| `JWT_SECRET_KEY`      | Reserved for future JWT auth                 | (unused while auth is off) |
+| `JWT_SECRET_KEY`      | Secret for signing JWT access tokens         | (change in production)    |
 | `MARKET_DATA_PROVIDER`| `yahoo` \| `polygon` \| `alphavantage`      | `yahoo`                    |
 | `MARKET_DATA_API_KEY` | Polygon or Alpha Vantage API key              | (empty for Yahoo)          |
-| `NEWS_API_KEY`        | News provider API key                        | (empty)                    |
+| `NEWS_API_KEY`        | [NewsAPI.org](https://newsapi.org/) key       | (empty; news optional)     |
 | `VITE_API_BASE_URL`   | Backend API URL for the frontend             | `http://localhost:8000`    |
+
+## Production checklist (summary)
+
+- Strong `POSTGRES_PASSWORD`, `JWT_SECRET_KEY`, and Redis credentials.
+- TLS at the edge (reverse proxy or load balancer); do not expose Postgres/Redis.
+- Use managed Postgres/Redis where possible.
+- See [infra/docker/docker-compose.prod.example.yml](infra/docker/docker-compose.prod.example.yml) as a sketch only.
 
 ## API client codegen
 
-Regenerate the TypeScript client and `openapi.json` after backend APIchanges:
+Regenerate the TypeScript client and `openapi.json` after backend API changes:
 
 ```bash
-# from repo root; requires Python venv with apps/api dependencies
+# from repo root; requires Python 3 with apps/api dependencies
 npm run codegen:api
 ```
 
 This runs `apps/api/scripts/export_openapi.py` and Orval in `packages/shared`.
+
+## Tests
+
+```bash
+cd apps/api && python3 -m pytest app/tests/ -q
+```
 
 ## API Overview
 
 | Method | Path              | Status       | Description                     |
 |--------|-------------------|--------------|---------------------------------|
 | GET    | `/health`         | Implemented  | Service health check            |
-| POST   | `/analysis/dips`  | Implemented  | Dip detection + backtest (real provider data) |
-| POST   | `/reports/dips/csv` | Implemented | CSV export of dip analysis      |
-| GET    | `/assets/`        | Stub         | List tracked assets             |
+| POST   | `/auth/register` | Implemented  | Create account                  |
+| POST   | `/auth/login`    | Implemented  | JWT access token                |
+| GET    | `/auth/me`       | Implemented  | Current user (bearer)         |
+| POST   | `/analysis/dips`  | Implemented  | Dip detection + backtest        |
+| POST   | `/reports/dips/csv` | Implemented | CSV export                      |
+| POST   | `/reports/dips/pdf` | Implemented | PDF export                      |
+| GET    | `/assets/`        | Implemented  | List tracked assets             |
+| GET    | `/assets/{symbol}`| Implemented  | Single asset                   |
 | GET    | `/prices/{symbol}`| Implemented  | DB + provider backfill          |
-| POST   | `/prices/{symbol}/refresh` | Implemented | Force provider refresh   |
-| GET    | `/portfolios/`    | Stub         | Returns empty list (no auth)   |
-| GET    | `/portfolios/{id}` | Stub       | 501 Not Implemented            |
-| GET    | `/alerts/`        | Stub         | Returns empty list             |
-| POST   | `/alerts/`        | Stub         | 501 Not Implemented            |
+| POST   | `/prices/{symbol}/refresh` | Implemented | Force provider refresh |
+| GET    | `/news/{symbol}` | Implemented  | Headlines (bearer, optional key) |
+| GET    | `/portfolios/`    | Implemented  | User portfolios (bearer)       |
+| POST   | `/portfolios/`    | Implemented  | Create portfolio (bearer)     |
+| GET    | `/portfolios/{id}` | Implemented | Detail + positions (bearer)     |
+| GET    | `/alerts/`        | Implemented  | User alerts (bearer)           |
+| POST   | `/alerts/`        | Implemented  | Create alert (bearer)          |
+| GET/POST/DELETE | `/watchlists/...` | Implemented | Watchlists (bearer) |
 
 Full endpoint reference: [docs/api.md](docs/api.md)
 
-## Roadmap
+## Roadmap ideas
 
-1. Re-enable JWT authentication (register, login, protected portfolios/alerts).
-2. Add Recharts visualizations with full loaded price series from `/prices`.
-3. Implement CSV/PDF report generation with richer templates.
-4. Add news sentiment integration and UI overlays.
-5. Production deployment configuration (TLS, managed DB, secrets management).
+- CRUD for portfolio positions and transactions via API/UI.
+- Deeper sentiment / NLP on headlines.
+- Hardening passlib/bcrypt versions across all environments.

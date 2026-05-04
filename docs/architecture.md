@@ -27,7 +27,7 @@ infra/       — Docker configuration for local and production deployments
 - **Validation:** Pydantic v2 models for all request/response schemas.
 - **Database:** PostgreSQL via SQLAlchemy 2.0 (synchronous engine with `psycopg2`).
 - **Migrations:** Alembic with a hand-written initial migration covering all 12 tables.
-- **Auth:** Temporarily **off** — no `/auth` router. [`apps/api/app/core/security.py`](apps/api/app/core/security.py) (bcrypt/JWT helpers) remains for a future restore. `/portfolios` and `/alerts` are stubs without Bearer tokens.
+- **Auth:** JWT via [`/auth/login`](apps/api/app/routers/auth.py) and [`HTTPBearer`](apps/api/app/core/deps.py). [`apps/api/app/core/security.py`](apps/api/app/core/security.py) hashes passwords and issues tokens. Portfolios, alerts, watchlists, and news require a valid Bearer token.
 
 ## Database
 
@@ -54,7 +54,7 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 ## External APIs
 
 - **Market data:** `market_data_service.py` — Yahoo Finance via `yfinance` (default), or Polygon daily aggregates / Alpha Vantage `TIME_SERIES_DAILY_ADJUSTED` when `MARKET_DATA_PROVIDER` and `MARKET_DATA_API_KEY` are set. Ingestion persists to `daily_prices`.
-- **News sentiment:** `sentiment_service.py` — still a stub for a future provider.
+- **News:** `sentiment_service.py` fetches headlines via NewsAPI when `NEWS_API_KEY` is set; optional persistence into `news_items` can be added later.
 
 ## OpenAPI client
 

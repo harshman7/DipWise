@@ -1,56 +1,53 @@
+# Example production-oriented Compose file (not wired to CI).
+# Replace image: directives with your registry builds; use strong secrets and TLS at the edge.
+
 services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-dipwise}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dipwise_secret}
-      POSTGRES_DB: ${POSTGRES_DB:-dipwise}
-    ports:
-      - "${POSTGRES_PUBLISH_PORT:-5433}:5432"
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-dipwise}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
       interval: 5s
       timeout: 5s
       retries: 5
+    # Do not publish 5432 publicly; DB reachable only on internal networks.
 
   redis:
     image: redis:7-alpine
-    ports:
-      - "6379:6379"
+    restart: unless-stopped
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
       timeout: 5s
       retries: 5
+    # Prefer Redis ACL + password in production.
 
   migrate:
-    build:
-      context: .
-      dockerfile: infra/docker/Dockerfile.api
-    working_dir: /app
+    image: ${API_IMAGE:-dipwise-api:latest}
     command: ["alembic", "upgrade", "head"]
     restart: "no"
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql://dipwise:dipwise_secret@postgres:5432/dipwise}
+      DATABASE_URL: ${DATABASE_URL}
     depends_on:
       postgres:
         condition: service_healthy
 
   api:
-    build:
-      context: .
-      dockerfile: infra/docker/Dockerfile.api
-    ports:
-      - "8000:8000"
+    image: ${API_IMAGE:-dipwise-api:latest}
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql://dipwise:dipwise_secret@postgres:5432/dipwise}
-      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
-      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-change-me-to-a-random-secret}
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
       MARKET_DATA_PROVIDER: ${MARKET_DATA_PROVIDER:-yahoo}
       MARKET_DATA_API_KEY: ${MARKET_DATA_API_KEY:-}
       NEWS_API_KEY: ${NEWS_API_KEY:-}
+      ENV: production
     depends_on:
       postgres:
         condition: service_healthy
@@ -58,16 +55,16 @@ services:
         condition: service_healthy
       migrate:
         condition: service_completed_successfully
+    restart: unless-stopped
+    # Put nginx/traefik in front for TLS termination; do not expose raw HTTP on the internet.
 
   celery_worker:
-    build:
-      context: .
-      dockerfile: infra/docker/Dockerfile.api
+    image: ${API_IMAGE:-dipwise-api:latest}
     command: celery -A app.workers.celery_app worker -l info
     working_dir: /app
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql://dipwise:dipwise_secret@postgres:5432/dipwise}
-      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL}
       MARKET_DATA_PROVIDER: ${MARKET_DATA_PROVIDER:-yahoo}
       MARKET_DATA_API_KEY: ${MARKET_DATA_API_KEY:-}
     depends_on:
@@ -77,16 +74,15 @@ services:
         condition: service_healthy
       migrate:
         condition: service_completed_successfully
+    restart: unless-stopped
 
   celery_beat:
-    build:
-      context: .
-      dockerfile: infra/docker/Dockerfile.api
+    image: ${API_IMAGE:-dipwise-api:latest}
     command: celery -A app.workers.celery_app beat -l info
     working_dir: /app
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql://dipwise:dipwise_secret@postgres:5432/dipwise}
-      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL}
       MARKET_DATA_PROVIDER: ${MARKET_DATA_PROVIDER:-yahoo}
       MARKET_DATA_API_KEY: ${MARKET_DATA_API_KEY:-}
     depends_on:
@@ -96,17 +92,15 @@ services:
         condition: service_healthy
       migrate:
         condition: service_completed_successfully
+    restart: unless-stopped
 
   web:
-    build:
-      context: .
-      dockerfile: infra/docker/Dockerfile.web
-    ports:
-      - "5173:5173"
+    image: ${WEB_IMAGE:-dipwise-web:latest}
     environment:
-      VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000}
+      VITE_API_BASE_URL: ${PUBLIC_API_URL:-https://api.example.com}
     depends_on:
       - api
+    restart: unless-stopped
 
 volumes:
   pgdata:
