@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useQueries } from "@tanstack/react-query";
-import { getPricesPricesSymbolGet } from "@dipwise/shared";
+import { getPricesPricesSymbolGet, type PriceBar } from "@dipwise/shared";
 import PageHeader from "@/components/PageHeader";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
@@ -9,6 +9,22 @@ import LoadingState from "@/components/LoadingState";
 import { POPULAR_TICKERS } from "@/constants/popularTickers";
 
 const MAX_SYMBOLS = 6;
+
+const MA_PERIOD_OPTIONS = [20, 50, 100, 200] as const;
+
+function lastSmaValue(last: PriceBar, period: number): number | null {
+  const fromMap = last.sma_by_period?.[String(period)];
+  if (fromMap != null && fromMap > 0) return fromMap;
+  if (period === 100 && last.sma_100 != null && last.sma_100 > 0) return last.sma_100;
+  return null;
+}
+
+function lastEmaValue(last: PriceBar, period: number): number | null {
+  const fromMap = last.ema_by_period?.[String(period)];
+  if (fromMap != null && fromMap > 0) return fromMap;
+  if (period === 100 && last.ema_100 != null && last.ema_100 > 0) return last.ema_100;
+  return null;
+}
 
 function dedupeSymbols(rows: string[]): string[] {
   const seen = new Set<string>();
@@ -23,7 +39,7 @@ function dedupeSymbols(rows: string[]): string[] {
   return out;
 }
 
-type FetchSpec = { id: number; symbols: string[]; start: string; end: string };
+type FetchSpec = { id: number; symbols: string[]; start: string; end: string; period: number };
 
 type TableRow = {
   symbol: string;
@@ -37,6 +53,7 @@ type TableRow = {
 
 export default function MovingAverages() {
   const [symbolRows, setSymbolRows] = useState<string[]>(["VOO", "QQQ", "IWM"]);
+  const [maPeriod, setMaPeriod] = useState<number>(100);
   const [start, setStart] = useState("2024-01-01");
   const [end, setEnd] = useState(() => new Date().toISOString().slice(0, 10));
   const [fetchSpec, setFetchSpec] = useState<FetchSpec | null>(null);
@@ -46,14 +63,22 @@ export default function MovingAverages() {
   const priceQueries = useQueries({
     queries:
       fetchSpec?.symbols.map((sym) => ({
-        queryKey: ["ma-overview", fetchSpec.id, sym, fetchSpec.start, fetchSpec.end] as const,
+        queryKey: [
+          "ma-overview",
+          fetchSpec.id,
+          sym,
+          fetchSpec.start,
+          fetchSpec.end,
+          fetchSpec.period,
+        ] as const,
         enabled: !!fetchSpec && fetchSpec.symbols.length >= 1,
         queryFn: async () => {
+          const p = fetchSpec.period;
           const r = await getPricesPricesSymbolGet(sym, {
             start: fetchSpec.start,
             end: fetchSpec.end,
-            sma_periods: [100],
-            ema_periods: [100],
+            sma_periods: [p],
+            ema_periods: [p],
           });
           if (r.status !== 200) throw new Error(`${sym}: could not load prices`);
           return { symbol: sym, prices: r.data.prices };
@@ -95,16 +120,17 @@ export default function MovingAverages() {
       }
       const pts = q.data.prices;
       const last = pts[pts.length - 1];
+      const smaVal = lastSmaValue(last, fetchSpec.period);
       let vsSma: number | null = null;
-      if (last.sma_100 != null && last.sma_100 > 0) {
-        vsSma = ((last.adj_close / last.sma_100) - 1) * 100;
+      if (smaVal != null && smaVal > 0) {
+        vsSma = ((last.adj_close / smaVal) - 1) * 100;
       }
       return {
         symbol: q.data.symbol,
         date: last.date,
         adjClose: last.adj_close,
-        sma100: last.sma_100 ?? null,
-        ema100: last.ema_100 ?? null,
+        sma100: smaVal,
+        ema100: lastEmaValue(last, fetchSpec.period),
         vsSmaPct: vsSma,
         error: null,
       };
@@ -123,7 +149,7 @@ export default function MovingAverages() {
     <div>
       <PageHeader
         title="Moving averages"
-        description="Latest 100-day SMA and EMA vs adjusted close for up to six tickers."
+        description="Configurable SMA and EMA period vs adjusted close for up to six tickers."
       />
 
       <Card className="mb-6">
@@ -204,6 +230,20 @@ export default function MovingAverages() {
           </label>
           <Input label="Start" type="date" value={start} onChange={(e) => setStart(e.target.value)} />
           <Input label="End" type="date" value={end} onChange={(e) => setEnd(e.target.value)} />
+          <label className="text-sm text-gray-700">
+            SMA / EMA period (days)
+            <select
+              className="ml-2 rounded-lg border border-gray-300 px-2 py-1.5 text-sm"
+              value={maPeriod}
+              onChange={(e) => setMaPeriod(Number(e.target.value))}
+            >
+              {MA_PERIOD_OPTIONS.map((p) => (
+                <option key={p} value={p}>
+                  {p}
+                </option>
+              ))}
+            </select>
+          </label>
           <Button
             type="button"
             onClick={() => {
@@ -214,6 +254,7 @@ export default function MovingAverages() {
                 symbols: syms,
                 start,
                 end,
+                period: maPeriod,
               }));
             }}
             disabled={activeSymbols.length < 1}
@@ -234,8 +275,8 @@ export default function MovingAverages() {
                   <th className="pb-2 pr-3 font-medium">Symbol</th>
                   <th className="pb-2 pr-3 font-medium">Date</th>
                   <th className="pb-2 pr-3 font-medium">Adj. close</th>
-                  <th className="pb-2 pr-3 font-medium">SMA 100</th>
-                  <th className="pb-2 pr-3 font-medium">EMA 100</th>
+                  <th className="pb-2 pr-3 font-medium">SMA {fetchSpec.period}</th>
+                  <th className="pb-2 pr-3 font-medium">EMA {fetchSpec.period}</th>
                   <th className="pb-2 font-medium">% vs SMA</th>
                 </tr>
               </thead>

@@ -36,6 +36,14 @@ class PriceBar(BaseModel):
         default=None,
         description="100-day exponential moving average (EWMA span) when requested via ema_periods.",
     )
+    sma_by_period: dict[str, float] = Field(
+        default_factory=dict,
+        description="SMA values keyed by period string (e.g. '50') for each requested sma_period.",
+    )
+    ema_by_period: dict[str, float] = Field(
+        default_factory=dict,
+        description="EMA values keyed by period string for each requested ema_period.",
+    )
 
     model_config = {"from_attributes": True}
 
@@ -74,6 +82,8 @@ def _bar_from_daily(
         volume=int(r.volume),
         sma_100=sma_100,
         ema_100=ema_100,
+        sma_by_period={},
+        ema_by_period={},
     )
 
 
@@ -138,6 +148,16 @@ def _build_price_list(
         ema_100_val: float | None = None
         if want_ema_100 and pd.notna(row.get("ema_100")):
             ema_100_val = round(float(row["ema_100"]), 4)
+        sma_by: dict[str, float] = {}
+        for p in sma_p:
+            col = f"sma_{p}"
+            if col in row.index and pd.notna(row.get(col)):
+                sma_by[str(p)] = round(float(row[col]), 4)
+        ema_by: dict[str, float] = {}
+        for p in ema_p:
+            col = f"ema_{p}"
+            if col in row.index and pd.notna(row.get(col)):
+                ema_by[str(p)] = round(float(row[col]), 4)
         bars.append(
             PriceBar(
                 date=row["date"],
@@ -149,6 +169,8 @@ def _build_price_list(
                 volume=int(row["volume"]),
                 sma_100=sma_100_val,
                 ema_100=ema_100_val,
+                sma_by_period=sma_by,
+                ema_by_period=ema_by,
             )
         )
 
@@ -162,11 +184,11 @@ def get_prices(
     end: date = Query(...),
     sma_periods: list[int] | None = Query(
         None,
-        description="SMA lookbacks (e.g. 100). Only sma_100 is returned for period 100.",
+        description="SMA lookbacks (e.g. 100). Values appear in sma_by_period and, for period 100 only, sma_100.",
     ),
     ema_periods: list[int] | None = Query(
         None,
-        description="EMA spans (e.g. 100). Only ema_100 is returned for period 100.",
+        description="EMA spans (e.g. 100). Values appear in ema_by_period and, for period 100 only, ema_100.",
     ),
     db: Session = Depends(get_db),
 ) -> PriceListResponse:

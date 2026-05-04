@@ -24,6 +24,19 @@ export interface AlertCreate {
   params_json?: AlertCreateParamsJson;
 }
 
+export type AlertEventResponseDetails = string | null;
+
+export interface AlertEventResponse {
+  id: number;
+  alert_id: number;
+  triggered_at: string;
+  price_at_trigger: number;
+  details: AlertEventResponseDetails;
+  alert_type: string;
+  asset_id: number;
+  asset_symbol: string;
+}
+
 export type AlertResponseParamsJsonAnyOf = { [key: string]: unknown };
 
 export type AlertResponseParamsJson = AlertResponseParamsJsonAnyOf | null;
@@ -151,6 +164,37 @@ export interface PortfolioResponse {
   created_at: string;
 }
 
+export type PortfolioTransactionCreateTxType = typeof PortfolioTransactionCreateTxType[keyof typeof PortfolioTransactionCreateTxType];
+
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const PortfolioTransactionCreateTxType = {
+  buy: 'buy',
+  sell: 'sell',
+} as const;
+
+export type PortfolioTransactionCreateExecutedAt = string | null;
+
+export interface PortfolioTransactionCreate {
+  symbol: string;
+  tx_type: PortfolioTransactionCreateTxType;
+  /** */
+  shares: number;
+  /** */
+  price: number;
+  executed_at?: PortfolioTransactionCreateExecutedAt;
+}
+
+export interface PortfolioTransactionResponse {
+  id: number;
+  portfolio_id: number;
+  asset_symbol: string;
+  tx_type: string;
+  shares: number;
+  price: number;
+  executed_at: string;
+}
+
 export type PositionResponseAssetSymbol = string | null;
 
 export interface PositionResponse {
@@ -170,6 +214,16 @@ export type PriceBarSma100 = number | null;
  */
 export type PriceBarEma100 = number | null;
 
+/**
+ * SMA values keyed by period string (e.g. '50') for each requested sma_period.
+ */
+export type PriceBarSmaByPeriod = {[key: string]: number};
+
+/**
+ * EMA values keyed by period string for each requested ema_period.
+ */
+export type PriceBarEmaByPeriod = {[key: string]: number};
+
 export interface PriceBar {
   date: string;
   open: number;
@@ -182,6 +236,10 @@ export interface PriceBar {
   sma_100?: PriceBarSma100;
   /** 100-day exponential moving average (EWMA span) when requested via ema_periods. */
   ema_100?: PriceBarEma100;
+  /** SMA values keyed by period string (e.g. '50') for each requested sma_period. */
+  sma_by_period?: PriceBarSmaByPeriod;
+  /** EMA values keyed by period string for each requested ema_period. */
+  ema_by_period?: PriceBarEmaByPeriod;
 }
 
 export interface PriceListResponse {
@@ -189,6 +247,28 @@ export interface PriceListResponse {
   start: string;
   end: string;
   prices: PriceBar[];
+}
+
+export type SavedBacktestCreateParameters = { [key: string]: unknown };
+
+export type SavedBacktestCreateResults = { [key: string]: unknown };
+
+export interface SavedBacktestCreate {
+  symbol: string;
+  parameters: SavedBacktestCreateParameters;
+  results: SavedBacktestCreateResults;
+}
+
+export type SavedBacktestResponseParameters = { [key: string]: unknown };
+
+export type SavedBacktestResponseResults = { [key: string]: unknown };
+
+export interface SavedBacktestResponse {
+  id: number;
+  symbol: string;
+  parameters: SavedBacktestResponseParameters;
+  results: SavedBacktestResponseResults;
+  created_at: string;
 }
 
 export interface TokenResponse {
@@ -253,11 +333,11 @@ export type GetPricesPricesSymbolGetParams = {
 start: string;
 end: string;
 /**
- * SMA lookbacks (e.g. 100). Only sma_100 is returned for period 100.
+ * SMA lookbacks (e.g. 100). Values appear in sma_by_period and, for period 100 only, sma_100.
  */
 sma_periods?: number[] | null;
 /**
- * EMA spans (e.g. 100). Only ema_100 is returned for period 100.
+ * EMA spans (e.g. 100). Values appear in ema_by_period and, for period 100 only, ema_100.
  */
 ema_periods?: number[] | null;
 };
@@ -273,6 +353,15 @@ sma_periods?: number[] | null;
  * EMA spans; combined with sma_periods for warmup window.
  */
 ema_periods?: number[] | null;
+};
+
+export type ListPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetParams = {
+limit?: number;
+offset?: number;
+};
+
+export type ListAlertEventsRouteAlertsEventsGetParams = {
+limit?: number;
 };
 
 export type HealthHealthGet200 = {[key: string]: string};
@@ -755,6 +844,103 @@ export const createPortfolioRoutePortfoliosPost = async (portfolioCreate: Portfo
 
 
 /**
+ * @summary Add Portfolio Transaction Route
+ */
+export type addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostResponse201 = {
+  data: PortfolioTransactionResponse
+  status: 201
+}
+
+export type addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostResponse422 = {
+  data: HTTPValidationError
+  status: 422
+}
+    
+export type addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostResponseSuccess = (addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostResponse201) & {
+  headers: Headers;
+};
+export type addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostResponseError = (addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostResponse422) & {
+  headers: Headers;
+};
+
+export type addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostResponse = (addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostResponseSuccess | addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostResponseError)
+
+export const getAddPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostUrl = (portfolioId: number,) => {
+
+
+  
+
+  return `/portfolios/${portfolioId}/transactions`
+}
+
+export const addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPost = async (portfolioId: number,
+    portfolioTransactionCreate: PortfolioTransactionCreate, options?: RequestInit): Promise<addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostResponse> => {
+  
+  return dipwiseFetch<addPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostResponse>(getAddPortfolioTransactionRoutePortfoliosPortfolioIdTransactionsPostUrl(portfolioId),
+  {      
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      portfolioTransactionCreate,)
+  }
+);}
+
+
+
+/**
+ * @summary List Portfolio Transactions Route
+ */
+export type listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetResponse200 = {
+  data: PortfolioTransactionResponse[]
+  status: 200
+}
+
+export type listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetResponse422 = {
+  data: HTTPValidationError
+  status: 422
+}
+    
+export type listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetResponseSuccess = (listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetResponse200) & {
+  headers: Headers;
+};
+export type listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetResponseError = (listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetResponse422) & {
+  headers: Headers;
+};
+
+export type listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetResponse = (listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetResponseSuccess | listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetResponseError)
+
+export const getListPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetUrl = (portfolioId: number,
+    params?: ListPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : value.toString())
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/portfolios/${portfolioId}/transactions?${stringifiedParams}` : `/portfolios/${portfolioId}/transactions`
+}
+
+export const listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGet = async (portfolioId: number,
+    params?: ListPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetParams, options?: RequestInit): Promise<listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetResponse> => {
+  
+  return dipwiseFetch<listPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetResponse>(getListPortfolioTransactionsRoutePortfoliosPortfolioIdTransactionsGetUrl(portfolioId,params),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+
+
+
+/**
  * @summary Get Portfolio Route
  */
 export type getPortfolioRoutePortfoliosPortfolioIdGetResponse200 = {
@@ -787,6 +973,56 @@ export const getGetPortfolioRoutePortfoliosPortfolioIdGetUrl = (portfolioId: num
 export const getPortfolioRoutePortfoliosPortfolioIdGet = async (portfolioId: number, options?: RequestInit): Promise<getPortfolioRoutePortfoliosPortfolioIdGetResponse> => {
   
   return dipwiseFetch<getPortfolioRoutePortfoliosPortfolioIdGetResponse>(getGetPortfolioRoutePortfoliosPortfolioIdGetUrl(portfolioId),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+
+
+
+/**
+ * @summary List Alert Events Route
+ */
+export type listAlertEventsRouteAlertsEventsGetResponse200 = {
+  data: AlertEventResponse[]
+  status: 200
+}
+
+export type listAlertEventsRouteAlertsEventsGetResponse422 = {
+  data: HTTPValidationError
+  status: 422
+}
+    
+export type listAlertEventsRouteAlertsEventsGetResponseSuccess = (listAlertEventsRouteAlertsEventsGetResponse200) & {
+  headers: Headers;
+};
+export type listAlertEventsRouteAlertsEventsGetResponseError = (listAlertEventsRouteAlertsEventsGetResponse422) & {
+  headers: Headers;
+};
+
+export type listAlertEventsRouteAlertsEventsGetResponse = (listAlertEventsRouteAlertsEventsGetResponseSuccess | listAlertEventsRouteAlertsEventsGetResponseError)
+
+export const getListAlertEventsRouteAlertsEventsGetUrl = (params?: ListAlertEventsRouteAlertsEventsGetParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : value.toString())
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/alerts/events?${stringifiedParams}` : `/alerts/events`
+}
+
+export const listAlertEventsRouteAlertsEventsGet = async (params?: ListAlertEventsRouteAlertsEventsGetParams, options?: RequestInit): Promise<listAlertEventsRouteAlertsEventsGetResponse> => {
+  
+  return dipwiseFetch<listAlertEventsRouteAlertsEventsGetResponse>(getListAlertEventsRouteAlertsEventsGetUrl(params),
   {      
     ...options,
     method: 'GET'
@@ -1126,6 +1362,129 @@ export const routeRemoveItemWatchlistsWatchlistIdItemsItemIdDelete = async (watc
   {      
     ...options,
     method: 'DELETE'
+    
+    
+  }
+);}
+
+
+
+/**
+ * @summary List Saved Backtests Route
+ */
+export type listSavedBacktestsRouteSavedBacktestsGetResponse200 = {
+  data: SavedBacktestResponse[]
+  status: 200
+}
+    
+export type listSavedBacktestsRouteSavedBacktestsGetResponseSuccess = (listSavedBacktestsRouteSavedBacktestsGetResponse200) & {
+  headers: Headers;
+};
+;
+
+export type listSavedBacktestsRouteSavedBacktestsGetResponse = (listSavedBacktestsRouteSavedBacktestsGetResponseSuccess)
+
+export const getListSavedBacktestsRouteSavedBacktestsGetUrl = () => {
+
+
+  
+
+  return `/saved-backtests/`
+}
+
+export const listSavedBacktestsRouteSavedBacktestsGet = async ( options?: RequestInit): Promise<listSavedBacktestsRouteSavedBacktestsGetResponse> => {
+  
+  return dipwiseFetch<listSavedBacktestsRouteSavedBacktestsGetResponse>(getListSavedBacktestsRouteSavedBacktestsGetUrl(),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+
+
+
+/**
+ * @summary Create Saved Backtest Route
+ */
+export type createSavedBacktestRouteSavedBacktestsPostResponse201 = {
+  data: SavedBacktestResponse
+  status: 201
+}
+
+export type createSavedBacktestRouteSavedBacktestsPostResponse422 = {
+  data: HTTPValidationError
+  status: 422
+}
+    
+export type createSavedBacktestRouteSavedBacktestsPostResponseSuccess = (createSavedBacktestRouteSavedBacktestsPostResponse201) & {
+  headers: Headers;
+};
+export type createSavedBacktestRouteSavedBacktestsPostResponseError = (createSavedBacktestRouteSavedBacktestsPostResponse422) & {
+  headers: Headers;
+};
+
+export type createSavedBacktestRouteSavedBacktestsPostResponse = (createSavedBacktestRouteSavedBacktestsPostResponseSuccess | createSavedBacktestRouteSavedBacktestsPostResponseError)
+
+export const getCreateSavedBacktestRouteSavedBacktestsPostUrl = () => {
+
+
+  
+
+  return `/saved-backtests/`
+}
+
+export const createSavedBacktestRouteSavedBacktestsPost = async (savedBacktestCreate: SavedBacktestCreate, options?: RequestInit): Promise<createSavedBacktestRouteSavedBacktestsPostResponse> => {
+  
+  return dipwiseFetch<createSavedBacktestRouteSavedBacktestsPostResponse>(getCreateSavedBacktestRouteSavedBacktestsPostUrl(),
+  {      
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      savedBacktestCreate,)
+  }
+);}
+
+
+
+/**
+ * @summary Get Saved Backtest Route
+ */
+export type getSavedBacktestRouteSavedBacktestsBacktestIdGetResponse200 = {
+  data: SavedBacktestResponse
+  status: 200
+}
+
+export type getSavedBacktestRouteSavedBacktestsBacktestIdGetResponse422 = {
+  data: HTTPValidationError
+  status: 422
+}
+    
+export type getSavedBacktestRouteSavedBacktestsBacktestIdGetResponseSuccess = (getSavedBacktestRouteSavedBacktestsBacktestIdGetResponse200) & {
+  headers: Headers;
+};
+export type getSavedBacktestRouteSavedBacktestsBacktestIdGetResponseError = (getSavedBacktestRouteSavedBacktestsBacktestIdGetResponse422) & {
+  headers: Headers;
+};
+
+export type getSavedBacktestRouteSavedBacktestsBacktestIdGetResponse = (getSavedBacktestRouteSavedBacktestsBacktestIdGetResponseSuccess | getSavedBacktestRouteSavedBacktestsBacktestIdGetResponseError)
+
+export const getGetSavedBacktestRouteSavedBacktestsBacktestIdGetUrl = (backtestId: number,) => {
+
+
+  
+
+  return `/saved-backtests/${backtestId}`
+}
+
+export const getSavedBacktestRouteSavedBacktestsBacktestIdGet = async (backtestId: number, options?: RequestInit): Promise<getSavedBacktestRouteSavedBacktestsBacktestIdGetResponse> => {
+  
+  return dipwiseFetch<getSavedBacktestRouteSavedBacktestsBacktestIdGetResponse>(getGetSavedBacktestRouteSavedBacktestsBacktestIdGetUrl(backtestId),
+  {      
+    ...options,
+    method: 'GET'
     
     
   }

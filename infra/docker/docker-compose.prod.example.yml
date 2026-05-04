@@ -1,5 +1,12 @@
 # Example production-oriented Compose file (not wired to CI).
 # Replace image: directives with your registry builds; use strong secrets and TLS at the edge.
+#
+# Checklist:
+# - Terminate TLS at nginx/traefik/caddy; do not expose Postgres/Redis ports on public networks.
+# - Provide DATABASE_URL / REDIS_URL / JWT_SECRET_KEY / image tags via CI or a secret manager.
+# - Corporate actions: the app trusts provider adjusted close; add separate validation only if your
+#   use case requires it (see README "Data / quality").
+# - Tune celery worker concurrency and SQLAlchemy pool size under load.
 
 services:
   postgres:
@@ -56,6 +63,18 @@ services:
       migrate:
         condition: service_completed_successfully
     restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 25s
     # Put nginx/traefik in front for TLS termination; do not expose raw HTTP on the internet.
 
   celery_worker:

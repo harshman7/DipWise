@@ -66,6 +66,7 @@ def test_get_prices_includes_sma_100_with_warmup(client, db_session, no_provider
     first = data["prices"][0]
     assert first["date"] >= "2024-06-01"
     assert first["sma_100"] is not None
+    assert first["sma_by_period"].get("100") == first["sma_100"]
     assert abs(first["adj_close"] - first["sma_100"]) < 50
 
 
@@ -83,6 +84,7 @@ def test_get_prices_includes_ema_100_with_warmup(client, db_session, no_provider
     data = response.json()
     first = data["prices"][0]
     assert first["ema_100"] is not None
+    assert first["ema_by_period"].get("100") == first["ema_100"]
     assert first.get("sma_100") is None
 
 
@@ -101,6 +103,8 @@ def test_get_prices_sma_and_ema_combined(client, db_session, no_provider):
     row = response.json()["prices"][0]
     assert row["sma_100"] is not None
     assert row["ema_100"] is not None
+    assert row["sma_by_period"]["100"] == row["sma_100"]
+    assert row["ema_by_period"]["100"] == row["ema_100"]
 
 
 def test_get_prices_without_sma_periods_omits_series(client, db_session, no_provider):
@@ -112,3 +116,20 @@ def test_get_prices_without_sma_periods_omits_series(client, db_session, no_prov
     assert response.status_code == 200
     row = response.json()["prices"][0]
     assert row.get("sma_100") is None
+    assert row.get("sma_by_period") in (None, {})
+
+
+def test_get_prices_arbitrary_sma_period_in_map(client, db_session, no_provider):
+    _seed_daily_prices(db_session, "MAP50", d0=date(2023, 1, 1), n_days=800)
+    response = client.get(
+        "/prices/MAP50",
+        params=[
+            ("start", "2024-06-01"),
+            ("end", "2024-08-01"),
+            ("sma_periods", "50"),
+        ],
+    )
+    assert response.status_code == 200
+    row = response.json()["prices"][0]
+    assert row.get("sma_100") is None
+    assert row["sma_by_period"].get("50") is not None

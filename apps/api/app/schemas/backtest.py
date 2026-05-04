@@ -1,4 +1,5 @@
-from datetime import date
+from datetime import date, datetime
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -42,3 +43,19 @@ class DipAnalysisResponse(BaseModel):
     dca_return_pct: float
     holding_period_summaries: list[HoldingPeriodSummary]
     dip_events: list[DipEvent]
+
+
+class SavedBacktestCreate(BaseModel):
+    symbol: str
+    parameters: dict[str, Any]
+    results: dict[str, Any]
+
+
+class SavedBacktestResponse(BaseModel):
+    id: int
+    symbol: str
+    parameters: dict[str, Any]
+    results: dict[str, Any]
+    created_at: datetime
+
+    model_config = {"from_attributes": True}

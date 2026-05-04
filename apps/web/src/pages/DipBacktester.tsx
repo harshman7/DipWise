@@ -1,10 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import clsx from "clsx";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { getPricesPricesSymbolGet, newsForSymbolNewsSymbolGet } from "@dipwise/shared";
+import { createSavedBacktestRouteSavedBacktestsPost, getPricesPricesSymbolGet, newsForSymbolNewsSymbolGet } from "@dipwise/shared";
 import { postAnalysisDips } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
 import type { DipAnalysisRequest, DipAnalysisResponse } from "@/types/analysis";
@@ -61,6 +61,7 @@ export default function DipBacktester() {
     handleSubmit,
     setValue,
     watch,
+    getValues,
     formState: { errors },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
@@ -121,13 +122,39 @@ export default function DipBacktester() {
     mutation.mutate(req);
   };
 
+  const saveRunMut = useMutation({
+    mutationFn: async () => {
+      if (!result) throw new Error("No results");
+      const vals = getValues();
+      const r = await createSavedBacktestRouteSavedBacktestsPost({
+        symbol: result.symbol,
+        parameters: {
+          symbol: vals.symbol,
+          start_date: vals.start_date,
+          end_date: vals.end_date,
+          dip_threshold_pct: vals.dip_threshold_pct,
+          investment_amount: vals.investment_amount,
+          lookback_days: vals.lookback_days,
+          holding_period_days: [...selectedHolding].sort((a, b) => a - b),
+        },
+        results: JSON.parse(JSON.stringify(result)) as Record<string, unknown>,
+      });
+      if (r.status !== 201) throw new Error("Save failed");
+      return r.data;
+    },
+  });
+
+  useEffect(() => {
+    saveRunMut.reset();
+  }, [result]);
+
   const priceQuery = useQuery({
     queryKey: [
       "backtester-prices",
       result?.symbol,
       result?.start_date,
       result?.end_date,
-      "sma100",
+      "sma100ema100",
     ],
     enabled: !!result,
     queryFn: async () => {
@@ -135,6 +162,7 @@ export default function DipBacktester() {
         start: String(result!.start_date),
         end: String(result!.end_date),
         sma_periods: [100],
+        ema_periods: [100],
       });
       if (r.status !== 200) throw new Error("Could not load prices");
       return r.data;
@@ -175,6 +203,7 @@ export default function DipBacktester() {
       date: p.date,
       adj_close: p.adj_close,
       sma_100: p.sma_100,
+      ema_100: p.ema_100,
     })) ?? undefined;
 
   const fieldClass = "text-[15px] leading-snug";
@@ -381,8 +410,8 @@ export default function DipBacktester() {
               <div className="hidden lg:block">
                 <p className="text-sm font-medium text-gray-900">Ready</p>
                 <p className="mt-2 text-[15px] leading-relaxed text-gray-500">
-                  Results show summary metrics, an interactive price chart with dips and a 100-day
-                  SMA, and a per-event table. Use the chart brush to focus a date range.
+                  Results show summary metrics, an interactive price chart with dips, 100-day SMA and
+                  EMA, and a per-event table. Use the chart brush to focus a date range.
                 </p>
               </div>
               <div className="lg:mt-10">
@@ -409,12 +438,31 @@ export default function DipBacktester() {
       {result && (
         <div className="space-y-6">
           <BacktestSummary data={result} />
+          {token && (
+            <div className="flex flex-wrap items-center gap-3">
+              <Button
+                type="button"
+                variant="secondary"
+                size="sm"
+                onClick={() => saveRunMut.mutate()}
+                disabled={saveRunMut.isPending}
+              >
+                {saveRunMut.isPending ? "Saving…" : "Save this run"}
+              </Button>
+              {saveRunMut.isSuccess && (
+                <span className="text-sm text-green-700">Saved to your account.</span>
+              )}
+              {saveRunMut.isError && (
+                <span className="text-sm text-red-600">Could not save — try again.</span>
+              )}
+            </div>
+          )}
           {priceQuery.isLoading && (
             <LoadingState message="Loading price history for chart…" />
           )}
           <Card interactive>
             <h2 className="mb-3 text-sm font-semibold text-gray-800">
-              Prices, dips, rolling high, and 100-day SMA
+              Prices, dips, rolling high, SMA and EMA (100-day)
             </h2>
             <PriceChart events={result.dip_events} fullPrices={fullPrices} />
             {latestSmaInsight && (

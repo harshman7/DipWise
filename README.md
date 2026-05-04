@@ -31,7 +31,7 @@
 ### Prices and technical indicators
 
 - **`GET /prices/{symbol}`** — Daily OHLCV + `adj_close` from `daily_prices`, with **provider backfill** when data is missing or stale (`PRICE_STALE_DAYS`).
-- **Optional SMA / EMA** — Query params `sma_periods` and `ema_periods` (repeatable ints, clamped). Server loads **warmup history** before `start` so indicators are valid from the first day in range. Response fields: `sma_100` when `100` is requested, `ema_100` when `100` is requested.
+- **Optional SMA / EMA** — Query params `sma_periods` and `ema_periods` (repeatable ints, clamped). Server loads **warmup history** before `start` so indicators are valid from the first day in range. Response includes legacy **`sma_100` / `ema_100`** when period `100` is requested, plus **`sma_by_period` / `ema_by_period`** maps for all requested periods.
 - **`POST /prices/{symbol}/refresh`** — Force re-fetch for a range (same indicator query params supported).
 - **Implementation** — [`apps/api/app/services/indicator_service.py`](apps/api/app/services/indicator_service.py) (pandas rolling mean + EWMA span); logic wired in [`apps/api/app/routers/prices.py`](apps/api/app/routers/prices.py).
 
@@ -56,9 +56,9 @@
 | Route | Purpose |
 |-------|---------|
 | `/` | Dashboard with quick links |
-| `/compare` | Up to **6** symbols; **normalized** performance (rebased to 100); optional **100-day SMA** overlay (rebased to match the same scale) |
-| `/moving-averages` | Multi-symbol **table**: last bar, **SMA 100**, **EMA 100**, % vs SMA |
-| `/backtester` | **Dip Backtester**: percent **dip threshold** UI, **preset holding-period chips** (30 / 90 / 180 / 365 / 730), responsive ticker search, two-column filter layout on large screens, helper copy, **Recharts** price/dip/SMA chart with **Brush** (range zoom), **interactive cards** on results |
+| `/compare` | Up to **6** symbols; **normalized** performance (rebased to 100); optional **100-day SMA** and **EMA** overlays (rebased) |
+| `/moving-averages` | Multi-symbol **table**: last bar, **configurable SMA/EMA period** (preset days), % vs SMA |
+| `/backtester` | **Dip Backtester**: percent **dip threshold** UI, **preset holding-period chips** (30 / 90 / 180 / 365 / 730), responsive ticker search, two-column filter layout on large screens, helper copy, **Recharts** price/dip/**SMA+EMA** chart with **Brush** (range zoom), **save run** (authenticated) to **`saved_backtests`**, **interactive cards** on results |
 | `/reports` | CSV / PDF export from dip analysis |
 | `/login` | Auth |
 | `/portfolio`, `/watchlist`, `/alerts` | Authenticated CRUD-style flows (see gaps below) |
@@ -77,6 +77,7 @@
 
 - **OpenAPI → TypeScript** — `npm run codegen:api` exports spec and runs Orval into [`packages/shared`](packages/shared).
 - **Backend tests** — `pytest` under `apps/api/app/tests/` (health, auth, dip detection, prices + indicators, SMA cross alerts, etc.).
+- **Frontend tests** — Vitest + Testing Library in `apps/web` (`npm test`); smoke tests for auth routing (`RequireAuth`).
 
 ---
 
@@ -86,25 +87,20 @@ These are known follow-ups—not an exhaustive product roadmap.
 
 ### Documentation drift
 
-- [`docs/api.md`](docs/api.md) should be updated to document **`sma_periods` / `ema_periods`** on prices, **`sma_cross`** + **`params_json`** on alerts, and any response field additions (`sma_100`, `ema_100`).
-- [`docs/architecture.md`](docs/architecture.md) may still mention **public-only routing** in places; the **actual app** uses **`RequireAuth`** for portfolio, watchlist, and alerts—worth aligning when you next edit docs.
+- Keep [`docs/api.md`](docs/api.md) and [`docs/architecture.md`](docs/architecture.md) aligned when you add endpoints or change routing.
 
 ### Product / UX
 
-- **Portfolio & transactions** — UI/API are not a full broker-grade ledger; **CRUD for positions and transactions** is still a natural next step (also listed previously in roadmap ideas).
-- **Compare / Moving Averages** — EMA overlay on Compare, user-selectable MA periods in the MA table, and richer multi-symbol dashboards are optional.
-- **Backtester** — Could surface **EMA** on the same chart as SMA; strategy presets (save/load) are not built.
-- **Alerts** — No email/push delivery; events are stored for in-app / API use only unless you integrate notifications.
-- **Frontend tests** — No systematic E2E or component test suite documented; only backend `pytest` is called out in this README.
+- **Portfolio** — Further broker-grade reporting (cost basis lots, dividends) if needed beyond transactions + positions.
+- **Alerts** — No email/push delivery yet; events are stored and visible in-app via **`GET /alerts/events`**.
 
 ### Infrastructure and hardening
 
-- **Production** — See checklist below and `infra/docker/docker-compose.prod.example.yml` (sketch only); secrets, TLS, managed DB/Redis.
-- **Dependencies** — Occasional **passlib / bcrypt** or `pandas`/provider stack version alignment across environments (historic note in roadmap).
+- **Production** — See checklist in [`infra/docker/docker-compose.prod.example.yml`](infra/docker/docker-compose.prod.example.yml); secrets, TLS, managed DB/Redis.
 
 ### Data / quality
 
-- **Corporate actions** — Adjusted close depends on provider quality; no separate validation pipeline.
+- **Corporate actions** — Adjusted close depends on provider quality; no separate validation pipeline in-app.
 - **Staleness** — `PRICE_STALE_DAYS` drives refresh; real-time quotes are out of scope.
 
 ---
@@ -213,6 +209,12 @@ Runs `apps/api/scripts/export_openapi.py` and Orval in `packages/shared`.
 cd apps/api && python3 -m pytest app/tests/ -q
 ```
 
+```bash
+cd apps/web && npm test
+```
+
+For watch mode during frontend work: `cd apps/web && npm run test:watch`.
+
 ---
 
 ## API overview
@@ -224,12 +226,14 @@ cd apps/api && python3 -m pytest app/tests/ -q
 | POST | `/auth/login` | No | JWT |
 | GET | `/auth/me` | Yes | Profile |
 | POST | `/analysis/dips` | No | Dip detection + backtest |
-| GET | `/prices/{symbol}` | No | Daily bars; optional `sma_periods`, `ema_periods` |
+| GET | `/prices/{symbol}` | No | Daily bars; optional `sma_periods`, `ema_periods`; maps `sma_by_period` / `ema_by_period` |
 | POST | `/prices/{symbol}/refresh` | No | Force provider refresh |
 | GET | `/assets/`, `/assets/{symbol}` | No | Tracked assets |
 | GET | `/news/{symbol}` | Yes | Headlines if configured |
-| GET/POST | `/portfolios/…` | Yes | Portfolios |
+| GET/POST | `/portfolios/…` | Yes | Portfolios; **`POST/GET …/{id}/transactions`** |
 | GET/POST | `/alerts/…` | Yes | Alerts (`dip_threshold`, `price_below`, `sma_cross`) |
+| GET | `/alerts/events` | Yes | Recent alert firings for the user |
+| GET/POST | `/saved-backtests/…` | Yes | Persisted backtest snapshots |
 | GET/POST/DELETE | `/watchlists/…` | Yes | Watchlists |
 | POST | `/reports/dips/csv`, `/reports/dips/pdf` | No | Exports |
 
@@ -243,4 +247,4 @@ cd apps/api && python3 -m pytest app/tests/ -q
 - [docs/data-model.md](docs/data-model.md) — Tables and relationships.
 - [docs/api.md](docs/api.md) — Endpoint reference (keep in sync with OpenAPI).
 
-**Prior roadmap ideas (still valid):** richer portfolio transactions; deeper news/NLP; dependency hygiene across environments.
+**Prior roadmap ideas (still valid):** outbound alert channels (email/webhook); deeper news/NLP; E2E tests (e.g. Playwright).

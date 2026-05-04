@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 from app.models.asset import Asset
 from app.models.alert import Alert, AlertEvent
 from app.models.price import DailyPrice
-from app.schemas.alert import AlertCreate, AlertResponse
+from app.schemas.alert import AlertCreate, AlertEventResponse, AlertResponse
 from app.services.price_ingestion_service import upsert_asset
 
 
@@ -40,6 +40,34 @@ def list_alerts(db: Session, user_id: int) -> list[AlertResponse]:
         .all()
     )
     return [AlertResponse.model_validate(r) for r in rows]
+
+
+def list_alert_events(
+    db: Session, user_id: int, *, limit: int = 50
+) -> list[AlertEventResponse]:
+    limit = min(max(limit, 1), 200)
+    rows = (
+        db.query(AlertEvent, Alert, Asset.symbol)
+        .join(Alert, Alert.id == AlertEvent.alert_id)
+        .join(Asset, Asset.id == Alert.asset_id)
+        .filter(Alert.user_id == user_id)
+        .order_by(AlertEvent.triggered_at.desc())
+        .limit(limit)
+        .all()
+    )
+    return [
+        AlertEventResponse(
+            id=evt.id,
+            alert_id=evt.alert_id,
+            triggered_at=evt.triggered_at,
+            price_at_trigger=float(evt.price_at_trigger),
+            details=evt.details,
+            alert_type=alert.alert_type,
+            asset_id=alert.asset_id,
+            asset_symbol=symbol,
+        )
+        for evt, alert, symbol in rows
+    ]
 
 
 def create_alert(db: Session, user_id: int, body: AlertCreate) -> AlertResponse:

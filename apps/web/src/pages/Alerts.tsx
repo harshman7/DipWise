@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   createAlertRouteAlertsPost,
+  listAlertEventsRouteAlertsEventsGet,
   listAlertsRouteAlertsGet,
   listAssetsAssetsGet,
   type AlertCreate,
@@ -41,6 +42,15 @@ export default function Alerts() {
     },
   });
 
+  const { data: eventsRes, isLoading: eventsLoading } = useQuery({
+    queryKey: ["alert-events"],
+    queryFn: async () => {
+      const r = await listAlertEventsRouteAlertsEventsGet();
+      if (r.status !== 200) throw new Error("Failed to load alert events");
+      return r.data;
+    },
+  });
+
   const createMut = useMutation({
     mutationFn: async (body: AlertCreate) => {
       const r = await createAlertRouteAlertsPost(body);
@@ -50,6 +60,7 @@ export default function Alerts() {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ["alerts"] });
       void queryClient.invalidateQueries({ queryKey: ["assets"] });
+      void queryClient.invalidateQueries({ queryKey: ["alert-events"] });
     },
   });
 
@@ -58,6 +69,7 @@ export default function Alerts() {
   }
 
   const alerts = alertsRes ?? [];
+  const events = eventsRes ?? [];
   const assets = assetsRes ?? [];
   const symMap = new Map(assets.map((a) => [a.id, a.symbol]));
 
@@ -228,6 +240,53 @@ export default function Alerts() {
           )}
         </Card>
       </div>
+
+      <Card className="mt-6">
+        <h2 className="mb-3 text-sm font-semibold text-gray-700">
+          Recent alert events
+        </h2>
+        <p className="mb-3 text-xs text-gray-500">
+          Fires recorded when the scheduled worker evaluates your alerts (at most
+          once per alert per UTC day).
+        </p>
+        {eventsLoading ? (
+          <LoadingState message="Loading events..." />
+        ) : events.length === 0 ? (
+          <EmptyState
+            title="No events yet"
+            description="When an alert condition is met, a row will appear here."
+          />
+        ) : (
+          <div className="max-h-96 overflow-y-auto overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead className="sticky top-0 bg-white">
+                <tr className="border-b text-gray-500">
+                  <th className="pb-2 pr-3">Time</th>
+                  <th className="pb-2 pr-3">Symbol</th>
+                  <th className="pb-2 pr-3">Type</th>
+                  <th className="pb-2 pr-3">Price</th>
+                  <th className="pb-2">Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                {events.map((ev) => (
+                  <tr key={ev.id} className="border-b border-gray-100 align-top">
+                    <td className="py-2 pr-3 whitespace-nowrap text-xs text-gray-600">
+                      {new Date(ev.triggered_at).toLocaleString()}
+                    </td>
+                    <td className="py-2 pr-3 font-medium">{ev.asset_symbol}</td>
+                    <td className="py-2 pr-3 text-gray-700">{ev.alert_type}</td>
+                    <td className="py-2 pr-3">{ev.price_at_trigger}</td>
+                    <td className="py-2 text-xs text-gray-600">
+                      {ev.details ?? "—"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </Card>
     </div>
   );
 }

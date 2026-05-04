@@ -234,10 +234,10 @@
                   "type": "null"
                 }
               ],
-              "description": "SMA lookbacks (e.g. 100). Only sma_100 is returned for period 100.",
+              "description": "SMA lookbacks (e.g. 100). Values appear in sma_by_period and, for period 100 only, sma_100.",
               "title": "Sma Periods"
             },
-            "description": "SMA lookbacks (e.g. 100). Only sma_100 is returned for period 100."
+            "description": "SMA lookbacks (e.g. 100). Values appear in sma_by_period and, for period 100 only, sma_100."
           },
           {
             "name": "ema_periods",
@@ -255,10 +255,10 @@
                   "type": "null"
                 }
               ],
-              "description": "EMA spans (e.g. 100). Only ema_100 is returned for period 100.",
+              "description": "EMA spans (e.g. 100). Values appear in ema_by_period and, for period 100 only, ema_100.",
               "title": "Ema Periods"
             },
-            "description": "EMA spans (e.g. 100). Only ema_100 is returned for period 100."
+            "description": "EMA spans (e.g. 100). Values appear in ema_by_period and, for period 100 only, ema_100."
           }
         ],
         "responses": {
@@ -553,6 +553,132 @@
         ]
       }
     },
+    "/portfolios/{portfolio_id}/transactions": {
+      "post": {
+        "tags": [
+          "portfolios"
+        ],
+        "summary": "Add Portfolio Transaction Route",
+        "operationId": "add_portfolio_transaction_route_portfolios__portfolio_id__transactions_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "portfolio_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Portfolio Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PortfolioTransactionCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortfolioTransactionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "portfolios"
+        ],
+        "summary": "List Portfolio Transactions Route",
+        "operationId": "list_portfolio_transactions_route_portfolios__portfolio_id__transactions_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "portfolio_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Portfolio Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PortfolioTransactionResponse"
+                  },
+                  "title": "Response List Portfolio Transactions Route Portfolios  Portfolio Id  Transactions Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/portfolios/{portfolio_id}": {
       "get": {
         "tags": [
@@ -583,6 +709,58 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PortfolioDetailResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/alerts/events": {
+      "get": {
+        "tags": [
+          "alerts"
+        ],
+        "summary": "List Alert Events Route",
+        "operationId": "list_alert_events_route_alerts_events_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AlertEventResponse"
+                  },
+                  "title": "Response List Alert Events Route Alerts Events Get"
                 }
               }
             }
@@ -943,6 +1121,127 @@
         }
       }
     },
+    "/saved-backtests/": {
+      "get": {
+        "tags": [
+          "saved-backtests"
+        ],
+        "summary": "List Saved Backtests Route",
+        "operationId": "list_saved_backtests_route_saved_backtests__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SavedBacktestResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Saved Backtests Route Saved Backtests  Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "saved-backtests"
+        ],
+        "summary": "Create Saved Backtest Route",
+        "operationId": "create_saved_backtest_route_saved_backtests__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SavedBacktestCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedBacktestResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/saved-backtests/{backtest_id}": {
+      "get": {
+        "tags": [
+          "saved-backtests"
+        ],
+        "summary": "Get Saved Backtest Route",
+        "operationId": "get_saved_backtest_route_saved_backtests__backtest_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "backtest_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Backtest Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedBacktestResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/reports/dips/csv": {
       "post": {
         "tags": [
@@ -1110,6 +1409,62 @@
           "threshold"
         ],
         "title": "AlertCreate"
+      },
+      "AlertEventResponse": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "alert_id": {
+            "type": "integer",
+            "title": "Alert Id"
+          },
+          "triggered_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Triggered At"
+          },
+          "price_at_trigger": {
+            "type": "number",
+            "title": "Price At Trigger"
+          },
+          "details": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Details"
+          },
+          "alert_type": {
+            "type": "string",
+            "title": "Alert Type"
+          },
+          "asset_id": {
+            "type": "integer",
+            "title": "Asset Id"
+          },
+          "asset_symbol": {
+            "type": "string",
+            "title": "Asset Symbol"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "alert_id",
+          "triggered_at",
+          "price_at_trigger",
+          "details",
+          "alert_type",
+          "asset_id",
+          "asset_symbol"
+        ],
+        "title": "AlertEventResponse"
       },
       "AlertResponse": {
         "properties": {
@@ -1607,6 +1962,96 @@
         ],
         "title": "PortfolioResponse"
       },
+      "PortfolioTransactionCreate": {
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "title": "Symbol"
+          },
+          "tx_type": {
+            "type": "string",
+            "enum": [
+              "buy",
+              "sell"
+            ],
+            "title": "Tx Type"
+          },
+          "shares": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Shares"
+          },
+          "price": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Price"
+          },
+          "executed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Executed At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "symbol",
+          "tx_type",
+          "shares",
+          "price"
+        ],
+        "title": "PortfolioTransactionCreate"
+      },
+      "PortfolioTransactionResponse": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "portfolio_id": {
+            "type": "integer",
+            "title": "Portfolio Id"
+          },
+          "asset_symbol": {
+            "type": "string",
+            "title": "Asset Symbol"
+          },
+          "tx_type": {
+            "type": "string",
+            "title": "Tx Type"
+          },
+          "shares": {
+            "type": "number",
+            "title": "Shares"
+          },
+          "price": {
+            "type": "number",
+            "title": "Price"
+          },
+          "executed_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Executed At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "portfolio_id",
+          "asset_symbol",
+          "tx_type",
+          "shares",
+          "price",
+          "executed_at"
+        ],
+        "title": "PortfolioTransactionResponse"
+      },
       "PositionResponse": {
         "properties": {
           "id": {
@@ -1695,6 +2140,22 @@
             ],
             "title": "Ema 100",
             "description": "100-day exponential moving average (EWMA span) when requested via ema_periods."
+          },
+          "sma_by_period": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Sma By Period",
+            "description": "SMA values keyed by period string (e.g. '50') for each requested sma_period."
+          },
+          "ema_by_period": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Ema By Period",
+            "description": "EMA values keyed by period string for each requested ema_period."
           }
         },
         "type": "object",
@@ -1741,6 +2202,67 @@
           "prices"
         ],
         "title": "PriceListResponse"
+      },
+      "SavedBacktestCreate": {
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "title": "Symbol"
+          },
+          "parameters": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Parameters"
+          },
+          "results": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Results"
+          }
+        },
+        "type": "object",
+        "required": [
+          "symbol",
+          "parameters",
+          "results"
+        ],
+        "title": "SavedBacktestCreate"
+      },
+      "SavedBacktestResponse": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "symbol": {
+            "type": "string",
+            "title": "Symbol"
+          },
+          "parameters": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Parameters"
+          },
+          "results": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Results"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "symbol",
+          "parameters",
+          "results",
+          "created_at"
+        ],
+        "title": "SavedBacktestResponse"
       },
       "TokenResponse": {
         "properties": {

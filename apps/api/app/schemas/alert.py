@@ -47,3 +47,16 @@ class AlertResponse(BaseModel):
     params_json: dict[str, Any] | None = None
 
     model_config = {"from_attributes": True}
+
+
+class AlertEventResponse(BaseModel):
+    id: int
+    alert_id: int
+    triggered_at: datetime
+    price_at_trigger: float
+    details: str | None
+    alert_type: str
+    asset_id: int
+    asset_symbol: str
+
+    model_config = {"from_attributes": True}

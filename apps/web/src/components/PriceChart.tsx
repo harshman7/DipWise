@@ -17,6 +17,7 @@ interface PriceChartProps {
     date: string;
     adj_close: number;
     sma_100?: number | null;
+    ema_100?: number | null;
   }[];
 }
 
@@ -38,6 +39,7 @@ export default function PriceChart({ events, fullPrices }: PriceChartProps) {
       date,
       adjClose: fp?.adj_close,
       sma100: fp?.sma_100 ?? undefined,
+      ema100: fp?.ema_100 ?? undefined,
       rollingHigh: ev?.rolling_high,
       dipPrice: ev?.price,
     };
@@ -71,6 +73,18 @@ export default function PriceChart({ events, fullPrices }: PriceChartProps) {
               strokeWidth={1.5}
               strokeDasharray="6 3"
               name="100-day SMA"
+              connectNulls
+            />
+          )}
+          {fullPrices?.some((p) => p.ema_100 != null) && (
+            <Line
+              type="monotone"
+              dataKey="ema100"
+              stroke="#0d9488"
+              dot={false}
+              strokeWidth={1.5}
+              strokeDasharray="4 4"
+              name="100-day EMA"
               connectNulls
             />
           )}

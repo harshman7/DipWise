@@ -15,7 +15,7 @@ infra/       — Docker configuration for local and production deployments
 
 - **Framework:** React 18 with TypeScript, bundled by Vite.
 - **Styling:** TailwindCSS with a custom `brand` color scale.
-- **Routing:** React Router v6 with a sidebar-based `AppLayout`; all main routes are **public** (JWT/login temporarily removed).
+- **Routing:** React Router v6 with a sidebar-based `AppLayout`. **Public:** dashboard (`/`), compare (`/compare`), moving averages (`/moving-averages`), dip backtester (`/backtester`), reports (`/reports`), login (`/login`). **Protected (`RequireAuth`):** portfolio (`/portfolio`), watchlists (`/watchlist`), alerts (`/alerts`). **Saved backtests** use authenticated **`/saved-backtests`** from the API; the backtester page shows a save action when the user is logged in.
 - **Data Fetching:** TanStack Query; `lib/api.ts` uses the Orval-generated client from `@dipwise/shared` for dip analysis; raw `fetch` remains for simple helpers.
 - **Forms:** React Hook Form with Zod schema validation.
 - **Charts:** Recharts (LineChart for dip visualization; more chart types planned).
@@ -47,7 +47,7 @@ Celery with Redis as broker and result backend.
 - **Worker:** `celery -A app.workers.celery_app worker`
 - **Beat:** `celery -A app.workers.celery_app beat` — schedules:
   - `ingest_active_symbols` every 30 minutes — fetches ~120d history for symbols on active alerts/watchlists plus `SPY`, upserts `daily_prices`.
-  - `run_check_alerts` every 10 minutes — evaluates `dip_threshold` / `price_below` alerts against DB prices and inserts `alert_events` (one per alert per calendar day max).
+  - `run_check_alerts` every 10 minutes — evaluates `dip_threshold`, `price_below`, and `sma_cross` alerts against DB prices and inserts `alert_events` (one per alert per calendar day max).
 
 Docker Compose includes `celery_worker` and `celery_beat` services alongside `api`, `postgres`, `redis`, and `web`.
 

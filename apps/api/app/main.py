@@ -12,6 +12,7 @@ from app.routers import (
     portfolios,
     prices,
     reports,
+    saved_backtests,
     watchlists,
 )
 
@@ -39,6 +40,7 @@ def create_app() -> FastAPI:
     application.include_router(portfolios.router)
     application.include_router(alerts.router)
     application.include_router(watchlists.router)
+    application.include_router(saved_backtests.router)
     application.include_router(reports.router)
 
     @application.get("/health")
