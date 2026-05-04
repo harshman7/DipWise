@@ -7,6 +7,7 @@ DipWise is a monorepo with three main modules:
 ```
 apps/web     — React SPA (Vite, TypeScript, TailwindCSS)
 apps/api     — FastAPI REST API (Python, SQLAlchemy)
+packages/shared — Orval-generated OpenAPI client + `openapi.json`
 infra/       — Docker configuration for local and production deployments
 ```
 
@@ -14,11 +15,11 @@ infra/       — Docker configuration for local and production deployments
 
 - **Framework:** React 18 with TypeScript, bundled by Vite.
 - **Styling:** TailwindCSS with a custom `brand` color scale.
-- **Routing:** React Router v6 with a sidebar-based `AppLayout`.
-- **Data Fetching:** TanStack Query for server state; a thin `fetch` wrapper in `lib/api.ts`.
+- **Routing:** React Router v6 with a sidebar-based `AppLayout`; main routes are behind `ProtectedRoute` (JWT in `localStorage`).
+- **Auth:** `AuthContext` stores token + user; `POST /auth/login` and `/auth/register` set the session; `GET /auth/me` refreshes the profile.
+- **Data Fetching:** TanStack Query; `lib/api.ts` uses the Orval-generated client from `@dipwise/shared` for dip analysis and auth; raw `fetch` remains for simple helpers.
 - **Forms:** React Hook Form with Zod schema validation.
 - **Charts:** Recharts (LineChart for dip visualization; more chart types planned).
-- **State:** Component-local state for now; global auth state will be added with JWT integration.
 
 ## Backend
 
@@ -27,13 +28,14 @@ infra/       — Docker configuration for local and production deployments
 - **Validation:** Pydantic v2 models for all request/response schemas.
 - **Database:** PostgreSQL via SQLAlchemy 2.0 (synchronous engine with `psycopg2`).
 - **Migrations:** Alembic with a hand-written initial migration covering all 12 tables.
-- **Auth:** JWT-based (jose + passlib/bcrypt). Token creation/verification utilities are implemented; route-level auth middleware is planned.
+- **Auth:** JWT (jose + passlib/bcrypt). `get_current_user` dependency (Bearer token) protects `/portfolios/*` and `/alerts/*`. `POST /auth/token` accepts OAuth2 password form for Swagger "Authorize".
 
 ## Database
 
 PostgreSQL 16. See [data-model.md](data-model.md) for the full schema.
 
 Key relationships:
+
 - A **user** owns portfolios, watchlists, alerts, and saved backtests.
 - An **asset** has daily prices, can appear in portfolio positions, watchlist items, and alerts.
 - **Alert events** record historical trigger occurrences for an alert.
@@ -41,21 +43,25 @@ Key relationships:
 
 ## Background Workers
 
-Celery with Redis as broker and result backend. Current tasks:
+Celery with Redis as broker and result backend.
 
-- `ping` — connectivity test.
-- `check_alerts` — placeholder for periodic alert evaluation.
+- **Worker:** `celery -A app.workers.celery_app worker`
+- **Beat:** `celery -A app.workers.celery_app beat` — schedules:
+  - `ingest_active_symbols` every 30 minutes — fetches ~120d history for symbols on active alerts/watchlists plus `SPY`, upserts `daily_prices`.
+  - `run_check_alerts` every 10 minutes — evaluates `dip_threshold` / `price_below` alerts against DB prices and inserts `alert_events` (one per alert per calendar day max).
 
-Future tasks: scheduled data ingestion, alert evaluation, report generation.
+Docker Compose includes `celery_worker` and `celery_beat` services alongside `api`, `postgres`, `redis`, and `web`.
 
 ## External APIs
 
-Placeholder service stubs exist for:
+- **Market data:** `market_data_service.py` — Yahoo Finance via `yfinance` (default), or Polygon daily aggregates / Alpha Vantage `TIME_SERIES_DAILY_ADJUSTED` when `MARKET_DATA_PROVIDER` and `MARKET_DATA_API_KEY` are set. Ingestion persists to `daily_prices`.
+- **News sentiment:** `sentiment_service.py` — still a stub for a future provider.
 
-- **Market data:** `market_data_service.py` — will integrate Yahoo Finance, Polygon, or Alpha Vantage.
-- **News sentiment:** `sentiment_service.py` — will integrate NewsAPI or Finnhub.
+## OpenAPI client
 
-API keys are configured via environment variables and are not required for local development (mock data is used).
+- Export: `apps/api/scripts/export_openapi.py` writes `packages/shared/openapi.json`.
+- Generate: `npm run codegen:api` (repo root) runs export + Orval (`packages/shared/orval.config.cjs`) into `packages/shared/src/generated/api.ts`.
+- Frontend imports `@dipwise/shared` (and `dipwiseFetch` mutator for Bearer + `VITE_API_BASE_URL`).
 
 ## Deployment (Future)
 

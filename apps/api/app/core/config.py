@@ -1,3 +1,5 @@
+from typing import Literal
+
 from pydantic_settings import BaseSettings
 
 
@@ -12,7 +14,10 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
 
+    MARKET_DATA_PROVIDER: Literal["yahoo", "polygon", "alphavantage"] = "yahoo"
     MARKET_DATA_API_KEY: str = ""
+    PRICE_STALE_DAYS: int = 2
+
     NEWS_API_KEY: str = ""
 
     CORS_ORIGINS: list[str] = [

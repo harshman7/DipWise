@@ -1,60 +1,69 @@
-"""Detect price dips relative to a rolling high.
+"""Detect price dips relative to a rolling high using pandas."""
 
-Placeholder implementation that generates deterministic mock dip events
-so the API returns realistic-looking data before a real data source is wired.
-"""
-
-import hashlib
 from datetime import date, timedelta
+
+import pandas as pd
 
 from app.schemas.backtest import DipEvent
 
 
-def _seed_from(symbol: str, start: date, end: date) -> int:
-    raw = f"{symbol}{start}{end}"
-    return int(hashlib.md5(raw.encode()).hexdigest(), 16) % (10**9)
-
-
-def detect_dips(
-    symbol: str,
+def detect_dips_from_prices(
+    prices: pd.DataFrame,
     start_date: date,
     end_date: date,
-    lookback_days: int = 90,
-    dip_threshold: float = 0.05,
+    lookback_days: int,
+    dip_threshold: float,
     holding_period_days: list[int] | None = None,
 ) -> list[DipEvent]:
-    """Return mock dip events spread across the date range."""
+    """
+    prices must be sorted ascending by date, include warmup rows before start_date
+    so rolling_high is valid for the first in-window row.
+    Columns: date, adj_close (and others ignored here).
+    """
     holding_period_days = holding_period_days or [30, 90, 365, 730]
-    seed = _seed_from(symbol, start_date, end_date)
-    total_days = (end_date - start_date).days
-    if total_days <= 0:
+    if prices.empty or len(prices) < lookback_days + 1:
         return []
 
-    num_dips = max(3, (total_days // 120) + (seed % 4))
-    step = total_days // (num_dips + 1)
+    df = prices.copy()
+    df["date"] = pd.to_datetime(df["date"]).dt.date
+    df = df.sort_values("date").reset_index(drop=True)
+    close = df["adj_close"].astype(float)
+    rolling_high = close.rolling(window=lookback_days, min_periods=lookback_days).max()
+    drawdown = 1.0 - close / rolling_high
+    dip = drawdown >= dip_threshold
+    first_of_episode = dip & ~(dip.shift(1, fill_value=False))
+    in_window = (df["date"] >= start_date) & (df["date"] <= end_date)
+    candidate_idx = df.index[first_of_episode & in_window].tolist()
 
     events: list[DipEvent] = []
-    base_price = 300.0 + (seed % 200)
-
-    for i in range(num_dips):
-        dip_date = start_date + timedelta(days=step * (i + 1))
-        drawdown = dip_threshold + ((seed >> (i * 3)) % 15) / 100.0
-        rolling_high = base_price + (i * 10) + ((seed >> i) % 40)
-        price = round(rolling_high * (1 - drawdown), 2)
+    for idx in candidate_idx:
+        d = df.at[idx, "date"]
+        price = float(close.iloc[idx])
+        rh = float(rolling_high.iloc[idx])
+        dd_pct = float(drawdown.iloc[idx] * 100)
 
         returns: dict[str, float] = {}
         for hp in holding_period_days:
-            ret_pct = round(drawdown * 100 * (0.4 + hp / 365) + ((seed >> hp) % 8) - 3, 2)
-            returns[f"{hp}d"] = ret_pct
+            j = idx + hp
+            if j < len(df):
+                future = float(close.iloc[j])
+                ret_pct = (future - price) / price * 100
+                returns[f"{hp}d"] = round(ret_pct, 2)
 
         events.append(
             DipEvent(
-                date=dip_date,
-                price=price,
-                rolling_high=round(rolling_high, 2),
-                drawdown_pct=round(drawdown * 100, 2),
+                date=d,
+                price=round(price, 4),
+                rolling_high=round(rh, 4),
+                drawdown_pct=round(dd_pct, 2),
                 returns=returns,
             )
         )
 
     return events
+
+
+def extended_fetch_start(start_date: date, lookback_days: int) -> date:
+    """Calendar cushion before start for lookback warmup (not exact trading days)."""
+    extra = max(lookback_days * 2, 400)
+    return start_date - timedelta(days=extra)

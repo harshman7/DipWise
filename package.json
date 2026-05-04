@@ -1,6 +1,9 @@
 {
   "name": "dipwise",
   "private": true,
+  "scripts": {
+    "codegen:api": "python apps/api/scripts/export_openapi.py && npm run codegen -w @dipwise/shared"
+  },
   "workspaces": [
     "apps/web",
     "packages/shared"

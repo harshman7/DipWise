@@ -20,3 +20,11 @@ def create_portfolio(db: Session, user_id: int, data: PortfolioCreate) -> Portfo
 def list_portfolios(db: Session, user_id: int) -> list[PortfolioResponse]:
     rows = db.query(Portfolio).filter(Portfolio.user_id == user_id).all()
     return [PortfolioResponse.model_validate(r) for r in rows]
+
+
+def get_portfolio(db: Session, user_id: int, portfolio_id: int) -> Portfolio | None:
+    return (
+        db.query(Portfolio)
+        .filter(Portfolio.id == portfolio_id, Portfolio.user_id == user_id)
+        .first()
+    )

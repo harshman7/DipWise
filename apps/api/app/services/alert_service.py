@@ -1,16 +1,96 @@
-"""Alert checking and notification logic.
+"""Alert checking and notification logic."""
 
-Placeholder — will check live prices against user thresholds and trigger events.
-"""
+from datetime import date
 
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
-from app.models.alert import Alert
+from app.models.alert import Alert, AlertEvent
+from app.models.price import DailyPrice
+from app.schemas.alert import AlertCreate, AlertResponse
+
+
+DEFAULT_LOOKBACK = 90
+
+
+def list_alerts(db: Session, user_id: int) -> list[AlertResponse]:
+    rows = (
+        db.query(Alert)
+        .filter(Alert.user_id == user_id)
+        .order_by(Alert.created_at.desc())
+        .all()
+    )
+    return [AlertResponse.model_validate(r) for r in rows]
+
+
+def create_alert(db: Session, user_id: int, body: AlertCreate) -> AlertResponse:
+    alert = Alert(
+        user_id=user_id,
+        asset_id=body.asset_id,
+        alert_type=body.alert_type,
+        threshold=body.threshold,
+        message=body.message,
+        is_active=True,
+    )
+    db.add(alert)
+    db.commit()
+    db.refresh(alert)
+    return AlertResponse.model_validate(alert)
 
 
 def check_alerts(db: Session) -> int:
-    """Check all active alerts against current prices. Returns count of triggered alerts."""
-    _active = db.query(Alert).filter(Alert.is_active.is_(True)).all()
-    # TODO: fetch current prices and compare against thresholds
+    """Check active alerts against recent prices in DB. Returns events created."""
+    alerts: list[Alert] = db.query(Alert).filter(Alert.is_active.is_(True)).all()
     triggered = 0
+    today = date.today()
+
+    for alert in alerts:
+        price_rows = (
+            db.query(DailyPrice)
+            .filter(DailyPrice.asset_id == alert.asset_id)
+            .order_by(DailyPrice.date.desc())
+            .limit(500)
+            .all()
+        )
+        if len(price_rows) < 2:
+            continue
+        price_rows = list(reversed(price_rows))
+
+        closes = [float(r.adj_close) for r in price_rows]
+        latest_close = closes[-1]
+        latest_date = price_rows[-1].date
+
+        should_fire = False
+        thr = float(alert.threshold)
+
+        if alert.alert_type == "price_below":
+            should_fire = latest_close <= thr
+        else:
+            window = min(DEFAULT_LOOKBACK, len(closes))
+            rolling_high = max(closes[-window:])
+            if rolling_high > 0:
+                dd = (rolling_high - latest_close) / rolling_high
+                should_fire = dd >= thr
+
+        if not should_fire:
+            continue
+
+        existing = (
+            db.query(AlertEvent)
+            .filter(AlertEvent.alert_id == alert.id)
+            .filter(func.date(AlertEvent.triggered_at) == today)
+            .first()
+        )
+        if existing:
+            continue
+
+        evt = AlertEvent(
+            alert_id=alert.id,
+            price_at_trigger=latest_close,
+            details=f"Close {latest_close} on {latest_date}; asset_id={alert.asset_id}",
+        )
+        db.add(evt)
+        triggered += 1
+
+    db.commit()
     return triggered

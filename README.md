@@ -20,7 +20,7 @@ Investment analytics platform for comparing stocks/ETFs, detecting historical pr
 ```
 apps/web/          React + TypeScript + Vite frontend
 apps/api/          FastAPI + SQLAlchemy backend
-packages/shared/   Shared TypeScript types
+packages/shared/   OpenAPI-generated client and types (Orval)
 infra/docker/      Dockerfiles
 docs/              Documentation
 ```
@@ -73,34 +73,46 @@ Requires PostgreSQL and Redis running locally (update `.env` with local URLs).
 | `DATABASE_URL`        | Full database connection string              | (compose default)          |
 | `REDIS_URL`           | Redis connection string                      | `redis://redis:6379/0`     |
 | `JWT_SECRET_KEY`      | Secret key for JWT token signing             | (change in production)     |
-| `MARKET_DATA_API_KEY` | External market data provider API key        | (empty — uses mock data)   |
-| `NEWS_API_KEY`        | News provider API key                        | (empty — uses mock data)   |
+| `MARKET_DATA_PROVIDER`| `yahoo` \| `polygon` \| `alphavantage`      | `yahoo`                    |
+| `MARKET_DATA_API_KEY` | Polygon or Alpha Vantage API key              | (empty for Yahoo)          |
+| `NEWS_API_KEY`        | News provider API key                        | (empty)                    |
 | `VITE_API_BASE_URL`   | Backend API URL for the frontend             | `http://localhost:8000`    |
+
+## API client codegen
+
+Regenerate the TypeScript client and `openapi.json` after backend APIchanges:
+
+```bash
+# from repo root; requires Python venv with apps/api dependencies
+npm run codegen:api
+```
+
+This runs `apps/api/scripts/export_openapi.py` and Orval in `packages/shared`.
 
 ## API Overview
 
 | Method | Path              | Status       | Description                     |
 |--------|-------------------|--------------|---------------------------------|
 | GET    | `/health`         | Implemented  | Service health check            |
-| POST   | `/analysis/dips`  | Implemented  | Dip detection + backtest (mock) |
+| POST   | `/analysis/dips`  | Implemented  | Dip detection + backtest (real provider data) |
 | POST   | `/reports/dips/csv` | Implemented | CSV export of dip analysis      |
-| POST   | `/auth/register`  | Stub         | User registration               |
-| POST   | `/auth/login`     | Stub         | User authentication             |
+| POST   | `/auth/register`  | Implemented  | User registration + JWT         |
+| POST   | `/auth/login`     | Implemented  | JSON login + JWT                |
+| POST   | `/auth/token`     | Implemented  | OAuth2 form login (Swagger)     |
+| GET    | `/auth/me`        | Implemented  | Current user (Bearer)           |
 | GET    | `/assets/`        | Stub         | List tracked assets             |
-| GET    | `/prices/{symbol}`| Stub         | Historical prices               |
-| GET    | `/portfolios/`    | Stub         | List portfolios                 |
-| GET    | `/alerts/`        | Stub         | List alerts                     |
+| GET    | `/prices/{symbol}`| Implemented  | DB + provider backfill          |
+| POST   | `/prices/{symbol}/refresh` | Implemented | Force provider refresh   |
+| GET    | `/portfolios/`    | Implemented  | List portfolios (auth)          |
+| GET    | `/alerts/`        | Implemented  | List alerts (auth)            |
+| POST   | `/alerts/`        | Implemented  | Create alert (auth)             |
 
 Full endpoint reference: [docs/api.md](docs/api.md)
 
 ## Roadmap
 
-1. Integrate real market data provider (Yahoo Finance / Polygon / Alpha Vantage).
-2. Implement JWT authentication flow (register, login, protected routes).
-3. Build real dip detection with pandas rolling window analysis.
-4. Wire Celery background tasks for alert checking and data ingestion.
-5. Generate OpenAPI client in `packages/shared` for type-safe frontend API calls.
-6. Add Recharts visualizations with real price series.
-7. Implement CSV/PDF report generation with actual data.
-8. Add news sentiment integration.
-9. Production deployment configuration (TLS, managed DB, secrets management).
+1. Add Recharts visualizations with full loaded price series from `/prices`.
+2. Implement CSV/PDF report generation with richer templates.
+3. Add news sentiment integration and UI overlays.
+4. Production deployment configuration (TLS, managed DB, secrets management).
+5. Refresh-token or session rotation for long-lived clients.

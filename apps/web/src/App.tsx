@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./components/AppLayout";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import Compare from "./pages/Compare";
 import DipBacktester from "./pages/DipBacktester";
@@ -15,14 +16,16 @@ export default function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route element={<AppLayout />}>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/compare" element={<Compare />} />
-        <Route path="/backtester" element={<DipBacktester />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/watchlist" element={<Watchlist />} />
-        <Route path="/alerts" element={<Alerts />} />
-        <Route path="/reports" element={<Reports />} />
+      <Route element={<ProtectedRoute />}>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/compare" element={<Compare />} />
+          <Route path="/backtester" element={<DipBacktester />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/watchlist" element={<Watchlist />} />
+          <Route path="/alerts" element={<Alerts />} />
+          <Route path="/reports" element={<Reports />} />
+        </Route>
       </Route>
     </Routes>
   );

@@ -4,6 +4,8 @@ Base URL: `http://localhost:8000`
 
 Interactive docs available at `/docs` (Swagger UI) and `/redoc` (ReDoc).
 
+Use `Authorization: Bearer <access_token>` for protected routes. In Swagger, use **Authorize** with the token from `POST /auth/token` (form: username = email, password).
+
 ## Health
 
 ### GET /health
@@ -11,6 +13,7 @@ Interactive docs available at `/docs` (Swagger UI) and `/redoc` (ReDoc).
 Returns service status.
 
 **Response:**
+
 ```json
 { "status": "ok", "service": "dipwise-api" }
 ```
@@ -19,26 +22,31 @@ Returns service status.
 
 ### POST /auth/register
 
-Register a new user account. *(Not yet implemented — returns 501)*
+Register and receive a JWT.
 
 **Body:**
+
 ```json
 { "email": "user@example.com", "password": "secret", "full_name": "Jane Doe" }
 ```
 
 ### POST /auth/login
 
-Authenticate and receive a JWT. *(Not yet implemented — returns 501)*
+JSON login.
 
 **Body:**
+
 ```json
 { "email": "user@example.com", "password": "secret" }
 ```
 
-**Response:**
-```json
-{ "access_token": "eyJ...", "token_type": "bearer" }
-```
+### POST /auth/token
+
+OAuth2 password flow (`username` = email). Used by Swagger Authorize.
+
+### GET /auth/me
+
+Current user (requires Bearer).
 
 ## Assets
 
@@ -54,15 +62,20 @@ Get a single asset by ticker symbol.
 
 ### GET /prices/{symbol}?start=YYYY-MM-DD&end=YYYY-MM-DD
 
-Return historical daily prices for a symbol. *(Returns empty list until data provider is wired)*
+Historical daily bars from `daily_prices`, backfilled from the configured market provider when missing or stale (`PRICE_STALE_DAYS`).
+
+### POST /prices/{symbol}/refresh?start=...&end=...
+
+Force provider fetch for the range and upsert DB.
 
 ## Analysis
 
 ### POST /analysis/dips
 
-Detect historical dips and simulate a buy-the-dip strategy.
+Detect dips (rolling high vs adjusted close) and backtest buy-the-dip vs equal daily DCA over the same calendar window (same total capital as dip purchases).
 
 **Body:**
+
 ```json
 {
   "symbol": "VOO",
@@ -75,27 +88,27 @@ Detect historical dips and simulate a buy-the-dip strategy.
 }
 ```
 
-**Response:** `DipAnalysisResponse` with summary metrics, holding period breakdowns, and individual dip events. Currently returns deterministic mock data.
+**Response:** `DipAnalysisResponse` with metrics, per-holding-period summaries, and `dip_events` (forward returns use **trading** rows ahead, not calendar days).
 
 ## Portfolios
 
 ### GET /portfolios/
 
-List portfolios for the authenticated user. *(Auth not yet wired — returns empty list)*
+List portfolios for the authenticated user.
 
 ### GET /portfolios/{portfolio_id}
 
-Get a single portfolio with positions. *(Returns 501)*
+Get one portfolio (404 if not owned).
 
 ## Alerts
 
 ### GET /alerts/
 
-List alerts for the authenticated user. *(Returns empty list)*
+List alerts for the authenticated user.
 
 ### POST /alerts/
 
-Create a new alert. *(Returns 501)*
+Create alert (`dip_threshold`: threshold = drawdown vs rolling high, e.g. `0.05`; `price_below`: threshold = max price).
 
 ## Reports
 

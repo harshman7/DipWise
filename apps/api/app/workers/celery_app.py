@@ -1,4 +1,5 @@
 from celery import Celery
+from celery.schedules import crontab
 
 from app.core.config import settings
 
@@ -16,4 +17,17 @@ celery.conf.update(
     enable_utc=True,
 )
 
+celery.conf.beat_schedule = {
+    "ingest-active-symbols": {
+        "task": "app.workers.tasks.ingest_active_symbols",
+        "schedule": crontab(minute="*/30"),
+    },
+    "check-alerts": {
+        "task": "app.workers.tasks.run_check_alerts",
+        "schedule": crontab(minute="*/10"),
+    },
+}
+
 celery.autodiscover_tasks(["app.workers"])
+
+import app.workers.tasks  # noqa: E402, I001 — register tasks
