@@ -1,0 +1,8 @@
+{
+  "name": "dipwise",
+  "private": true,
+  "workspaces": [
+    "apps/web",
+    "packages/shared"
+  ]
+}
