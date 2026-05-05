@@ -112,3 +112,14 @@ Noted `dipwise_token` localStorage contract used by generated client.
 - Updated changelog entry for 2026-04-26.
 - Added revision footer in rotating doc set (index 3).
 
+
+## 2026-05-05 — RequireAuth routing
+
+Mapped public vs protected routes for smoke tests and onboarding copy.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-05-05.
+- Added revision footer in rotating doc set (index 4).
+

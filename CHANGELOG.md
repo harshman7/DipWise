@@ -42,3 +42,7 @@
 ### 2026-04-26
 - **JWT client storage:** Noted `dipwise_token` localStorage contract used by generated client.
 - Touched journal, changelog, README log line, and `docs/testing-notes.md`.
+
+### 2026-05-05
+- **RequireAuth routing:** Mapped public vs protected routes for smoke tests and onboarding copy.
+- Touched journal, changelog, README log line, and `CONTRIBUTING.md`.
