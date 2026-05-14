@@ -46,3 +46,7 @@
 ### 2026-05-05
 - **RequireAuth routing:** Mapped public vs protected routes for smoke tests and onboarding copy.
 - Touched journal, changelog, README log line, and `CONTRIBUTING.md`.
+
+### 2026-05-14
+- **Saved backtests API:** Outlined persistence fields returned to the backtester save action.
+- Touched journal, changelog, README log line, and `.env.example`.

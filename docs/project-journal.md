@@ -123,3 +123,14 @@ Mapped public vs protected routes for smoke tests and onboarding copy.
 - Updated changelog entry for 2026-05-05.
 - Added revision footer in rotating doc set (index 4).
 
+
+## 2026-05-14 — Saved backtests API
+
+Outlined persistence fields returned to the backtester save action.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-05-14.
+- Added revision footer in rotating doc set (index 5).
+

@@ -266,3 +266,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-04-17` — Celery beat schedules: Recorded ingest (30m) and alert check (10m) intervals for local Docker stacks.
 - `2026-04-26` — JWT client storage: Noted `dipwise_token` localStorage contract used by generated client.
 - `2026-05-05` — RequireAuth routing: Mapped public vs protected routes for smoke tests and onboarding copy.
+- `2026-05-14` — Saved backtests API: Outlined persistence fields returned to the backtester save action.
