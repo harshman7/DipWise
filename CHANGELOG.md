@@ -368,3 +368,6 @@
 
 ### 2026-04-30
 - **backtester UX (pass 82):** Aligned changelog entries with backtester UX. Pass 82/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-05-18
+- **backtester UX (pass 83):** Expanded sandbox notes on backtester UX. Pass 83/100 in the sandbox documentation sweep; no runtime code changed.
