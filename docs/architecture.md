@@ -119,3 +119,6 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- 2026-03-06 pass 77: testing strategy -->
 **2026-03-06** — Recorded follow-ups for testing strategy. Pass 77/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-05-19 pass 84: saved backtests -->
+**2026-05-19** — Added revision footers covering saved backtests. Pass 84/100 in the sandbox documentation sweep; no runtime code changed.

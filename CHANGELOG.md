@@ -371,3 +371,6 @@
 
 ### 2026-05-18
 - **backtester UX (pass 83):** Expanded sandbox notes on backtester UX. Pass 83/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-05-19
+- **saved backtests (pass 84):** Added revision footers covering saved backtests. Pass 84/100 in the sandbox documentation sweep; no runtime code changed.

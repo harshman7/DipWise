@@ -1020,3 +1020,11 @@ Expanded sandbox notes on backtester UX. Pass 83/100 in the sandbox documentatio
 
 
 > Inline marker 2026-05-18: consolidated pointer for backtester UX.
+
+## 2026-05-19 — saved backtests (pass 84)
+
+Added revision footers covering saved backtests. Pass 84/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/architecture.md`.
+

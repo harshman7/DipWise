@@ -368,3 +368,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-04-28` — testing strategy (pass 81).
 - `2026-04-30` — backtester UX (pass 82).
 - `2026-05-18` — backtester UX (pass 83).
+- `2026-05-19` — saved backtests (pass 84).
