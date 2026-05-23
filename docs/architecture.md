@@ -74,3 +74,7 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- revision 2026-03-30: Alert types matrix -->
 **2026-03-30 — Alert types matrix.** Tabulated dip_threshold vs price_below vs sma_cross evaluation cadence.
+
+
+<!-- revision 2026-05-23: Reports CSV/PDF -->
+**2026-05-23 — Reports CSV/PDF.** Linked export endpoints to shared `DipAnalysisRequest` body schema.

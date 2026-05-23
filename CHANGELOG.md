@@ -50,3 +50,7 @@
 ### 2026-05-14
 - **Saved backtests API:** Outlined persistence fields returned to the backtester save action.
 - Touched journal, changelog, README log line, and `.env.example`.
+
+### 2026-05-23
+- **Reports CSV/PDF:** Linked export endpoints to shared `DipAnalysisRequest` body schema.
+- Touched journal, changelog, README log line, and `docs/architecture.md`.

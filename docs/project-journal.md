@@ -134,3 +134,14 @@ Outlined persistence fields returned to the backtester save action.
 - Updated changelog entry for 2026-05-14.
 - Added revision footer in rotating doc set (index 5).
 
+
+## 2026-05-23 — Reports CSV/PDF
+
+Linked export endpoints to shared `DipAnalysisRequest` body schema.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-05-23.
+- Added revision footer in rotating doc set (index 0).
+
