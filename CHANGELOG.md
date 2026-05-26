@@ -374,3 +374,6 @@
 
 ### 2026-05-19
 - **saved backtests (pass 84):** Added revision footers covering saved backtests. Pass 84/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-05-25
+- **data model (pass 85):** Annotated developer workflow around data model. Pass 85/100 in the sandbox documentation sweep; no runtime code changed.

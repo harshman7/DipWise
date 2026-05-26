@@ -228,3 +228,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2026-03-31 pass 78: TanStack Query -->
 **2026-03-31** — Captured QA checklist items for TanStack Query. Pass 78/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-05-25 pass 85: data model -->
+**2026-05-25** — Annotated developer workflow around data model. Pass 85/100 in the sandbox documentation sweep; no runtime code changed.
