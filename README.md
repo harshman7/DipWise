@@ -370,3 +370,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-05-18` — backtester UX (pass 83).
 - `2026-05-19` — saved backtests (pass 84).
 - `2026-05-25` — data model (pass 85).
+- `2026-05-30` — data model (pass 86).

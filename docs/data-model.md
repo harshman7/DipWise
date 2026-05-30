@@ -197,3 +197,6 @@ erDiagram
 
 <!-- 2026-04-01 pass 79: report exports -->
 **2026-04-01** — Aligned changelog entries with report exports. Pass 79/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-05-30 pass 86: data model -->
+**2026-05-30** — Annotated developer workflow around data model. Pass 86/100 in the sandbox documentation sweep; no runtime code changed.
