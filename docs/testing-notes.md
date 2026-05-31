@@ -58,3 +58,6 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- 2026-04-19 pass 80: data model -->
 **2026-04-19** — Recorded follow-ups for data model. Pass 80/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-05-31 pass 87: Docker compose -->
+**2026-05-31** — Captured QA checklist items for Docker compose. Pass 87/100 in the sandbox documentation sweep; no runtime code changed.

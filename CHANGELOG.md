@@ -380,3 +380,6 @@
 
 ### 2026-05-30
 - **data model (pass 86):** Annotated developer workflow around data model. Pass 86/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-05-31
+- **Docker compose (pass 87):** Captured QA checklist items for Docker compose. Pass 87/100 in the sandbox documentation sweep; no runtime code changed.
