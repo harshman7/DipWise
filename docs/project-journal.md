@@ -145,3 +145,14 @@ Linked export endpoints to shared `DipAnalysisRequest` body schema.
 - Updated changelog entry for 2026-05-23.
 - Added revision footer in rotating doc set (index 0).
 
+
+## 2026-06-01 — Watchlist CRUD flows
+
+Summarized authenticated watchlist endpoints and UI expectations.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-06-01.
+- Added revision footer in rotating doc set (index 1).
+

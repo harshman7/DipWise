@@ -54,3 +54,7 @@
 ### 2026-05-23
 - **Reports CSV/PDF:** Linked export endpoints to shared `DipAnalysisRequest` body schema.
 - Touched journal, changelog, README log line, and `docs/architecture.md`.
+
+### 2026-06-01
+- **Watchlist CRUD flows:** Summarized authenticated watchlist endpoints and UI expectations.
+- Touched journal, changelog, README log line, and `docs/api.md`.

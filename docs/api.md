@@ -180,3 +180,7 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- revision 2026-04-08: SMA cross params JSON -->
 **2026-04-08 — SMA cross params JSON.** Documented Alembic `002` `params_json` shape for cross direction and period.
+
+
+<!-- revision 2026-06-01: Watchlist CRUD flows -->
+**2026-06-01 — Watchlist CRUD flows.** Summarized authenticated watchlist endpoints and UI expectations.
