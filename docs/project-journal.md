@@ -1052,3 +1052,11 @@ Captured QA checklist items for Docker compose. Pass 87/100 in the sandbox docum
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2026-06-07 — frontend layout (pass 88)
+
+Documented edge cases and defaults for frontend layout. Pass 88/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+

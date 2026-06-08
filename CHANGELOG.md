@@ -383,3 +383,6 @@
 
 ### 2026-05-31
 - **Docker compose (pass 87):** Captured QA checklist items for Docker compose. Pass 87/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-06-07
+- **frontend layout (pass 88):** Documented edge cases and defaults for frontend layout. Pass 88/100 in the sandbox documentation sweep; no runtime code changed.

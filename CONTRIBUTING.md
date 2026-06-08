@@ -62,3 +62,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- 2026-04-28 pass 81: testing strategy -->
 **2026-04-28** — Documented edge cases and defaults for testing strategy. Pass 81/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-06-07 pass 88: frontend layout -->
+**2026-06-07** — Documented edge cases and defaults for frontend layout. Pass 88/100 in the sandbox documentation sweep; no runtime code changed.
