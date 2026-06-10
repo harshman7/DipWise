@@ -156,3 +156,14 @@ Summarized authenticated watchlist endpoints and UI expectations.
 - Updated changelog entry for 2026-06-01.
 - Added revision footer in rotating doc set (index 1).
 
+
+## 2026-06-10 — Portfolio transactions
+
+Documented transaction POST/GET paths and position rollups.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-06-10.
+- Added revision footer in rotating doc set (index 2).
+

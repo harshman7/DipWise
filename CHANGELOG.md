@@ -58,3 +58,7 @@
 ### 2026-06-01
 - **Watchlist CRUD flows:** Summarized authenticated watchlist endpoints and UI expectations.
 - Touched journal, changelog, README log line, and `docs/api.md`.
+
+### 2026-06-10
+- **Portfolio transactions:** Documented transaction POST/GET paths and position rollups.
+- Touched journal, changelog, README log line, and `docs/data-model.md`.

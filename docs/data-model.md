@@ -149,3 +149,7 @@ erDiagram
 
 <!-- revision 2026-04-17: Celery beat schedules -->
 **2026-04-17 — Celery beat schedules.** Recorded ingest (30m) and alert check (10m) intervals for local Docker stacks.
+
+
+<!-- revision 2026-06-10: Portfolio transactions -->
+**2026-06-10 — Portfolio transactions.** Documented transaction POST/GET paths and position rollups.
