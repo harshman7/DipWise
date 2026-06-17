@@ -373,3 +373,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-05-30` — data model (pass 86).
 - `2026-05-31` — Docker compose (pass 87).
 - `2026-06-07` — frontend layout (pass 88).
+- `2026-06-17` — OpenAPI codegen (pass 89).

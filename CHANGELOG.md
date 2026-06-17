@@ -386,3 +386,6 @@
 
 ### 2026-06-07
 - **frontend layout (pass 88):** Documented edge cases and defaults for frontend layout. Pass 88/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-06-17
+- **OpenAPI codegen (pass 89):** Annotated developer workflow around OpenAPI codegen. Pass 89/100 in the sandbox documentation sweep; no runtime code changed.

@@ -1060,3 +1060,11 @@ Documented edge cases and defaults for frontend layout. Pass 88/100 in the sandb
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2026-06-17 — OpenAPI codegen (pass 89)
+
+Annotated developer workflow around OpenAPI codegen. Pass 89/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+
