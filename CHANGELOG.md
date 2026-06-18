@@ -389,3 +389,6 @@
 
 ### 2026-06-17
 - **OpenAPI codegen (pass 89):** Annotated developer workflow around OpenAPI codegen. Pass 89/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-06-18
+- **Recharts tooling (pass 90):** Aligned changelog entries with Recharts tooling. Pass 90/100 in the sandbox documentation sweep; no runtime code changed.

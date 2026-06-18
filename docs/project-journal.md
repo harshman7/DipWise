@@ -1068,3 +1068,13 @@ Annotated developer workflow around OpenAPI codegen. Pass 89/100 in the sandbox 
 - Journal, changelog, and README log updated.
 - Rotating doc: `.env.example`.
 
+
+## 2026-06-18 — Recharts tooling (pass 90)
+
+Aligned changelog entries with Recharts tooling. Pass 90/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/project-journal.md`.
+
+
+> Inline marker 2026-06-18: consolidated pointer for Recharts tooling.
