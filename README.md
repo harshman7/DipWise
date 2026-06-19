@@ -375,3 +375,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-06-07` — frontend layout (pass 88).
 - `2026-06-17` — OpenAPI codegen (pass 89).
 - `2026-06-18` — Recharts tooling (pass 90).
+- `2026-06-19` — OpenAPI codegen (pass 91).

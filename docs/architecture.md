@@ -122,3 +122,6 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- 2026-05-19 pass 84: saved backtests -->
 **2026-05-19** — Added revision footers covering saved backtests. Pass 84/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-06-19 pass 91: OpenAPI codegen -->
+**2026-06-19** — Captured QA checklist items for OpenAPI codegen. Pass 91/100 in the sandbox documentation sweep; no runtime code changed.

@@ -1078,3 +1078,11 @@ Aligned changelog entries with Recharts tooling. Pass 90/100 in the sandbox docu
 
 
 > Inline marker 2026-06-18: consolidated pointer for Recharts tooling.
+
+## 2026-06-19 — OpenAPI codegen (pass 91)
+
+Captured QA checklist items for OpenAPI codegen. Pass 91/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/architecture.md`.
+
