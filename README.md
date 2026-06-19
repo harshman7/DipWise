@@ -270,3 +270,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-05-23` — Reports CSV/PDF: Linked export endpoints to shared `DipAnalysisRequest` body schema.
 - `2026-06-01` — Watchlist CRUD flows: Summarized authenticated watchlist endpoints and UI expectations.
 - `2026-06-10` — Portfolio transactions: Documented transaction POST/GET paths and position rollups.
+- `2026-06-19` — OpenAPI codegen loop: Captured `npm run codegen:api` steps and Orval output location.

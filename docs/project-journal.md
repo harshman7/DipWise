@@ -167,3 +167,14 @@ Documented transaction POST/GET paths and position rollups.
 - Updated changelog entry for 2026-06-10.
 - Added revision footer in rotating doc set (index 2).
 
+
+## 2026-06-19 — OpenAPI codegen loop
+
+Captured `npm run codegen:api` steps and Orval output location.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-06-19.
+- Added revision footer in rotating doc set (index 3).
+

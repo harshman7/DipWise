@@ -62,3 +62,7 @@
 ### 2026-06-10
 - **Portfolio transactions:** Documented transaction POST/GET paths and position rollups.
 - Touched journal, changelog, README log line, and `docs/data-model.md`.
+
+### 2026-06-19
+- **OpenAPI codegen loop:** Captured `npm run codegen:api` steps and Orval output location.
+- Touched journal, changelog, README log line, and `docs/testing-notes.md`.

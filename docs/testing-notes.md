@@ -10,3 +10,7 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- revision 2026-04-26: JWT client storage -->
 **2026-04-26 — JWT client storage.** Noted `dipwise_token` localStorage contract used by generated client.
+
+
+<!-- revision 2026-06-19: OpenAPI codegen loop -->
+**2026-06-19 — OpenAPI codegen loop.** Captured `npm run codegen:api` steps and Orval output location.
