@@ -178,3 +178,14 @@ Captured `npm run codegen:api` steps and Orval output location.
 - Updated changelog entry for 2026-06-19.
 - Added revision footer in rotating doc set (index 3).
 
+
+## 2026-06-28 — Pytest service coverage
+
+Listed modules under `apps/api/app/tests` and what each file guards.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-06-28.
+- Added revision footer in rotating doc set (index 4).
+

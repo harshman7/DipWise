@@ -14,3 +14,7 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- revision 2026-05-05: RequireAuth routing -->
 **2026-05-05 — RequireAuth routing.** Mapped public vs protected routes for smoke tests and onboarding copy.
+
+
+<!-- revision 2026-06-28: Pytest service coverage -->
+**2026-06-28 — Pytest service coverage.** Listed modules under `apps/api/app/tests` and what each file guards.

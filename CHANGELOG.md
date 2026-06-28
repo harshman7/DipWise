@@ -66,3 +66,7 @@
 ### 2026-06-19
 - **OpenAPI codegen loop:** Captured `npm run codegen:api` steps and Orval output location.
 - Touched journal, changelog, README log line, and `docs/testing-notes.md`.
+
+### 2026-06-28
+- **Pytest service coverage:** Listed modules under `apps/api/app/tests` and what each file guards.
+- Touched journal, changelog, README log line, and `CONTRIBUTING.md`.
