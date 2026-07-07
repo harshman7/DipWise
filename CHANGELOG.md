@@ -70,3 +70,7 @@
 ### 2026-06-28
 - **Pytest service coverage:** Listed modules under `apps/api/app/tests` and what each file guards.
 - Touched journal, changelog, README log line, and `CONTRIBUTING.md`.
+
+### 2026-07-07
+- **Vitest auth smoke:** Described `RequireAuth` tests and public route bypass cases.
+- Touched journal, changelog, README log line, and `.env.example`.

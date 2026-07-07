@@ -189,3 +189,14 @@ Listed modules under `apps/api/app/tests` and what each file guards.
 - Updated changelog entry for 2026-06-28.
 - Added revision footer in rotating doc set (index 4).
 
+
+## 2026-07-07 — Vitest auth smoke
+
+Described `RequireAuth` tests and public route bypass cases.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-07-07.
+- Added revision footer in rotating doc set (index 5).
+
