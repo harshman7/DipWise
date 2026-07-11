@@ -376,3 +376,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-06-17` — OpenAPI codegen (pass 89).
 - `2026-06-18` — Recharts tooling (pass 90).
 - `2026-06-19` — OpenAPI codegen (pass 91).
+- `2026-07-11` — market data providers (pass 92).

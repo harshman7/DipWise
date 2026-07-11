@@ -395,3 +395,6 @@
 
 ### 2026-06-19
 - **OpenAPI codegen (pass 91):** Captured QA checklist items for OpenAPI codegen. Pass 91/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-07-11
+- **market data providers (pass 92):** Annotated developer workflow around market data providers. Pass 92/100 in the sandbox documentation sweep; no runtime code changed.

@@ -1086,3 +1086,11 @@ Captured QA checklist items for OpenAPI codegen. Pass 91/100 in the sandbox docu
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/architecture.md`.
 
+
+## 2026-07-11 — market data providers (pass 92)
+
+Annotated developer workflow around market data providers. Pass 92/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/api.md`.
+

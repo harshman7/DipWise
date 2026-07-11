@@ -231,3 +231,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2026-05-25 pass 85: data model -->
 **2026-05-25** — Annotated developer workflow around data model. Pass 85/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-07-11 pass 92: market data providers -->
+**2026-07-11** — Annotated developer workflow around market data providers. Pass 92/100 in the sandbox documentation sweep; no runtime code changed.
