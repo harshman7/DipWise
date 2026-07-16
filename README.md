@@ -273,3 +273,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-06-19` — OpenAPI codegen loop: Captured `npm run codegen:api` steps and Orval output location.
 - `2026-06-28` — Pytest service coverage: Listed modules under `apps/api/app/tests` and what each file guards.
 - `2026-07-07` — Vitest auth smoke: Described `RequireAuth` tests and public route bypass cases.
+- `2026-07-16` — Docker compose topology: Sketched api/web/postgres/redis/worker/beat/migrate service relationships.

@@ -200,3 +200,14 @@ Described `RequireAuth` tests and public route bypass cases.
 - Updated changelog entry for 2026-07-07.
 - Added revision footer in rotating doc set (index 5).
 
+
+## 2026-07-16 — Docker compose topology
+
+Sketched api/web/postgres/redis/worker/beat/migrate service relationships.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-07-16.
+- Added revision footer in rotating doc set (index 0).
+

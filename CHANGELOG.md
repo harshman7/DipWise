@@ -74,3 +74,7 @@
 ### 2026-07-07
 - **Vitest auth smoke:** Described `RequireAuth` tests and public route bypass cases.
 - Touched journal, changelog, README log line, and `.env.example`.
+
+### 2026-07-16
+- **Docker compose topology:** Sketched api/web/postgres/redis/worker/beat/migrate service relationships.
+- Touched journal, changelog, README log line, and `docs/architecture.md`.

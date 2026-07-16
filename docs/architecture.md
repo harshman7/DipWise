@@ -78,3 +78,7 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- revision 2026-05-23: Reports CSV/PDF -->
 **2026-05-23 — Reports CSV/PDF.** Linked export endpoints to shared `DipAnalysisRequest` body schema.
+
+
+<!-- revision 2026-07-16: Docker compose topology -->
+**2026-07-16 — Docker compose topology.** Sketched api/web/postgres/redis/worker/beat/migrate service relationships.
