@@ -398,3 +398,6 @@
 
 ### 2026-07-11
 - **market data providers (pass 92):** Annotated developer workflow around market data providers. Pass 92/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-07-21
+- **saved backtests (pass 93):** Documented edge cases and defaults for saved backtests. Pass 93/100 in the sandbox documentation sweep; no runtime code changed.
