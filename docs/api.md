@@ -184,3 +184,7 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- revision 2026-06-01: Watchlist CRUD flows -->
 **2026-06-01 — Watchlist CRUD flows.** Summarized authenticated watchlist endpoints and UI expectations.
+
+
+<!-- revision 2026-07-25: Market data providers -->
+**2026-07-25 — Market data providers.** Compared Yahoo default vs Polygon/Alpha Vantage key requirements.

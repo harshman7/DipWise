@@ -78,3 +78,7 @@
 ### 2026-07-16
 - **Docker compose topology:** Sketched api/web/postgres/redis/worker/beat/migrate service relationships.
 - Touched journal, changelog, README log line, and `docs/architecture.md`.
+
+### 2026-07-25
+- **Market data providers:** Compared Yahoo default vs Polygon/Alpha Vantage key requirements.
+- Touched journal, changelog, README log line, and `docs/api.md`.

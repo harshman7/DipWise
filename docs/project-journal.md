@@ -211,3 +211,14 @@ Sketched api/web/postgres/redis/worker/beat/migrate service relationships.
 - Updated changelog entry for 2026-07-16.
 - Added revision footer in rotating doc set (index 0).
 
+
+## 2026-07-25 — Market data providers
+
+Compared Yahoo default vs Polygon/Alpha Vantage key requirements.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-07-25.
+- Added revision footer in rotating doc set (index 1).
+
