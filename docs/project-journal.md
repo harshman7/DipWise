@@ -222,3 +222,14 @@ Compared Yahoo default vs Polygon/Alpha Vantage key requirements.
 - Updated changelog entry for 2026-07-25.
 - Added revision footer in rotating doc set (index 1).
 
+
+## 2026-08-03 — News optional surface
+
+Clarified bearer requirement and UI gating on backtester headlines.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-08-03.
+- Added revision footer in rotating doc set (index 2).
+

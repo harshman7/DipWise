@@ -82,3 +82,7 @@
 ### 2026-07-25
 - **Market data providers:** Compared Yahoo default vs Polygon/Alpha Vantage key requirements.
 - Touched journal, changelog, README log line, and `docs/api.md`.
+
+### 2026-08-03
+- **News optional surface:** Clarified bearer requirement and UI gating on backtester headlines.
+- Touched journal, changelog, README log line, and `docs/data-model.md`.

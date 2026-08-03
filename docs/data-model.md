@@ -153,3 +153,7 @@ erDiagram
 
 <!-- revision 2026-06-10: Portfolio transactions -->
 **2026-06-10 — Portfolio transactions.** Documented transaction POST/GET paths and position rollups.
+
+
+<!-- revision 2026-08-03: News optional surface -->
+**2026-08-03 — News optional surface.** Clarified bearer requirement and UI gating on backtester headlines.
