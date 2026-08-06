@@ -401,3 +401,6 @@
 
 ### 2026-07-21
 - **saved backtests (pass 93):** Documented edge cases and defaults for saved backtests. Pass 93/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-08-06
+- **Celery workers (pass 94):** Recorded follow-ups for Celery workers. Pass 94/100 in the sandbox documentation sweep; no runtime code changed.

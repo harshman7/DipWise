@@ -378,3 +378,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-06-19` — OpenAPI codegen (pass 91).
 - `2026-07-11` — market data providers (pass 92).
 - `2026-07-21` — saved backtests (pass 93).
+- `2026-08-06` — Celery workers (pass 94).
