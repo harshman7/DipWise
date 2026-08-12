@@ -14,3 +14,7 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- revision 2026-06-19: OpenAPI codegen loop -->
 **2026-06-19 — OpenAPI codegen loop.** Captured `npm run codegen:api` steps and Orval output location.
+
+
+<!-- revision 2026-08-12: PostgreSQL schema map -->
+**2026-08-12 — PostgreSQL schema map.** Cross-referenced ERD entities to router ownership boundaries.

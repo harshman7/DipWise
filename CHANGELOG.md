@@ -86,3 +86,7 @@
 ### 2026-08-03
 - **News optional surface:** Clarified bearer requirement and UI gating on backtester headlines.
 - Touched journal, changelog, README log line, and `docs/data-model.md`.
+
+### 2026-08-12
+- **PostgreSQL schema map:** Cross-referenced ERD entities to router ownership boundaries.
+- Touched journal, changelog, README log line, and `docs/testing-notes.md`.

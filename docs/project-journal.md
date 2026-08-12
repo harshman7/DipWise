@@ -233,3 +233,14 @@ Clarified bearer requirement and UI gating on backtester headlines.
 - Updated changelog entry for 2026-08-03.
 - Added revision footer in rotating doc set (index 2).
 
+
+## 2026-08-12 — PostgreSQL schema map
+
+Cross-referenced ERD entities to router ownership boundaries.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-08-12.
+- Added revision footer in rotating doc set (index 3).
+
