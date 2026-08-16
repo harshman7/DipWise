@@ -65,3 +65,6 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- 2026-06-07 pass 88: frontend layout -->
 **2026-06-07** — Documented edge cases and defaults for frontend layout. Pass 88/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-08-16 pass 95: Docker compose -->
+**2026-08-16** — Captured QA checklist items for Docker compose. Pass 95/100 in the sandbox documentation sweep; no runtime code changed.

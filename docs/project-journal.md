@@ -1110,3 +1110,11 @@ Recorded follow-ups for Celery workers. Pass 94/100 in the sandbox documentation
 - Journal, changelog, and README log updated.
 - Rotating doc: `docs/testing-notes.md`.
 
+
+## 2026-08-16 — Docker compose (pass 95)
+
+Captured QA checklist items for Docker compose. Pass 95/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `CONTRIBUTING.md`.
+
