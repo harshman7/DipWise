@@ -244,3 +244,14 @@ Cross-referenced ERD entities to router ownership boundaries.
 - Updated changelog entry for 2026-08-12.
 - Added revision footer in rotating doc set (index 3).
 
+
+## 2026-08-21 — Tailwind brand palette
+
+Noted custom `brand` scale usage in layout and cards.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-08-21.
+- Added revision footer in rotating doc set (index 4).
+

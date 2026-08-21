@@ -18,3 +18,7 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- revision 2026-06-28: Pytest service coverage -->
 **2026-06-28 — Pytest service coverage.** Listed modules under `apps/api/app/tests` and what each file guards.
+
+
+<!-- revision 2026-08-21: Tailwind brand palette -->
+**2026-08-21 — Tailwind brand palette.** Noted custom `brand` scale usage in layout and cards.

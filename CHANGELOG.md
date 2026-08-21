@@ -90,3 +90,7 @@
 ### 2026-08-12
 - **PostgreSQL schema map:** Cross-referenced ERD entities to router ownership boundaries.
 - Touched journal, changelog, README log line, and `docs/testing-notes.md`.
+
+### 2026-08-21
+- **Tailwind brand palette:** Noted custom `brand` scale usage in layout and cards.
+- Touched journal, changelog, README log line, and `CONTRIBUTING.md`.

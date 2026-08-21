@@ -277,3 +277,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-07-25` — Market data providers: Compared Yahoo default vs Polygon/Alpha Vantage key requirements.
 - `2026-08-03` — News optional surface: Clarified bearer requirement and UI gating on backtester headlines.
 - `2026-08-12` — PostgreSQL schema map: Cross-referenced ERD entities to router ownership boundaries.
+- `2026-08-21` — Tailwind brand palette: Noted custom `brand` scale usage in layout and cards.
