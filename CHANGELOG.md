@@ -94,3 +94,7 @@
 ### 2026-08-21
 - **Tailwind brand palette:** Noted custom `brand` scale usage in layout and cards.
 - Touched journal, changelog, README log line, and `CONTRIBUTING.md`.
+
+### 2026-08-30
+- **TanStack Query patterns:** Documented cache keys used on dashboard and analysis pages.
+- Touched journal, changelog, README log line, and `.env.example`.

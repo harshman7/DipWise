@@ -255,3 +255,14 @@ Noted custom `brand` scale usage in layout and cards.
 - Updated changelog entry for 2026-08-21.
 - Added revision footer in rotating doc set (index 4).
 
+
+## 2026-08-30 — TanStack Query patterns
+
+Documented cache keys used on dashboard and analysis pages.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-08-30.
+- Added revision footer in rotating doc set (index 5).
+
