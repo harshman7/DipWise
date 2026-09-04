@@ -1118,3 +1118,11 @@ Captured QA checklist items for Docker compose. Pass 95/100 in the sandbox docum
 - Journal, changelog, and README log updated.
 - Rotating doc: `CONTRIBUTING.md`.
 
+
+## 2026-09-03 — environment setup (pass 96)
+
+Captured QA checklist items for environment setup. Pass 96/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `.env.example`.
+
