@@ -98,3 +98,7 @@
 ### 2026-08-30
 - **TanStack Query patterns:** Documented cache keys used on dashboard and analysis pages.
 - Touched journal, changelog, README log line, and `.env.example`.
+
+### 2026-09-08
+- **Recharts brush zoom:** Captured backtester chart brush behavior and dip marker layering.
+- Touched journal, changelog, README log line, and `docs/architecture.md`.

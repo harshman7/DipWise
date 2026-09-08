@@ -279,3 +279,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-08-12` — PostgreSQL schema map: Cross-referenced ERD entities to router ownership boundaries.
 - `2026-08-21` — Tailwind brand palette: Noted custom `brand` scale usage in layout and cards.
 - `2026-08-30` — TanStack Query patterns: Documented cache keys used on dashboard and analysis pages.
+- `2026-09-08` — Recharts brush zoom: Captured backtester chart brush behavior and dip marker layering.

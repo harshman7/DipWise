@@ -82,3 +82,7 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- revision 2026-07-16: Docker compose topology -->
 **2026-07-16 — Docker compose topology.** Sketched api/web/postgres/redis/worker/beat/migrate service relationships.
+
+
+<!-- revision 2026-09-08: Recharts brush zoom -->
+**2026-09-08 — Recharts brush zoom.** Captured backtester chart brush behavior and dip marker layering.

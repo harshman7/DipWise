@@ -266,3 +266,14 @@ Documented cache keys used on dashboard and analysis pages.
 - Updated changelog entry for 2026-08-30.
 - Added revision footer in rotating doc set (index 5).
 
+
+## 2026-09-08 — Recharts brush zoom
+
+Captured backtester chart brush behavior and dip marker layering.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-09-08.
+- Added revision footer in rotating doc set (index 0).
+
