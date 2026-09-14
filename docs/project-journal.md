@@ -1126,3 +1126,13 @@ Captured QA checklist items for environment setup. Pass 96/100 in the sandbox do
 - Journal, changelog, and README log updated.
 - Rotating doc: `.env.example`.
 
+
+## 2026-09-14 — frontend layout (pass 97)
+
+Expanded sandbox notes on frontend layout. Pass 97/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/project-journal.md`.
+
+
+> Inline marker 2026-09-14: consolidated pointer for frontend layout.

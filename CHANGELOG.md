@@ -410,3 +410,6 @@
 
 ### 2026-09-03
 - **environment setup (pass 96):** Captured QA checklist items for environment setup. Pass 96/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-09-14
+- **frontend layout (pass 97):** Expanded sandbox notes on frontend layout. Pass 97/100 in the sandbox documentation sweep; no runtime code changed.
