@@ -1136,3 +1136,11 @@ Expanded sandbox notes on frontend layout. Pass 97/100 in the sandbox documentat
 
 
 > Inline marker 2026-09-14: consolidated pointer for frontend layout.
+
+## 2026-09-16 — SMA/EMA indicators (pass 98)
+
+Aligned changelog entries with SMA/EMA indicators. Pass 98/100 in the sandbox documentation sweep; no runtime code changed.
+
+- Journal, changelog, and README log updated.
+- Rotating doc: `docs/architecture.md`.
+

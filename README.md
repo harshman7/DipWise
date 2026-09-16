@@ -382,3 +382,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-08-16` — Docker compose (pass 95).
 - `2026-09-03` — environment setup (pass 96).
 - `2026-09-14` — frontend layout (pass 97).
+- `2026-09-16` — SMA/EMA indicators (pass 98).

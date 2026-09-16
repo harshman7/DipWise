@@ -125,3 +125,6 @@ Docker Compose includes `celery_worker` and `celery_beat` services alongside `ap
 
 <!-- 2026-06-19 pass 91: OpenAPI codegen -->
 **2026-06-19** — Captured QA checklist items for OpenAPI codegen. Pass 91/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-09-16 pass 98: SMA/EMA indicators -->
+**2026-09-16** — Aligned changelog entries with SMA/EMA indicators. Pass 98/100 in the sandbox documentation sweep; no runtime code changed.
