@@ -188,3 +188,7 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- revision 2026-07-25: Market data providers -->
 **2026-07-25 — Market data providers.** Compared Yahoo default vs Polygon/Alpha Vantage key requirements.
+
+
+<!-- revision 2026-09-17: Popular tickers constant -->
+**2026-09-17 — Popular tickers constant.** Explained curated list purpose for quick symbol entry.

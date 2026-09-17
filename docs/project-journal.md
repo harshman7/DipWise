@@ -277,3 +277,14 @@ Captured backtester chart brush behavior and dip marker layering.
 - Updated changelog entry for 2026-09-08.
 - Added revision footer in rotating doc set (index 0).
 
+
+## 2026-09-17 — Popular tickers constant
+
+Explained curated list purpose for quick symbol entry.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-09-17.
+- Added revision footer in rotating doc set (index 1).
+

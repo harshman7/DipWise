@@ -102,3 +102,7 @@
 ### 2026-09-08
 - **Recharts brush zoom:** Captured backtester chart brush behavior and dip marker layering.
 - Touched journal, changelog, README log line, and `docs/architecture.md`.
+
+### 2026-09-17
+- **Popular tickers constant:** Explained curated list purpose for quick symbol entry.
+- Touched journal, changelog, README log line, and `docs/api.md`.
