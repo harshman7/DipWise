@@ -416,3 +416,6 @@
 
 ### 2026-09-16
 - **SMA/EMA indicators (pass 98):** Aligned changelog entries with SMA/EMA indicators. Pass 98/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-09-25
+- **market data providers (pass 99):** Captured QA checklist items for market data providers. Pass 99/100 in the sandbox documentation sweep; no runtime code changed.

@@ -234,3 +234,6 @@ Run dip analysis and download a PDF report. Public.
 
 <!-- 2026-07-11 pass 92: market data providers -->
 **2026-07-11** — Annotated developer workflow around market data providers. Pass 92/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-09-25 pass 99: market data providers -->
+**2026-09-25** — Captured QA checklist items for market data providers. Pass 99/100 in the sandbox documentation sweep; no runtime code changed.
