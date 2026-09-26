@@ -157,3 +157,7 @@ erDiagram
 
 <!-- revision 2026-08-03: News optional surface -->
 **2026-08-03 — News optional surface.** Clarified bearer requirement and UI gating on backtester headlines.
+
+
+<!-- revision 2026-09-26: Error handling copy -->
+**2026-09-26 — Error handling copy.** Drafted user-facing helper text for empty states and loading.

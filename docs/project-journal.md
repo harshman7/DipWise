@@ -288,3 +288,14 @@ Explained curated list purpose for quick symbol entry.
 - Updated changelog entry for 2026-09-17.
 - Added revision footer in rotating doc set (index 1).
 
+
+## 2026-09-26 — Error handling copy
+
+Drafted user-facing helper text for empty states and loading.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-09-26.
+- Added revision footer in rotating doc set (index 2).
+

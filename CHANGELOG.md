@@ -106,3 +106,7 @@
 ### 2026-09-17
 - **Popular tickers constant:** Explained curated list purpose for quick symbol entry.
 - Touched journal, changelog, README log line, and `docs/api.md`.
+
+### 2026-09-26
+- **Error handling copy:** Drafted user-facing helper text for empty states and loading.
+- Touched journal, changelog, README log line, and `docs/data-model.md`.

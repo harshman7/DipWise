@@ -281,3 +281,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-08-30` — TanStack Query patterns: Documented cache keys used on dashboard and analysis pages.
 - `2026-09-08` — Recharts brush zoom: Captured backtester chart brush behavior and dip marker layering.
 - `2026-09-17` — Popular tickers constant: Explained curated list purpose for quick symbol entry.
+- `2026-09-26` — Error handling copy: Drafted user-facing helper text for empty states and loading.
