@@ -384,3 +384,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-09-14` — frontend layout (pass 97).
 - `2026-09-16` — SMA/EMA indicators (pass 98).
 - `2026-09-25` — market data providers (pass 99).
+- `2026-09-30` — testing strategy (pass 100).

@@ -203,3 +203,6 @@ erDiagram
 
 <!-- 2026-07-21 pass 93: saved backtests -->
 **2026-07-21** — Documented edge cases and defaults for saved backtests. Pass 93/100 in the sandbox documentation sweep; no runtime code changed.
+
+<!-- 2026-09-30 pass 100: testing strategy -->
+**2026-09-30** — Documented edge cases and defaults for testing strategy. Pass 100/100 in the sandbox documentation sweep; no runtime code changed.

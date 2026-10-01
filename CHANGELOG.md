@@ -419,3 +419,6 @@
 
 ### 2026-09-25
 - **market data providers (pass 99):** Captured QA checklist items for market data providers. Pass 99/100 in the sandbox documentation sweep; no runtime code changed.
+
+### 2026-09-30
+- **testing strategy (pass 100):** Documented edge cases and defaults for testing strategy. Pass 100/100 in the sandbox documentation sweep; no runtime code changed.
