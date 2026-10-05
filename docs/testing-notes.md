@@ -18,3 +18,7 @@ Backend: `cd apps/api && pytest`. Frontend: `cd apps/web && npm test`.
 
 <!-- revision 2026-08-12: PostgreSQL schema map -->
 **2026-08-12 — PostgreSQL schema map.** Cross-referenced ERD entities to router ownership boundaries.
+
+
+<!-- revision 2026-10-05: API pagination gaps -->
+**2026-10-05 — API pagination gaps.** Logged known limitations for list endpoints in roadmap notes.

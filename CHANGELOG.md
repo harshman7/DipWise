@@ -110,3 +110,7 @@
 ### 2026-09-26
 - **Error handling copy:** Drafted user-facing helper text for empty states and loading.
 - Touched journal, changelog, README log line, and `docs/data-model.md`.
+
+### 2026-10-05
+- **API pagination gaps:** Logged known limitations for list endpoints in roadmap notes.
+- Touched journal, changelog, README log line, and `docs/testing-notes.md`.

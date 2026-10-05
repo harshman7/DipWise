@@ -299,3 +299,14 @@ Drafted user-facing helper text for empty states and loading.
 - Updated changelog entry for 2026-09-26.
 - Added revision footer in rotating doc set (index 2).
 
+
+## 2026-10-05 — API pagination gaps
+
+Logged known limitations for list endpoints in roadmap notes.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-10-05.
+- Added revision footer in rotating doc set (index 3).
+

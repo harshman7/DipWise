@@ -282,3 +282,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-09-08` — Recharts brush zoom: Captured backtester chart brush behavior and dip marker layering.
 - `2026-09-17` — Popular tickers constant: Explained curated list purpose for quick symbol entry.
 - `2026-09-26` — Error handling copy: Drafted user-facing helper text for empty states and loading.
+- `2026-10-05` — API pagination gaps: Logged known limitations for list endpoints in roadmap notes.
