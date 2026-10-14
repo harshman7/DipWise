@@ -22,3 +22,7 @@ Prefer small, reviewable documentation commits with accurate messages.
 
 <!-- revision 2026-08-21: Tailwind brand palette -->
 **2026-08-21 — Tailwind brand palette.** Noted custom `brand` scale usage in layout and cards.
+
+
+<!-- revision 2026-10-14: Environment templates -->
+**2026-10-14 — Environment templates.** Expanded `.env.example` commentary for local vs container hostnames.

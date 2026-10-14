@@ -114,3 +114,7 @@
 ### 2026-10-05
 - **API pagination gaps:** Logged known limitations for list endpoints in roadmap notes.
 - Touched journal, changelog, README log line, and `docs/testing-notes.md`.
+
+### 2026-10-14
+- **Environment templates:** Expanded `.env.example` commentary for local vs container hostnames.
+- Touched journal, changelog, README log line, and `CONTRIBUTING.md`.

@@ -310,3 +310,14 @@ Logged known limitations for list endpoints in roadmap notes.
 - Updated changelog entry for 2026-10-05.
 - Added revision footer in rotating doc set (index 3).
 
+
+## 2026-10-14 — Environment templates
+
+Expanded `.env.example` commentary for local vs container hostnames.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-10-14.
+- Added revision footer in rotating doc set (index 4).
+
