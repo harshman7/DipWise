@@ -284,3 +284,4 @@ Incremental documentation passes (sandbox); see `docs/project-journal.md`.
 - `2026-09-26` — Error handling copy: Drafted user-facing helper text for empty states and loading.
 - `2026-10-05` — API pagination gaps: Logged known limitations for list endpoints in roadmap notes.
 - `2026-10-14` — Environment templates: Expanded `.
+- `2026-10-23` — Release hygiene: Final pass tying journal, changelog, and architecture revision footers together.

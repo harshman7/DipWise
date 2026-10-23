@@ -118,3 +118,7 @@
 ### 2026-10-14
 - **Environment templates:** Expanded `.env.example` commentary for local vs container hostnames.
 - Touched journal, changelog, README log line, and `CONTRIBUTING.md`.
+
+### 2026-10-23
+- **Release hygiene:** Final pass tying journal, changelog, and architecture revision footers together.
+- Touched journal, changelog, README log line, and `.env.example`.

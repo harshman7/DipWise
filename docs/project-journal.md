@@ -321,3 +321,14 @@ Expanded `.env.example` commentary for local vs container hostnames.
 - Updated changelog entry for 2026-10-14.
 - Added revision footer in rotating doc set (index 4).
 
+
+## 2026-10-23 — Release hygiene
+
+Final pass tying journal, changelog, and architecture revision footers together.
+
+**Checks performed**
+
+- Verified cross-links between README and `docs/`.
+- Updated changelog entry for 2026-10-23.
+- Added revision footer in rotating doc set (index 5).
+
